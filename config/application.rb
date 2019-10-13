@@ -11,6 +11,7 @@ module Rentonpark
     # Initialize configuration defaults for originally generated Rails version.
     config.to_prepare do
       Devise::SessionsController.layout 'login'
+      Devise::RegistrationsController.layout 'login'
       Devise::ConfirmationsController.layout 'login'
       Devise::UnlocksController.layout 'login'
       Devise::PasswordsController.layout 'login'
