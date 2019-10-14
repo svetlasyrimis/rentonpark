@@ -12,5 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+//= require jquery.min
+//= require jquery-ui.min
+//= require bootstrap.min
+//= require waves.min
+//= require modernizr
