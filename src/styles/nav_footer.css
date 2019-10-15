@@ -1,0 +1,151 @@
+.nav-container .boxUser {
+  position: absolute;
+  z-index: 1000;
+  top: 5px;
+  width: 70%;
+  left: 15%;
+  text-align: right;
+  display: block;
+}
+.nav-container .boxUser .name {
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  line-height: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+  -webkit-filter: contrast(100%);
+}
+.nav-container .boxUser .image {
+  width: 30px;
+  display: inline-block;
+}
+/*-----------------------------------------------------------------
+/- Header (Navigation)
+*/
+nav.renton {
+  background: rgba(37, 31, 28, 0.6);
+  border-radius: 3px;
+}
+nav.renton .menu li a {
+  color: #ffffff !important;
+  opacity: 0.8;
+  font-weight: 400 !important;
+}
+.socialIcons a > i {
+  padding: 0 10px;
+  color: #4b4b4b;
+  font-size: 16px;
+}
+.txtCopyright {
+  color: #797878;
+  font-family: "Minion Pro";
+  font-weight: 500;
+  font-style: italic;
+  font-size: 16px;
+}
+nav.renton .menu {
+  font-family: "Open Sans", sans-serif !important;
+}
+nav.renton .module.right i {
+  padding: 0 10px;
+  color: #fff;
+  font-size: 16px;
+}
+nav.renton .nav-bar {
+  border: none !important;
+}
+nav.renton .right .mobileMenu {
+  height: 55px;
+  border-left: 1px solid #fafafa;
+  padding: 0 0 0 10px;
+  display: none;
+}
+nav.renton .menu > li {
+  margin-right: 18px !important;
+}
+nav.renton .logoMin {
+  height: 40px;
+  fill: #fff;
+  margin-top: 5px;
+}
+nav.renton .logotypeMinWhite {
+  height: 40px;
+  margin-top: 5px;
+  width: 56px;
+}
+
+@media screen and (min-width: 1366px) {
+  nav.renton {
+    top: 40px !important;
+    width: 70% !important;
+    left: 15% !important;
+  }
+  nav.renton .module {
+    padding: 0px 12px !important;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  nav.renton .center {
+    display: none;
+  }
+  nav.renton .right .mobileMenu {
+    display: inline-block;
+  }
+}
+/*-----------------------------------------------------------------
+/- Mobile Menu
+*/
+.mMenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  background: rgba(18, 18, 18, 0.95);
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+}
+.mMenu .btnClose {
+  margin: 20px 20px 0 0;
+  font-size: 16px;
+}
+.mMenu .logotypeMinWhite {
+  width: 80px;
+  height: 60px;
+}
+.nav-container .mMenu .boxUser {
+  z-index: 1000;
+  text-align: left;
+  width: auto;
+  position: initial;
+  margin: 15px 0 20px 15px;
+}
+.mMenu .menu li {
+  padding: 6px;
+  text-align: center;
+}
+.mMenu .menu li a {
+  color: #fff;
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  font-size: 16px;
+}
+/*-----------------------------------------------------------------
+/- Footer
+*/
+.pageRegister .footer-2 {
+  display: none;
+}
+.footer-2 {
+  border-top: 1px solid #979897;
+}
+.footer-2 .logoMin {
+  height: 55px;
+  fill: #4b4b4b;
+}
+.footer-2 .logotypeMinBlack {
+  height: 55px;
+  width: 80px;
+}

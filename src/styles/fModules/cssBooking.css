@@ -1,0 +1,147 @@
+/*********************************************************************
+* Paquete del archivo		: PCKG_410
+* Codigo del archivo		: PCKG_410_cssBooking
+* Nombre del archivo		: cssBooking.css
+* Objetivo del archivo	: Estilos para el modulo Booking
+*
+* Categoria			: PHP
+* Paquete				: 410
+* Autor:				: German Laso
+* Version				: 1.00
+*********************************************************************/
+
+/*-----------------------------------/
+- Buttons Product
+/-----------------------------------*/
+.bService {
+	width: 100%;
+	height: 100%;
+	max-height: 215px;
+	line-height: 150px;
+	display: inline-block;
+	position: relative;
+	background-color: #00c896;
+	border-left: 1px solid #78e2c7;
+	border-right: 1px solid #78e2c7;
+	cursor: pointer;
+}
+.bService:after {
+	content: "";
+	display: inline-block;
+	height: 150px;
+	width: 1px;
+	overflow: hidden;
+	margin: 0 0 0 -5px;
+	vertical-align: middle;
+}
+.bService img {
+	vertical-align: middle;
+}
+.bService .name {
+	position: absolute;
+	display: block;
+	color: #FFFFFF;
+	width: 100%;
+	font-size: 20px;
+	bottom: 20px;
+	line-height: 20px;
+}
+
+/*-----------------------------------/
+- Calendar
+/-----------------------------------*/
+.fc .fc-time-grid .fc-slats td { 
+	color: #fff;
+	height: 2em !important;
+}
+.fc .fc-axis {
+	padding: 0 12px !important; 
+}
+.fc .fc-axis.fc-time {
+	border: none !important;
+}
+.fc .fc-content .fc-time{
+	display: none !important;
+}
+.fc .fc-content .fc-title{
+	font-size: 1.5em !important;
+}
+.fc .fc-event-container .sCancel{
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	z-index: 999;
+	font-size: 14px;
+	cursor: pointer;
+}
+.fc .fc-event-container .sCancel i.fa{
+	color: #fafafa;
+	font-size: 16px;
+}
+
+#dLoading .dLoader{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	background-color: #373534;
+	z-index: 900;
+}
+
+#dLoading i.fa{
+	opacity: 1;
+	z-index: 9999999;
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	color: #fafafa;
+}
+
+/*-----------------------------------/
+- Modal Confirm
+/-----------------------------------*/
+.dConfirm .modal-dialog{
+	width: 976px;
+}
+.dConfirm .modal-content{
+	background-color: #fafafa;
+	color: #373435;
+}
+
+.dConfirm .dSession {
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: block;
+}
+
+.dConfirm .dSession.dHeader{
+	border-bottom: 1px solid #373435;
+}
+
+.dConfirm .dSession .dTime{
+	width: 30%;
+	display: inline-block;
+}
+
+.dConfirm .dSession .dProduct{
+	width: 35%;
+	display: inline-block;
+}
+
+.dConfirm .dSession .dPrice {
+	width: 20%;
+	display: inline-block;
+}
+
+.dConfirm .dSession .dAction{
+	width: 15%;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.dConfirm .dSession .dAction i.fa{
+	color: #9F0C0F;
+}

@@ -1,0 +1,633 @@
+.overlay:before {
+  opacity: 0 !important;
+}
+/*-----------------------------------------------------------------
+/- Main View
+*/
+.viewMain section.brand {
+  padding: 30px 0 0 !important;
+}
+.viewMain section.brand h2 {
+  color: #1c1e18;
+  font-size: 55px;
+  line-height: 60px;
+}
+.viewMain section.brand h3 {
+  font-weight: 300;
+  font-style: normal;
+  color: #1c1e18;
+  font-size: 42px;
+  line-height: 70px;
+}
+.viewMain section.brand h3 > span {
+  font-weight: 300;
+  font-style: normal;
+}
+.viewMain .image-square {
+  background: rgba(250, 251, 250, 1);
+}
+.viewMain .image-square > .content {
+  padding: 0 5%;
+  text-align: center;
+}
+.viewMain .image-square .content > h3 {
+  color: rgba(85, 85, 85, 1);
+  text-transform: uppercase;
+  font-size: 50px;
+  line-height: 48px;
+}
+.viewMain .image-square .content > hr {
+  border-color: #797878;
+  margin: 50px 0px;
+}
+.viewMain .imageLogo {
+  max-height: 250px;
+}
+.viewMain .logoAll {
+  max-height: 250px;
+  fill: #fff;
+}
+.viewMain .colorSkin {
+  color: rgba(197, 161, 119, 1);
+}
+/*-----------------------------------------------------------------
+/- School View
+*/
+.viewSchool section.brand {
+  padding: 30px 0 0 !important;
+}
+.viewSchool section.brand h2 {
+  color: #1c1e18;
+  font-size: 55px;
+  line-height: 60px;
+}
+.viewSchool section.brand h3 {
+  font-weight: 300;
+  font-style: normal;
+  color: #1c1e18;
+  font-size: 42px;
+  line-height: 70px;
+}
+.viewSchool section.brand h3 > span {
+  font-weight: 300;
+  font-style: normal;
+}
+.viewSchool .image-square {
+  background: rgba(250, 251, 250, 1);
+}
+.viewSchool .image-square > .content {
+  padding: 0 5%;
+  text-align: center;
+}
+.viewSchool .image-square .content > h3 {
+  color: rgba(85, 85, 85, 1);
+  text-transform: uppercase;
+  font-size: 50px;
+  line-height: 48px;
+}
+.viewSchool .image-square .content > hr {
+  border-color: #797878;
+  margin: 50px 0px;
+}
+.viewSchool .imageLogo {
+  max-height: 250px;
+}
+.viewSchool .logoAll {
+  max-height: 250px;
+  fill: #fff;
+}
+.viewSchool .colorSkin {
+  color: rgba(197, 161, 119, 1);
+}
+
+.viewSchool .boxSchool {
+  margin-top: 10vh;
+}
+.viewSchool .image-bg .feature.boxed {
+  background: rgba(18, 18, 18, 0.7);
+  padding: 0;
+}
+.viewSchool .boxSchool h5 {
+  font-family: "Minion Pro";
+  font-weight: 300;
+  font-style: italic;
+  font-size: 22px;
+  text-transform: inherit;
+  padding: 0 10px;
+}
+.viewSchool .boxSchool .boxForm {
+  display: inline-block;
+  padding: 0 20px;
+  width: 100%;
+}
+.viewSchool .boxSchool .boxForm label {
+  color: #ffffff;
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.viewSchool .boxSchool .boxForm input[type="text"],
+.viewSchool .boxSchool .boxForm input[type="email"],
+.viewSchool .boxSchool .boxForm select,
+.viewSchool .boxSchool .boxForm input[type="password"] {
+  background: #ffffff;
+  border: none;
+  width: 100%;
+  height: 36px;
+  padding-left: 20px;
+  font-weight: 300;
+  margin-bottom: 0;
+  border-radius: 2px;
+}
+.viewSchool .boxSchool .boxForm .inputCheck {
+  display: inline-block;
+  margin-right: 20px;
+}
+.viewSchool .boxSchool .boxForm .inputCheck > input[type="checkbox"] {
+  display: none;
+}
+.viewSchool .boxSchool .boxForm .inputCheck > label {
+  cursor: pointer;
+  height: 0px;
+  position: relative;
+  width: 40px;
+}
+.viewSchool .boxSchool .boxForm .inputCheck > label::before {
+  background: #1c1e18;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  content: "";
+  height: 16px;
+  margin-top: -8px;
+  position: absolute;
+  opacity: 0.95;
+  transition: all 0.4s ease-in-out;
+  width: 40px;
+}
+.viewSchool .boxSchool .boxForm .inputCheck > label::after {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  content: "";
+  height: 24px;
+  left: -4px;
+  margin-top: -8px;
+  position: absolute;
+  top: -4px;
+  transition: all 0.3s ease-in-out;
+  width: 24px;
+}
+.viewSchool
+  .boxSchool
+  .boxForm
+  .inputCheck
+  > input[type="checkbox"]:checked
+  + label::before {
+  background: #cd9b5a;
+  opacity: 0.95;
+}
+.viewSchool
+  .boxSchool
+  .boxForm
+  .inputCheck
+  > input[type="checkbox"]:checked
+  + label::after {
+  background: inherit;
+  left: 20px;
+}
+.viewSchool .boxSchool .boxForm input[type="submit"],
+.viewSchool .boxSchool .boxForm button[type="submit"],
+.viewSchool .boxSchool .boxForm a.button {
+  height: 36px;
+  line-height: 32px;
+  border: 0;
+  background: #cd9b5a;
+  font-family: "Lemon/Milk";
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.viewSchool .boxSchool .boxForm a.button {
+  padding: 12px 50px;
+  display: inline-block;
+  line-height: 12px;
+  width: 100%;
+  text-align: center;
+}
+.viewSchool .boxSchool .boxForm h4 {
+  text-align: center;
+  font-size: 22px;
+  font-family: "Minion Pro";
+  font-weight: 300;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.viewSchool .boxSchool .boxForm hr {
+  border-top: 2px solid #fff;
+  margin-bottom: 8px;
+}
+.viewSchool .boxSchool .boxForm .logoMin {
+  height: 35px;
+  fill: #fff;
+}
+/*-----------------------------------------------------------------
+/- Riders View
+*/
+.viewRiders .boxRiders {
+  padding: 10px;
+}
+.viewRiders .boxRiders > h1 {
+  color: #4e3925;
+  margin: 10px 0 0 0;
+  font-size: 80px;
+  padding: 10px;
+}
+.viewRiders .boxRiders .feature.boxed {
+  padding: 0 20px;
+  border-radius: 2px;
+  background: rgba(18, 18, 18, 0.7);
+}
+.viewRiders .boxRiders .dLeyends,
+.viewRiders .boxRiders .dReglament,
+.viewRiders .boxRiders .dGrilla {
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+}
+.viewRiders .boxRiders .dLeyends .dColour {
+  padding: 1.5vh;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.viewRiders .boxRiders .dLeyends .sText {
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.viewRiders .boxRiders .dLeyends .dColour.dPending {
+  background: rgb(118, 158, 157);
+}
+.viewRiders .boxRiders .dLeyends .dColour.dSuccess {
+  background: rgb(179, 0, 91);
+}
+.viewRiders .boxRiders .dLeyends .dColour.dOwn {
+  background: #b36500;
+}
+.viewRiders .boxRiders .textReglament {
+  font-family: "Minion Pro";
+  font-weight: 300;
+  font-style: italic;
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.viewRiders .boxRiders .feature h5 {
+  font-family: "Minion Pro";
+  font-weight: 300;
+  font-style: italic;
+  font-size: 30px;
+  text-transform: inherit;
+}
+.viewRiders .boxRiders .feature h4 {
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.viewRiders .boxRiders .dGrilla {
+  text-align: center;
+}
+.viewRiders .boxRiders .dGrilla h2 {
+  margin: 0;
+}
+.viewRiders .boxRiders .dGrilla i {
+}
+.viewRiders .sectionCalendar {
+  padding: 40px 0;
+}
+.viewRiders .sectionCalendar .boxControl {
+  text-align: center;
+}
+.viewRiders .sectionCalendar .boxControl h3 {
+  margin: 0;
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #121212;
+  font-size: 22px;
+}
+.viewRiders .sectionCalendar .boxControl .boxDay {
+  text-align: center;
+  display: inline-block;
+  width: 25vw;
+}
+.viewRiders .sectionCalendar .boxControl .boxDay h4 {
+  margin: 0;
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #121212;
+  font-size: 22px;
+}
+.viewRiders .sectionCalendar .boxControl .boxDay i {
+  line-height: 60px;
+  color: #121212;
+}
+.viewRiders .sectionCalendar .boxCalendar {
+  position: relative;
+}
+.viewRiders .sectionCalendar .boxActions input[type="submit"],
+.viewRiders .sectionCalendar .boxActions button[type="submit"],
+.viewRiders .sectionCalendar .boxActions a.button {
+  height: 36px;
+  line-height: 32px;
+  border: 0;
+  background: #cd9b5a;
+  font-family: "Lemon/Milk";
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.viewRiders .sectionCalendar .boxActions a.button {
+  padding: 12px 50px;
+  display: inline-block;
+  line-height: 12px;
+  width: 100%;
+  text-align: center;
+}
+/*-----------------------------------------------------------------
+/- Features View
+*/
+.viewFeatures section.brand {
+  padding: 30px 0 0 !important;
+}
+.viewFeatures section.brand h2 {
+  color: #1c1e18;
+  font-size: 55px;
+  line-height: 60px;
+}
+.viewFeatures section.brand h3 {
+  font-weight: 300;
+  font-style: normal;
+  color: #1c1e18;
+  font-size: 42px;
+  line-height: 70px;
+}
+.viewFeatures section.brand h3 > span {
+  font-weight: 300;
+  font-style: normal;
+}
+.viewFeatures .image-square {
+  background: rgba(250, 251, 250, 1);
+}
+.viewFeatures .image-square > .content {
+  padding: 0 5%;
+  text-align: center;
+}
+.viewFeatures .image-square .content > h3 {
+  color: rgba(85, 85, 85, 1);
+  text-transform: uppercase;
+  font-size: 50px;
+  line-height: 48px;
+}
+.viewFeatures .image-square .content > hr {
+  border-color: #797878;
+  margin: 50px 0px;
+}
+.viewFeatures .imageLogo {
+  max-height: 250px;
+}
+.viewFeatures .logoAll {
+  max-height: 250px;
+  fill: #fff;
+}
+.viewFeatures .colorSkin {
+  color: rgba(197, 161, 119, 1);
+}
+/*-----------------------------------------------------------------
+/- Bar View
+*/
+.viewBar .imageLogo {
+  max-height: 250px;
+}
+.viewBar .logoAll {
+  max-height: 250px;
+  fill: #fff;
+}
+.viewBar .colorSkin {
+  color: rgba(197, 161, 119, 1);
+}
+
+/*-----------------------------------------------------------------
+/- Complex View
+*/
+.viewComplex .imageLogo {
+  max-height: 250px;
+}
+.viewComplex .logoAll {
+  max-height: 250px;
+  fill: #fff;
+}
+.viewComplex .colorSkin {
+  color: rgba(197, 161, 119, 1);
+}
+
+/*-----------------------------------------------------------------
+/- Contact View
+*/
+.viewContact .imageLogo {
+  max-height: 250px;
+}
+.viewContact .logoAll {
+  max-height: 250px;
+  fill: #fff;
+}
+.viewContact .colorSkin {
+  color: rgba(197, 161, 119, 1);
+}
+
+/*-----------------------------------------------------------------
+/- Login View
+*/
+.viewLogin section {
+}
+.viewLogin .boxLogin {
+  margin-top: 10vh;
+}
+.viewLogin .boxLogin .boxForm {
+  display: inline-block;
+  padding: 0 20px;
+  width: 100%;
+}
+.viewLogin .boxLogin .boxForm label {
+  color: #ffffff;
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.viewLogin .boxLogin .boxForm input[type="text"],
+.viewLogin .boxLogin .boxForm input[type="password"] {
+  background: #ffffff;
+  border: none;
+  width: 100%;
+  height: 36px;
+  padding-left: 20px;
+  font-weight: 300;
+  margin-bottom: 0;
+  border-radius: 2px;
+}
+.viewLogin .boxLogin .boxForm input[type="submit"],
+.viewLogin .boxLogin .boxForm button[type="submit"],
+.viewLogin .boxLogin .boxForm a.button {
+  height: 36px;
+  line-height: 32px;
+  border: 0;
+  background: #cd9b5a;
+  font-family: "Lemon/Milk";
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.viewLogin .boxLogin .boxForm a.button {
+  padding: 12px 50px;
+  display: inline-block;
+  line-height: 12px;
+  width: 100%;
+  text-align: center;
+}
+.viewLogin .boxLogin .boxForm h4 {
+  text-align: center;
+  font-size: 22px;
+  font-family: "Minion Pro";
+  font-weight: 300;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.viewLogin .boxLogin .boxForm hr {
+  border-top: 2px solid #fff;
+  margin-bottom: 8px;
+}
+.viewLogin .boxLogin .boxForm .logoMin {
+  height: 35px;
+  fill: #fff;
+}
+.viewLogin .image-bg .feature.boxed {
+  background: rgba(18, 18, 18, 0.7);
+  padding: 0;
+}
+.viewLogin .image-bg .feature h5 {
+  font-family: "Minion Pro";
+  font-weight: 300;
+  font-style: italic;
+  font-size: 22px;
+  text-transform: inherit;
+}
+.image-login {
+  background: url("../images/background_login.jpeg") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.logo-login {
+  width: 80px;
+  margin-left: -10px;
+}
+/*-----------------------------------------------------------------
+/- Register View
+*/
+.viewRegister section {
+  padding: 50px 0;
+}
+.viewRegister .boxRegister {
+  margin-top: 10vh;
+}
+.viewRegister .boxRegister .boxForm {
+  display: inline-block;
+  padding: 0 20px;
+  width: 100%;
+}
+.viewRegister .boxRegister .boxMessage {
+  text-align: center;
+  padding: 10px;
+  color: #fafbfa;
+  font-size: 14px;
+  font-weight: 300;
+}
+.viewRegister .boxRegister .boxMessage .oneMessage i {
+  color: #6b0e0c;
+  font-size: 18px;
+  margin-right: 10px;
+}
+.viewRegister .boxRegister .boxForm label {
+  color: #ffffff;
+  font-family: "Lemon/Milk";
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.viewRegister .boxRegister .boxForm input[type="text"],
+.viewRegister .boxRegister .boxForm input[type="email"],
+.viewRegister .boxRegister .boxForm select,
+.viewRegister .boxRegister .boxForm input[type="password"] {
+  background: #ffffff;
+  border: none;
+  width: 100%;
+  height: 36px;
+  padding-left: 20px;
+  font-weight: 300;
+  margin-bottom: 0;
+  border-radius: 2px;
+}
+.viewRegister .boxRegister .boxForm input[type="submit"],
+.viewRegister .boxRegister .boxForm button[type="submit"],
+.viewRegister .boxRegister .boxForm a.button {
+  height: 36px;
+  line-height: 32px;
+  border: 0;
+  background: #cd9b5a;
+  font-family: "Lemon/Milk";
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.viewRegister .boxRegister .boxForm a.button {
+  padding: 12px 50px;
+  display: inline-block;
+  line-height: 12px;
+  width: 100%;
+  text-align: center;
+}
+.viewRegister .boxRegister .boxForm h4 {
+  text-align: center;
+  font-size: 22px;
+  font-family: "Minion Pro";
+  font-weight: 300;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.viewRegister .boxRegister .boxForm hr {
+  border-top: 2px solid #fff;
+  margin-bottom: 8px;
+}
+.viewRegister .boxRegister .boxForm .logoMin {
+  height: 35px;
+  fill: #fff;
+}
+.viewRegister .image-bg .feature.boxed {
+  background: rgba(18, 18, 18, 0.7);
+  padding: 0;
+}
+.viewRegister .image-bg .feature h5 {
+  font-family: "Minion Pro";
+  font-weight: 300;
+  font-style: italic;
+  font-size: 22px;
+  text-transform: inherit;
+}
