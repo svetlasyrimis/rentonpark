@@ -539,6 +539,14 @@
   width: 80px;
   margin-left: -10px;
 }
+.image-register {
+  background: url("../images/background_register.jpeg") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
 /*-----------------------------------------------------------------
 /- Register View
 */
