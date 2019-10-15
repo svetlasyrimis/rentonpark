@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "flexslider": "^2.7.2",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
     "react": "^16.10.2",
+    "react-bootstrap-carousel": "^4.0.1",
     "react-dom": "^16.10.2",
     "react-recaptcha-google": "^1.1.1",
     "react-router": "^5.1.2",
