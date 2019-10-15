@@ -10,26 +10,26 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <div class="main-container viewMain">
-          <section class="cover">
+        <div className="main-container viewMain">
+          <section className="cover">
             <div
               id="carouselExampleIndicators"
-              class="carousel slide"
+              className="carousel slide"
               data-ride="carousel"
             >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
                   <img
-                    class="d-block w-100"
+                    className="d-block w-100"
                     src={Slider1}
                     alt="First slide"
                   ></img>
-                  <div class="centered">
-                    <div class="row">
-                      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
+                  <div className="centered">
+                    <div className="row">
+                      <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
                         <img
                           alt="RentonPark"
-                          class="imageLogo mb8"
+                          className="imageLogo mb8"
                           src={Logo}
                           draggable="false"
                         ></img>
@@ -37,18 +37,18 @@ export default class Login extends Component {
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
                   <img
-                    class="d-block w-100"
+                    className="d-block w-100"
                     src={Slider2}
                     alt="Second slide"
                   ></img>
-                  <div class="centered">
-                    <div class="row">
-                      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
+                  <div className="centered">
+                    <div className="row">
+                      <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
                         <img
                           alt="RentonPark"
-                          class="imageLogo mb8"
+                          className="imageLogo mb8"
                           src={Logo}
                           draggable="false"
                         ></img>
@@ -56,18 +56,18 @@ export default class Login extends Component {
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
                   <img
-                    class="d-block w-100"
+                    className="d-block w-100"
                     src={Slider3}
                     alt="Second slide"
                   ></img>
-                  <div class="centered">
-                    <div class="row">
-                      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
+                  <div className="centered">
+                    <div className="row">
+                      <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
                         <img
                           alt="RentonPark"
-                          class="imageLogo mb8"
+                          className="imageLogo mb8"
                           src={Logo}
                           draggable="false"
                         ></img>
@@ -77,58 +77,58 @@ export default class Login extends Component {
                 </div>
               </div>
               <a
-                class="carousel-control-prev"
+                className="carousel-control-prev"
                 href="#carouselExampleIndicators"
                 role="button"
                 data-slide="prev"
               >
                 <span
-                  class="carousel-control-prev-icon"
+                  className="carousel-control-prev-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Previous</span>
+                <span className="sr-only">Previous</span>
               </a>
               <a
-                class="carousel-control-next"
+                className="carousel-control-next"
                 href="#carouselExampleIndicators"
                 role="button"
                 data-slide="next"
               >
                 <span
-                  class="carousel-control-next-icon"
+                  className="carousel-control-next-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Next</span>
+                <span className="sr-only">Next</span>
               </a>
             </div>
           </section>
         </div>
-        <section class="brand transparent">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                <h3 class="fontLemonMilk mb0 p32 p0-xs">
-                  WAKEBOARDING <span class="colorSkin">COMPLEX</span>
+        <section className="brand transparent">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-12 text-center">
+                <h3 className="fontLemonMilk mb0 p32 p0-xs">
+                  WAKEBOARDING <span className="colorSkin">COMPLEX</span>
                 </h3>
-                <h2 class="fontTide">Renton</h2>
+                <h2 className="fontTide">Renton</h2>
               </div>
             </div>
           </div>
         </section>
-        <section class="image-square">
-          <div class="col-md-6 image">
-            <div class="background-image-holder fadeIn">
+        <section className="image-square">
+          <div className="col-md-6 image">
+            <div className="background-image-holder fadeIn">
               <img
-                alt="image"
-                class="background-image"
+                alt="Background"
+                className="background-image"
                 src="./image/view/PR000_10001_C"
               ></img>
             </div>
           </div>
-          <div class="col-md-6 content right">
-            <h3 class="fontLemonMilk">RENTON WAKEBOARDING COMPLEX </h3>
+          <div className="col-md-6 content right">
+            <h3 className="fontLemonMilk">RENTON WAKEBOARDING COMPLEX </h3>
             <hr />
-            <p class="mb0"></p>
+            <p className="mb0"></p>
             <p>EL PARAÍSO EN LA COSTANERA</p>
             <p>
               RWC es un verdadero skatepark en el agua, apto para todos los

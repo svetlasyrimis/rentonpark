@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Navbar extends React.Component {
   render() {
@@ -12,33 +13,40 @@ class Navbar extends React.Component {
             <div className="module center">
               <ul className="menu">
                 <li>
-                  <a href="./">Inicio</a>
+                  <Link to="./">Inicio</Link>
                 </li>
                 <li>
-                  <a href="./riders">Cablepark</a>
+                  <Link to="./riders">Cablepark</Link>
                 </li>
                 <li>
-                  <a href="./school">Escuelita</a>
+                  <Link to="./school">Escuelita</Link>
                 </li>
                 <li>
-                  <a href="./features">Features</a>
+                  <Link to="./features">Features</Link>
                 </li>
                 <li>
-                  <a href="./bar">Pez volador</a>
+                  <Link to="./bar">Pez volador</Link>
                 </li>
                 <li>
-                  <a href="./complex">Cabañas y camping</a>
+                  <Link to="./complex">Cabañas y Hostel</Link>
                 </li>
                 <li>
-                  <a href="./contact">Contacto</a>
+                  <Link to="./complex">Camp & Grill</Link>
                 </li>
                 <li>
-                  <a href="./login">Iniciar sesión</a>
+                  <Link to="./contact">Contacto</Link>
+                </li>
+                <li>
+                  <Link to="./login">Iniciar sesión</Link>
                 </li>
               </ul>
             </div>
             <div className="module right">
-              <a href="https://es-es.facebook.com/rentonwc/" target="_blank">
+              <a
+                href="https://es-es.facebook.com/rentonwc/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fa fa-facebook"></i>
               </a>
               <a
@@ -63,28 +71,28 @@ class Navbar extends React.Component {
           <hr />
           <ul className="menu">
             <li>
-              <a href="./">Inicio</a>
+              <Link to="./">Inicio</Link>
             </li>
             <li>
-              <a href="./riders">Cablepark</a>
+              <Link to="./riders">Cablepark</Link>
             </li>
             <li>
-              <a href="./school">Escuelita</a>
+              <Link to="./school">Escuelita</Link>
             </li>
             <li>
-              <a href="./features">Features</a>
+              <Link to="./features">Features</Link>
             </li>
             <li>
-              <a href="./bar">Pez volador</a>
+              <Link to="./bar">Pez volador</Link>
             </li>
             <li>
-              <a href="./complex">Cabañas y camping</a>
+              <Link to="./complex">Cabañas y camping</Link>
             </li>
             <li>
-              <a href="./contact">Contacto</a>
+              <Link to="./contact">Contacto</Link>
             </li>
             <li>
-              <a href="./login">Iniciar sesión</a>
+              <Link to="./login">Iniciar sesión</Link>
             </li>
           </ul>
           <hr />
@@ -94,7 +102,7 @@ class Navbar extends React.Component {
             </div>
             <div className="col-xs-12 text-center">
               <span className="txtCopyright">
-                Renton Wakeboarding Complex - 2017 Todos los Derechos Reservados
+                Renton Wakeboarding Complex - 2019 Todos los Derechos Reservados
               </span>
             </div>
           </div>
