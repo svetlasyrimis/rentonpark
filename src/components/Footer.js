@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
   var current_url = window.location.href;
@@ -34,9 +34,8 @@ const Footer = () => {
             </div>
             <div className="col-sm-12 text-center">
               <span className="txtCopyright">
-                Renton Wakeboarding Complex - 2019 Todos los Derechos
-                Reservados
-                </span>
+                Renton Wakeboarding Complex - 2019 Todos los Derechos Reservados
+              </span>
             </div>
           </div>
         </div>
@@ -45,6 +44,6 @@ const Footer = () => {
   } else {
     return "";
   }
-}
+};
 
 export default Footer;
