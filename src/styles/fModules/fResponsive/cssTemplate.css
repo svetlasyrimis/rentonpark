@@ -1,0 +1,64 @@
+/*********************************************************************
+* Paquete del archivo		: PCKG_411
+* Codigo del archivo		: PCKG_411_css#Module#
+* Nombre del archivo		: css#Module#.css
+* Objetivo del archivo	: Estilos responsive para el modulo #Module#
+*
+* Categoria			: PHP
+* Paquete				: 411
+* Autor:				: German Laso
+* Version				: 1.00
+*********************************************************************/
+
+@media (max-width: 480px) {
+	
+	.d#Module# .sFilter .dForm{
+	}
+	.d#Module# .sFilter .dForm form{
+	}
+	.d#Module# .sFilter .dForm ul{
+	}
+	.d#Module# .sFilter .dForm ul li{
+	}
+	.d#Module# .sFilter .dForm ul li.lText{
+	}
+	.d#Module# .sFilter .dForm ul li.lDate{
+	}
+	.d#Module# .sFilter .dForm ul li.lButton{
+	}
+	 
+}
+
+@media (max-width: 767px) {
+	
+	.d#Module# .sFilter {
+		
+	}
+	.d#Module# .sFilter .dForm{
+	}
+	.d#Module# .sFilter .dForm form{
+	}
+	.d#Module# .sFilter .dForm ul{
+	}
+	.d#Module# .sFilter .dForm ul li{
+
+	}
+	.d#Module# .sFilter .dForm ul li.lText{
+
+	}
+	.d#Module# .sFilter .dForm ul li.lDate{
+
+	}
+	.d#Module# .sFilter .dForm ul li.lButton{
+
+	}
+}
+
+@media (min-width: 768px) and (max-width: 990px) {
+
+}
+
+@media screen and (min-width: 991px) and (max-width: 1054px) {
+
+
+}

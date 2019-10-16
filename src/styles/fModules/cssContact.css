@@ -1,0 +1,38 @@
+/*********************************************************************
+* Paquete del archivo		: PCKG_410
+* Codigo del archivo		: PCKG_410_css#Module#
+* Nombre del archivo		: css#Module#.inc
+* Objetivo del archivo	: Estilos para el modulo #Module#
+*
+* Categoria			: PHP
+* Paquete				: 410
+* Autor:				: German Laso
+* Version				: 1.00
+*********************************************************************/
+
+.imgProfile{
+	width: 60%;
+}
+.dContact{
+	margin: 5vh 0vh;
+}
+.dContactForm .input-group[class*="col-"] {
+	float: left;
+	padding-right: 0;
+	padding-left: 15px;
+}
+.dContactForm form {
+	width: auto;
+}
+.dContactForm label{
+	font-weight: 400;
+}
+.dResult {
+	text-align: center;
+	color: #666666;
+}
+.dResult .dIcon {
+	font-size: 8vh;
+	padding: 2vh;
+	color: rgba(117,180,87,1.00);
+}
