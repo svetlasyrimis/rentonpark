@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Slider1 from "../images/slider1.jpeg";
 import Slider2 from "../images/slider2.jpeg";
 import Slider3 from "../images/slider3.jpeg";
+import Logo from "../images/renton_light.png";
 import $ from "jquery";
 import "bootstrap/js/src/carousel";
-import Logo from "../images/renton_light.png";
 
 export default class Login extends Component {
   render() {
