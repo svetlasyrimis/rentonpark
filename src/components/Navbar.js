@@ -102,12 +102,12 @@ const Navbar = () => {
           <div className="col-xs-12 text-center">
             <span className="txtCopyright">
               Renton Wakeboarding Complex - 2019 Todos los Derechos Reservados
-              </span>
+            </span>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

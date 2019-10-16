@@ -6,7 +6,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import School from "./pages/School";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -21,6 +21,6 @@ function App() {
       </Switch>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
