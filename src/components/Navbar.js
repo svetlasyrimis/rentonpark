@@ -2,24 +2,6 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  useEffect(() => {
-    var script = document.createElement("script");
-    script.src = "assets/js_home/jquery.js";
-    document.body.appendChild(script);
-
-    var script = document.createElement("script");
-    script.src = "assets/js_home/jquery_migrate.js";
-    document.body.appendChild(script);
-
-    var script = document.createElement("script");
-    script.src = "assets/js_home/bootstrap.js";
-    document.body.appendChild(script);
-
-    var script = document.createElement("script");
-    script.src = "assets/js_home/general.js";
-    document.body.appendChild(script);
-  });
-
   return (
     <div className="nav-container">
       <nav className="absolute renton">
