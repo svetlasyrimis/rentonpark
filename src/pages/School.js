@@ -6,15 +6,16 @@ import Image1 from "../images/school_image1.jpeg";
 import Image2 from "../images/school_image2.png";
 
 const School = (props, context) => {
+  var Recaptcha = require("react-recaptcha");
   const ImgStyle = {
     height: "150%"
   };
   return (
     <div className="main-container viewSchool">
-      <section className="cover">
+      <section className="cover parallax">
         <div
           id="carouselExampleIndicators"
-          className="carousel slide"
+          className="carousel slide background-image-holder"
           data-ride="carousel"
         >
           <div className="carousel-inner">
@@ -284,7 +285,13 @@ const School = (props, context) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-xs-6"></div>
+                      <div className="col-xs-6">
+                        <Recaptcha
+                          sitekey="6LdRBQgUAAAAAI_YwLr-ESi-Lm3AdXKLuX7RE2Bl"
+                          render="explicit"
+                          hl={"es"}
+                        />
+                      </div>
                       <div className="col-xs-6">
                         <button type="submit">Enviar</button>
                       </div>
