@@ -9,6 +9,7 @@ import Features from "./pages/Features";
 import Bar from "./pages/Bar";
 import Complex from "./pages/Complex";
 import Camp from "./pages/Camp";
+import Contact from "./pages/Contact";
 
 const App = () => {
   useEffect(() => {
@@ -58,6 +59,7 @@ const App = () => {
             <Route exact path="/bar" component={Bar} />
             <Route exact path="/complex" component={Complex} />
             <Route exact path="/camp" component={Camp} />
+            <Route exact path="/contact" component={Contact} />
           </Switch>
         </HomeLayout>
       </Switch>
