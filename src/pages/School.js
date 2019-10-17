@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Logo from "../images/renton_light.png";
 import Background from "../images/background_school.jpeg";
 import Background2 from "../images/background_school2.jpg";
@@ -58,7 +58,7 @@ const School = (props, context) => {
       <section className="image-square">
         <div className="col-md-6 image">
           <div className="background-image-holder fadeIn">
-            <img alt="image" className="full-image" src={Image1} />
+            <img alt="image_renton" className="full-image" src={Image1} />
           </div>
         </div>
         <div className="col-md-6 content right">
@@ -117,7 +117,7 @@ const School = (props, context) => {
       <section className="image-square">
         <div className="col-md-6 image right">
           <div className="background-image-holder fadeIn">
-            <img alt="image" className="full-image" src={Image2} />
+            <img alt="image_renton2" className="full-image" src={Image2} />
           </div>
         </div>
         <div className="col-md-6 content">

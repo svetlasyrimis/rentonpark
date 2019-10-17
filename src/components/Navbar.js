@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -51,6 +51,7 @@ function Navbar() {
             <a
               href="https://www.instagram.com/renton_wakeboardingcomplex/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fa fa-instagram"></i>
             </a>
