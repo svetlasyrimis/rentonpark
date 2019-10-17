@@ -2,7 +2,7 @@ import React from "react";
 import Background from "../images/complex.jpeg";
 import Logo from "../images/renton_light.png";
 
-function Complex() {
+function Camp() {
   return (
     <div className="main-container viewSchool">
       <section className="cover parallax">
@@ -27,7 +27,7 @@ function Complex() {
                       src={Logo}
                       draggable="false"
                     ></img>
-                    <h1 className="fontTide">Complejo</h1>
+                    <h1 className="fontTide">Camp & Grill</h1>
                   </div>
                 </div>
               </div>
@@ -39,4 +39,4 @@ function Complex() {
   );
 }
 
-export default Complex;
+export default Camp;
