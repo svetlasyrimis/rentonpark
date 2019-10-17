@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { loadReCaptcha } from "react-recaptcha-google";
-import { ReCaptcha } from "react-recaptcha-google";
 import Logo from "../images/renton_light.png";
 import Background from "../images/background_school.jpeg";
 import Background2 from "../images/background_school2.jpg";
@@ -8,30 +6,16 @@ import Image1 from "../images/school_image1.jpeg";
 import Image2 from "../images/school_image2.png";
 
 const School = (props, context) => {
-  useEffect(() => {
-    loadReCaptcha();
-    if (this.captchaDemo) {
-      this.captchaDemo.reset();
-    }
-  }, [])
-  const onLoadRecaptcha = () => {
-    if (this.captchaDemo) {
-      this.captchaDemo.reset();
-    }
-  }
-  const verifyCallback = (recaptchaToken) => {
-    console.log(recaptchaToken, "<= your recaptcha token");
-  }
-
+  var Recaptcha = require("react-recaptcha");
   const ImgStyle = {
     height: "150%"
   };
   return (
     <div className="main-container viewSchool">
-      <section className="cover">
+      <section className="cover parallax">
         <div
           id="carouselExampleIndicators"
-          className="carousel slide"
+          className="carousel slide background-image-holder"
           data-ride="carousel"
         >
           <div className="carousel-inner">
@@ -83,47 +67,47 @@ const School = (props, context) => {
           <p className="mb0"></p>
           <p>
             <b>INSCRIPCIÓN VÍA INSTA</b>: @RENTONESCUELADEWAKE
-            </p>
+          </p>
           <p>
             <b>D</b>
             <span>ÍAS y HORARIOS</span>: Coordinar con el instructor&nbsp;
-            </p>
+          </p>
           <p>
             <b>ESCUELITA:</b> $500 P/CLASE
-            </p>
+          </p>
           <p>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; $700 2 DÍAS A LA SEMANA
-            </p>
+          </p>
           <p>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; $900 LUNES A VIERNES
-            </p>
+          </p>
           <p>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; (Incluye el equipo completo p/compartir)
-            </p>
+          </p>
           <p>
             <b>CLASE PERSONALIZADA:</b>&nbsp; $800 LUNES A VIERNES
-            </p>
+          </p>
           <p>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $1000 SÁBADOS/DOMINGOS/FERIADOS
-            </p>
+          </p>
           <p>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(incluye equipo completo)
-            </p>
+          </p>
           <p>
             <b>CLASE GRUPAL:&nbsp;&nbsp;</b>$2100 HORA DE CABLE C/INSTRUCTOR
-            </p>
+          </p>
           <p>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (máx. 3 personas NO
             incluye equipo)
-            </p>
+          </p>
           <p>
             <br />
           </p>
@@ -141,11 +125,11 @@ const School = (props, context) => {
           <hr />
           <p className="mb0"></p>
           <p>
-            La escuelita tiene como objetivo fomentar el deporte a nivel
-            local. Incentivando, desde los mas jóvenes, a practicar y
-            disfrutar de esta disciplina llena de desafíos, que año tras año
-            crece a nivel mundial.
-            </p>
+            La escuelita tiene como objetivo fomentar el deporte a nivel local.
+            Incentivando, desde los mas jóvenes, a practicar y disfrutar de esta
+            disciplina llena de desafíos, que año tras año crece a nivel
+            mundial.
+          </p>
           <p></p>
         </div>
       </section>
@@ -165,9 +149,9 @@ const School = (props, context) => {
                 <div className="text-center">
                   <i className="ti-package icon"></i>
                   <h5 className="uppercase">
-                    Si estas interesado en tomar clases, completa con tus
-                    datos la planilla que figura a continuación:
-                    </h5>
+                    Si estas interesado en tomar clases, completa con tus datos
+                    la planilla que figura a continuación:
+                  </h5>
                 </div>
                 <div className="boxForm">
                   <form
@@ -302,16 +286,9 @@ const School = (props, context) => {
                     </div>
                     <div className="row">
                       <div className="col-xs-6">
-                        <ReCaptcha
-                          ref={el => {
-                            this.captchaDemo = el;
-                          }}
-                          size="normal"
-                          data-theme="dark"
-                          render="explicit"
+                        <Recaptcha
                           sitekey="6LdRBQgUAAAAAI_YwLr-ESi-Lm3AdXKLuX7RE2Bl"
-                          onloadCallback={this.onLoadRecaptcha}
-                          verifyCallback={this.verifyCallback}
+                          render="explicit"
                           hl={"es"}
                         />
                       </div>
@@ -328,6 +305,6 @@ const School = (props, context) => {
       </section>
     </div>
   );
-}
+};
 
 export default School;
