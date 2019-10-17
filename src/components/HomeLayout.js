@@ -10,7 +10,7 @@ import "../styles/elements.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-function HomeLayout(props) {
+const HomeLayout = (props) => {
   return (
     <React.Fragment>
       <Navbar />

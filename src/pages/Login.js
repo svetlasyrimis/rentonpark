@@ -8,8 +8,7 @@ import "../styles/custom.css";
 import "../styles/elements.css";
 import LogoLight from "../images/logo_light.png";
 
-export default class Login extends Component {
-  render() {
+const Login = () => {
     return (
       <div className="viewLogin background-image-holder image-login fadeIn">
         <section className="image-bg overlay parallax">
@@ -68,5 +67,6 @@ export default class Login extends Component {
         </section>
       </div>
     );
-  }
 }
+
+export default Login;

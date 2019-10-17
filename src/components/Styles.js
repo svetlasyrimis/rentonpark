@@ -7,7 +7,7 @@ import "../styles/views.css";
 import "../styles/custom.css";
 import "../styles/elements.css";
 
-function Styles(props) {
+const Styles = (props) => {
   return <React.Fragment>{props.children}</React.Fragment>;
 }
 
