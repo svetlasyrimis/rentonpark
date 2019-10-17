@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import School from "./pages/School";
+import Features from "./pages/Features";
 
 const App = () => {
   useEffect(() => {
@@ -50,6 +51,7 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/school" component={School} />
+            <Route exact path="/features" component={Features} />
           </Switch>
         </HomeLayout>
       </Switch>
