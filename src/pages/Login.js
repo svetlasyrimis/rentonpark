@@ -12,7 +12,6 @@ const Login = () => {
   return (
     <div className="viewLogin background-image-holder image-login fadeIn">
       <section className="image-bg overlay parallax">
-        <div className=""></div>
         <div className="container">
           <div className="row">
             <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 boxLogin">

@@ -24,6 +24,22 @@ const App = () => {
     script4.src = "assets/js_home/general.js";
     script4.async = false;
     document.body.appendChild(script4);
+    var script5 = document.createElement("script");
+    script5.src = "assets/js_home/flexslider.js";
+    script5.async = false;
+    document.body.appendChild(script5);
+    var script6 = document.createElement("script");
+    script6.src = "assets/js_home/flickr.js";
+    script6.async = false;
+    document.body.appendChild(script6);
+    var script7 = document.createElement("script");
+    script7.src = "assets/js_home/lightbox.js";
+    script7.async = false;
+    document.body.appendChild(script7);
+    var script8 = document.createElement("script");
+    script8.src = "assets/js_home/parallax.js";
+    script8.async = false;
+    document.body.appendChild(script8);
   });
   return (
     <BrowserRouter>

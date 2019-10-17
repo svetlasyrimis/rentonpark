@@ -3,7 +3,7 @@ import React from "react";
 const Register = () => {
   var Recaptcha = require("react-recaptcha");
   return (
-    <div className="main-container viewRegister image-register">
+    <div className="viewRegister background-image-holder image-register fadeIn">
       <section className="image-bg overlay parallax">
         <div className="container">
           <div className="row">
