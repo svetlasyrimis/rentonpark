@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+function Navbar() {
   return (
     <div className="nav-container">
       <nav className="absolute renton">
@@ -102,7 +102,7 @@ const Navbar = () => {
           <div className="col-xs-12 text-center">
             <span className="txtCopyright">
               Renton Wakeboarding Complex - 2019 Todos los Derechos Reservados
-              </span>
+            </span>
           </div>
         </div>
       </div>
