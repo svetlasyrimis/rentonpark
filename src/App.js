@@ -40,7 +40,7 @@ const App = () => {
     script8.src = "assets/js_home/parallax.js";
     script8.async = false;
     document.body.appendChild(script8);
-  });
+  }, []);
   return (
     <BrowserRouter>
       <Switch>
