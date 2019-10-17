@@ -3,7 +3,6 @@ import Slider1 from "../images/slider1.jpeg";
 import Slider2 from "../images/slider2.jpeg";
 import Slider3 from "../images/slider3.jpeg";
 import Logo from "../images/renton_light.png";
-import $ from "jquery";
 import "bootstrap/js/src/carousel";
 
 const Home = () => {
@@ -135,12 +134,12 @@ const Home = () => {
             enterate de todo lo que tenemos para vos, cabañas, servicio de
             gastronomía, miniramp, camping, escuelita de wakeboard y muchas
             cosas más !!
-            </p>{" "}
+          </p>{" "}
           <p></p>
         </div>
       </section>
     </div>
   );
-}
+};
 
 export default Home;
