@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Register = () => {
   var Recaptcha = require("react-recaptcha");
   return (
