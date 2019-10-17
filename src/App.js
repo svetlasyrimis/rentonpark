@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import School from "./pages/School";
 import Features from "./pages/Features";
 import Bar from "./pages/Bar";
+import Complex from "./pages/Complex";
 
 const App = () => {
   useEffect(() => {
@@ -54,6 +55,7 @@ const App = () => {
             <Route exact path="/school" component={School} />
             <Route exact path="/features" component={Features} />
             <Route exact path="/bar" component={Bar} />
+            <Route exact path="/complex" component={Complex} />
           </Switch>
         </HomeLayout>
       </Switch>
