@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/bootstrap.css";
 import "../styles/bootstrap_theme.css";
 import "../styles/jquery_ui.css";
@@ -36,8 +36,17 @@ const Login = () => {
                       <label> Contraseña </label>
                       <input type="password" name="txtPass" tabIndex="2" />
                     </div>
-                    <div className="col-xs-6">
-                      <button type="submit">Ingresar</button>
+                    <div className="row">
+                      <div className="col-xs-6">
+                        <img
+                          src={LogoLight}
+                          alt="Mini Logo"
+                          className="logo-login"
+                        />
+                      </div>
+                      <div className="col-xs-6">
+                        <button type="submit">Ingresar</button>
+                      </div>
                     </div>
                     <hr />
                     <h4>Si entrás por primera vez</h4>

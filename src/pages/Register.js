@@ -1,28 +1,9 @@
-import React, { useEffect } from "react";
-import { loadReCaptcha } from "react-recaptcha-google";
-import { ReCaptcha } from "react-recaptcha-google";
+import React from "react";
 
-const Register = (props, context) => {
-  onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
-  verifyCallback = this.verifyCallback.bind(this);
-
-  useEffect(() => {
-    loadReCaptcha();
-    if (this.captchaDemo) {
-      this.captchaDemo.reset();
-    }
-  }, [])
-
-  const onLoadRecaptcha = (screenY) => {
-    if (this.captchaDemo) {
-      this.captchaDemo.reset();
-    }
-  }
-  const verifyCallback = (recaptchaToken) => {
-    console.log(recaptchaToken, "<= your recaptcha token");
-  }
+const Register = () => {
+  var Recaptcha = require("react-recaptcha");
   return (
-    <div className="main-container viewRegister image-register" >
+    <div className="main-container viewRegister image-register">
       <section className="image-bg overlay parallax">
         <div className="container">
           <div className="row">
@@ -84,10 +65,7 @@ const Register = (props, context) => {
                       </div>
                       <div className="col-md-3 col-xs-4">
                         <div className="form-group ">
-                          <label htmlFor="txtPrefix">
-                            {" "}
-                            Celular (Prefijo){" "}
-                          </label>
+                          <label htmlFor="txtPrefix"> Celular (Prefijo) </label>
                           <input
                             type="text"
                             className="form-control"
@@ -164,16 +142,9 @@ const Register = (props, context) => {
                     </div>
                     <div className="row">
                       <div className="col-xs-6">
-                        <ReCaptcha
-                          ref={el => {
-                            this.captchaDemo = el;
-                          }}
-                          size="normal"
-                          data-theme="dark"
-                          render="explicit"
+                        <Recaptcha
                           sitekey="6LdRBQgUAAAAAI_YwLr-ESi-Lm3AdXKLuX7RE2Bl"
-                          onloadCallback={this.onLoadRecaptcha}
-                          verifyCallback={this.verifyCallback}
+                          render="explicit"
                           hl={"es"}
                         />
                       </div>
@@ -190,6 +161,6 @@ const Register = (props, context) => {
       </section>
     </div>
   );
-}
+};
 
 export default Register;
