@@ -8,15 +8,12 @@ import Image1 from "../images/school_image1.jpeg";
 import Image2 from "../images/school_image2.png";
 
 const School = (props, context) => {
-  onLoadRecaptcha = onLoadRecaptcha.bind(this);
-  verifyCallback = verifyCallback.bind(this);
-  
   useEffect(() => {
     loadReCaptcha();
     if (this.captchaDemo) {
       this.captchaDemo.reset();
     }
-  })
+  }, [])
   const onLoadRecaptcha = () => {
     if (this.captchaDemo) {
       this.captchaDemo.reset();

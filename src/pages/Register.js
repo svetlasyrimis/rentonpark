@@ -3,19 +3,16 @@ import { loadReCaptcha } from "react-recaptcha-google";
 import { ReCaptcha } from "react-recaptcha-google";
 
 const Register = (props, context) => {
-  onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
-  verifyCallback = this.verifyCallback.bind(this);
-
   useEffect(() => {
     loadReCaptcha();
-    if (this.captchaDemo) {
-      this.captchaDemo.reset();
+    if (captchaDemo) {
+      captchaDemo.reset();
     }
   }, [])
 
   const onLoadRecaptcha = (screenY) => {
-    if (this.captchaDemo) {
-      this.captchaDemo.reset();
+    if (captchaDemo) {
+      captchaDemo.reset();
     }
   }
   const verifyCallback = (recaptchaToken) => {
@@ -166,14 +163,14 @@ const Register = (props, context) => {
                       <div className="col-xs-6">
                         <ReCaptcha
                           ref={el => {
-                            this.captchaDemo = el;
+                            let captchaDemo = el;
                           }}
                           size="normal"
                           data-theme="dark"
                           render="explicit"
                           sitekey="6LdRBQgUAAAAAI_YwLr-ESi-Lm3AdXKLuX7RE2Bl"
-                          onloadCallback={this.onLoadRecaptcha}
-                          verifyCallback={this.verifyCallback}
+                          onloadCallback={onLoadRecaptcha}
+                          verifyCallback={verifyCallback}
                           hl={"es"}
                         />
                       </div>
