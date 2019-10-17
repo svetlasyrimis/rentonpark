@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import School from "./pages/School";
 import Features from "./pages/Features";
+import Bar from "./pages/Bar";
 
 const App = () => {
   useEffect(() => {
@@ -52,6 +53,7 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/school" component={School} />
             <Route exact path="/features" component={Features} />
+            <Route exact path="/bar" component={Bar} />
           </Switch>
         </HomeLayout>
       </Switch>
