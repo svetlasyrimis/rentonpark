@@ -5,6 +5,12 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import School from "./pages/School";
+import Features from "./pages/Features";
+import Bar from "./pages/Bar";
+import Complex from "./pages/Complex";
+import Camp from "./pages/Camp";
+import Contact from "./pages/Contact";
+import Riders from "./pages/Riders";
 
 const App = () => {
   useEffect(() => {
@@ -40,6 +46,36 @@ const App = () => {
     script8.src = "assets/js_home/parallax.js";
     script8.async = false;
     document.body.appendChild(script8);
+
+    var script14 = document.createElement("script");
+    script14.src = "assets/js_home/cropper.js";
+    script14.async = false;
+    document.body.appendChild(script14);
+    var script12 = document.createElement("script");
+    script12.src = "assets/js_home/tables_jquery.js";
+    script12.async = false;
+    document.body.appendChild(script12);
+    var script13 = document.createElement("script");
+    script13.src = "assets/js_home/tables_bootstrap.js";
+    script13.async = false;
+    document.body.appendChild(script13);
+    var script9 = document.createElement("script");
+    script9.src = "assets/js_home/moment.js";
+    script9.async = false;
+    document.body.appendChild(script9);
+
+    var script10 = document.createElement("script");
+    script10.src = "assets/js_home/calendar.js";
+    script10.async = false;
+    document.body.appendChild(script10);
+    var script11 = document.createElement("script");
+    script11.src = "assets/js_home/langes.js";
+    script11.async = false;
+    document.body.appendChild(script11);
+    var script15 = document.createElement("script");
+    script15.src = "assets/js_home/riders.js";
+    script15.async = false;
+    document.body.appendChild(script15);
   }, []);
   return (
     <BrowserRouter>
@@ -50,6 +86,12 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/school" component={School} />
+            <Route exact path="/features" component={Features} />
+            <Route exact path="/bar" component={Bar} />
+            <Route exact path="/complex" component={Complex} />
+            <Route exact path="/camp" component={Camp} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/riders" component={Riders} />
           </Switch>
         </HomeLayout>
       </Switch>

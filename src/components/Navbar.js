@@ -30,7 +30,7 @@ function Navbar() {
                 <Link to="./complex">Cabañas y Hostel</Link>
               </li>
               <li>
-                <Link to="./complex">Camp & Grill</Link>
+                <Link to="./camp">Camp & Grill</Link>
               </li>
               <li>
                 <Link to="./contact">Contacto</Link>
