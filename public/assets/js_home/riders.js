@@ -534,7 +534,7 @@ jQuery(document).ready(function(){
 		var tFormData	= new FormData();
 		tFormData.append('vUser', $('#vUser').val());
 
-		$(oConfirm).find('#dList').html('<div class="dSession dHeader"><div class="dTime"><h5>Horario</h5></div><div class="dProduct"><h5>Sesion</h5></div><div class="dPrice"><h5>Precio</h5></div><div class="dAction"><h5>AcciÃ³n</h5></div></div>');
+		$(oConfirm).find('#dList').html('<div class="dSession dHeader"><div class="dTime"><h5>Horario</h5></div><div class="dProduct"><h5>Sesion</h5></div><div class="dPrice"><h5>Precio</h5></div><div class="dAction"><h5>Acción</h5></div></div>');
 
 		$.ajax('./get/json/booking/user', {
 			dataType: "JSON",
