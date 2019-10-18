@@ -4,7 +4,7 @@ import Background from "../images/background_contact.jpeg";
 import Background2 from "../images/background_school2.jpg";
 import Logo from "../images/renton_light.png";
 
-function Contact() {
+const Contact = () => {
   var Recaptcha = require("react-recaptcha");
   const ImgStyle = {
     height: "150%"

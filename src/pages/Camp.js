@@ -2,7 +2,7 @@ import React from "react";
 import Background from "../images/complex.jpeg";
 import Logo from "../images/renton_light.png";
 
-function Camp() {
+const Camp = () => {
   return (
     <div className="main-container viewSchool">
       <section className="cover parallax">

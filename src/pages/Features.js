@@ -2,7 +2,7 @@ import React from "react";
 import Background from "../images/background_school.jpeg";
 import Logo from "../images/renton_light.png";
 
-function Features() {
+const Features = () => {
   return (
     <div className="main-container viewSchool">
       <section className="cover parallax">
