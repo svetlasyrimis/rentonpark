@@ -11,9 +11,18 @@
 *********************************************************************/
 
 /* Google Fonts */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i);
+@import url(
+  https://fonts.googleapis.com/css?family=Open+Sans:300,
+  300i,
+  400,
+  400i,
+  600,
+  600i,
+  700,
+  700i
+);
 
 /* Local Icons Fonts */
-@import url(../fFonts/fLemon/cssLemonMilk.css);
-@import url(../fFonts/fMinion/cssMinion.css);
-@import url(../fFonts/fHide/cssHide.css);
+@import url(./fFonts/fLemon/cssLemonMilk.css);
+@import url(./fFonts/fMinion/cssMinion.css);
+@import url(./fFonts/fHide/cssHide.css);
