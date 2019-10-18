@@ -18,11 +18,11 @@
           return /-MMM-/.test(s) ? o[a.month()] : e[a.month()];
         },
         monthsParseExact: !0,
-        weekdays: "domingo_lunes_martes_miÃ©rcoles_jueves_viernes_sÃ¡bado".split(
+        weekdays: "domingo_lunes_martes_miércoles_jueves_viernes_sábado".split(
           "_"
         ),
-        weekdaysShort: "dom._lun._mar._miÃ©._jue._vie._sÃ¡b.".split("_"),
-        weekdaysMin: "do_lu_ma_mi_ju_vi_sÃ¡".split("_"),
+        weekdaysShort: "dom._lun._mar._mie._jue._vie._sab.".split("_"),
+        weekdaysMin: "do_lu_ma_mi_ju_vi_sá".split("_"),
         weekdaysParseExact: !0,
         longDateFormat: {
           LT: "H:mm",
@@ -37,7 +37,7 @@
             return "[hoy a la" + (1 !== this.hours() ? "s" : "") + "] LT";
           },
           nextDay: function() {
-            return "[maÃ±ana a la" + (1 !== this.hours() ? "s" : "") + "] LT";
+            return "[mañana a la" + (1 !== this.hours() ? "s" : "") + "] LT";
           },
           nextWeek: function() {
             return "dddd [a la" + (1 !== this.hours() ? "s" : "") + "] LT";
@@ -66,7 +66,7 @@
           dd: "%d dÃ­as",
           M: "un mes",
           MM: "%d meses",
-          y: "un aÃ±o",
+          y: "un año",
           yy: "%d aÃ±os"
         },
         ordinalParse: /\d{1,2}Âº/,
@@ -112,12 +112,12 @@
         "domingo",
         "lunes",
         "martes",
-        "miÃ©rcoles",
+        "miércoles",
         "jueves",
         "viernes",
-        "sÃ¡bado"
+        "sábado"
       ],
-      dayNamesShort: ["dom", "lun", "mar", "miÃ©", "jue", "vie", "sÃ¡b"],
+      dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
       dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
       weekHeader: "Sm",
       dateFormat: "dd/mm/yy",
@@ -127,8 +127,8 @@
       yearSuffix: ""
     }),
     e.fullCalendar.locale("es", {
-      buttonText: { month: "Mes", week: "Semana", day: "DÃ­a", list: "Agenda" },
-      allDayHtml: "Todo<br/>el dÃ­a",
+      buttonText: { month: "Mes", week: "Semana", day: "Día", list: "Agenda" },
+      allDayHtml: "Todo<br/>el día",
       eventLimitText: "mÃ¡s",
       noEventsMessage: "No hay eventos para mostrar"
     });

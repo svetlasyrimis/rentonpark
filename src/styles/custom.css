@@ -4065,6 +4065,9 @@ video {
   color: #fff;
   cursor: pointer;
 }
+.background-modal{
+  background-color: rgba(18,18,18, 0.75) !important;
+}
 @media all and (max-width: 990px) {
   .modal-video iframe {
     width: 640px;
