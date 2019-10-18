@@ -7,7 +7,7 @@ import "../styles/elements.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-const HomeLayout = (props) => {
+const HomeLayout = props => {
   return (
     <React.Fragment>
       <Navbar />
@@ -15,6 +15,6 @@ const HomeLayout = (props) => {
       <Footer />
     </React.Fragment>
   );
-}
+};
 
 export default HomeLayout;

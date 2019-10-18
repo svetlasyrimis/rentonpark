@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/contact.css";
 import Background from "../images/background_contact.jpeg";
 import Background2 from "../images/background_school2.jpg";

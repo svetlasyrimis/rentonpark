@@ -26,10 +26,39 @@ const App = () => {
     script3.src = "assets/js_home/bootstrap.js";
     script3.async = false;
     document.body.appendChild(script3);
+    var script15 = document.createElement("script");
+    script15.src = "assets/js_home/riders.js";
+    script15.async = false;
+    document.body.appendChild(script15);
+    var script9 = document.createElement("script");
+    script9.src = "assets/js_home/moment.js";
+    script9.async = false;
+    document.body.appendChild(script9);
+    var script10 = document.createElement("script");
+    script10.src = "assets/js_home/calendar.js";
+    script10.async = false;
+    document.body.appendChild(script10);
+    var script11 = document.createElement("script");
+    script11.src = "assets/js_home/langes.js";
+    script11.async = false;
+    document.body.appendChild(script11);
+    var script12 = document.createElement("script");
+    script12.src = "assets/js_home/tables_jquery.js";
+    script12.async = false;
+    document.body.appendChild(script12);
+    var script13 = document.createElement("script");
+    script13.src = "assets/js_home/tables_bootstrap.js";
+    script13.async = false;
+    document.body.appendChild(script13);
+    var script14 = document.createElement("script");
+    script14.src = "assets/js_home/cropper.js";
+    script14.async = false;
+    document.body.appendChild(script14);
     var script4 = document.createElement("script");
     script4.src = "assets/js_home/general.js";
     script4.async = false;
     document.body.appendChild(script4);
+
     var script5 = document.createElement("script");
     script5.src = "assets/js_home/flexslider.js";
     script5.async = false;
@@ -46,36 +75,6 @@ const App = () => {
     script8.src = "assets/js_home/parallax.js";
     script8.async = false;
     document.body.appendChild(script8);
-
-    var script14 = document.createElement("script");
-    script14.src = "assets/js_home/cropper.js";
-    script14.async = false;
-    document.body.appendChild(script14);
-    var script12 = document.createElement("script");
-    script12.src = "assets/js_home/tables_jquery.js";
-    script12.async = false;
-    document.body.appendChild(script12);
-    var script13 = document.createElement("script");
-    script13.src = "assets/js_home/tables_bootstrap.js";
-    script13.async = false;
-    document.body.appendChild(script13);
-    var script9 = document.createElement("script");
-    script9.src = "assets/js_home/moment.js";
-    script9.async = false;
-    document.body.appendChild(script9);
-
-    var script10 = document.createElement("script");
-    script10.src = "assets/js_home/calendar.js";
-    script10.async = false;
-    document.body.appendChild(script10);
-    var script11 = document.createElement("script");
-    script11.src = "assets/js_home/langes.js";
-    script11.async = false;
-    document.body.appendChild(script11);
-    var script15 = document.createElement("script");
-    script15.src = "assets/js_home/riders.js";
-    script15.async = false;
-    document.body.appendChild(script15);
   }, []);
   return (
     <BrowserRouter>
