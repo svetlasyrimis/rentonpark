@@ -1,9 +1,9 @@
 import React from "react";
-import Logo from "../images/renton_light.png";
-import Background from "../images/background_school.jpeg";
-import Background2 from "../images/background_school2.jpg";
-import Image1 from "../images/school_image1.jpeg";
-import Image2 from "../images/school_image2.png";
+import Logo from "../assets/images/renton_light.png";
+import Background from "../assets/images/background_school.jpeg";
+import Background2 from "../assets/images/background_school2.jpg";
+import Image1 from "../assets/images/school_image1.jpeg";
+import Image2 from "../assets/images/school_image2.png";
 
 const School = (props, context) => {
   var Recaptcha = require("react-recaptcha");

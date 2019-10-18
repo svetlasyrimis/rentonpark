@@ -1,8 +1,8 @@
 import React from "react";
-import Slider1 from "../images/slider1.jpeg";
-import Slider2 from "../images/slider2.jpeg";
-import Slider3 from "../images/slider3.jpeg";
-import Logo from "../images/renton_light.png";
+import Slider1 from "../assets/images/slider1.jpeg";
+import Slider2 from "../assets/images/slider2.jpeg";
+import Slider3 from "../assets/images/slider3.jpeg";
+import Logo from "../assets/images/renton_light.png";
 import "bootstrap/js/src/carousel";
 
 const Home = () => {

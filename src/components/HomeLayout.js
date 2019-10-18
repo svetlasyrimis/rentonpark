@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "../styles/nav_footer.css";
-import "../styles/views.css";
-import "../styles/custom.css";
-import "../styles/elements.css";
+import "../assets/styles/nav_footer.css";
+import "../assets/styles/views.css";
+import "../assets/styles/custom.css";
+import "../assets/styles/elements.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 

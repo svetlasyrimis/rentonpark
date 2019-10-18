@@ -1,9 +1,9 @@
 import React from "react";
-import Background from "../images/background_riders.jpeg";
-import "../styles/riders.css";
-import "../styles/calendar.css";
-import "../styles/fPlugins/plugTables/tables.css";
-import "../styles/cropper.css";
+import Background from "../assets/images/background_riders.jpeg";
+import "../assets/styles/riders.css";
+import "../assets/styles/calendar.css";
+import "../assets/styles/fPlugins/plugTables/tables.css";
+import "../assets/styles/cropper.css";
 
 function Riders() {
   return (

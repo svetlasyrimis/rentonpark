@@ -1,12 +1,12 @@
 import React from "react";
-import "../styles/bootstrap.css";
-import "../styles/bootstrap_theme.css";
-import "../styles/jquery_ui.css";
-import "../styles/nav_footer.css";
-import "../styles/views.css";
-import "../styles/custom.css";
-import "../styles/elements.css";
-import LogoLight from "../images/logo_light.png";
+import "../assets/styles/bootstrap.css";
+import "../assets/styles/bootstrap_theme.css";
+import "../assets/styles/jquery_ui.css";
+import "../assets/styles/nav_footer.css";
+import "../assets/styles/views.css";
+import "../assets/styles/custom.css";
+import "../assets/styles/elements.css";
+import LogoLight from "../assets/images/logo_light.png";
 
 const Login = () => {
   return (

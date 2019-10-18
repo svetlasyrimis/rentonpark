@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/contact.css";
-import Background from "../images/background_contact.jpeg";
-import Background2 from "../images/background_school2.jpg";
-import Logo from "../images/renton_light.png";
+import "../assets/styles/contact.css";
+import Background from "../assets/images/background_contact.jpeg";
+import Background2 from "../assets/images/background_school2.jpg";
+import Logo from "../assets/images/renton_light.png";
 
 const Contact = () => {
   var Recaptcha = require("react-recaptcha");
