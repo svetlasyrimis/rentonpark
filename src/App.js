@@ -12,11 +12,16 @@ import Camp from "./pages/Camp";
 import Contact from "./pages/Contact";
 import Riders from "./pages/Riders";
 
+import AdminMain from "./pages/AdminMain";
+import AdminLayout from "./components/AdminLayout";
+
 const Admin = ({ match }) => (
   <React.Fragment>
-    <h1>admin bar</h1>
-    <Route path={`${match.path}/1`} render={() => <h2>one</h2>} />
-    <Route path={`${match.path}/2`} render={() => <h2>two</h2>} />
+    <AdminLayout>
+      <Switch>
+        <Route exact path={`${match.path}`} component={AdminMain} />
+      </Switch>
+    </AdminLayout>
   </React.Fragment>
 );
 
@@ -45,6 +50,42 @@ const App = () => {
   useEffect(() => {
     var current_url = window.location.href;
     if (current_url.includes("/admin")) {
+      var script1 = document.createElement("script");
+      script1.src = "assets/js_admin/jquery.min.js";
+      script1.async = false;
+      document.body.appendChild(script1);
+      var script2 = document.createElement("script");
+      script2.src = "assets/js_admin/jquery-ui.min.js";
+      script2.async = false;
+      document.body.appendChild(script2);
+      var script3 = document.createElement("script");
+      script3.src = "assets/js_admin/popper.min.js";
+      script3.async = false;
+      document.body.appendChild(script3);
+      var script15 = document.createElement("script");
+      script15.src = "assets/js_admin/bootstrap.min.js";
+      script15.async = false;
+      document.body.appendChild(script15);
+      var script9 = document.createElement("script");
+      script9.src = "assets/js_admin/waves.min.js";
+      script9.async = false;
+      document.body.appendChild(script9);
+      var script10 = document.createElement("script");
+      script10.src = "assets/js_admin/jquery.slimscroll.js";
+      script10.async = false;
+      document.body.appendChild(script10);
+      var script11 = document.createElement("script");
+      script11.src = "assets/js_admin/pcoded.min.js";
+      script11.async = false;
+      document.body.appendChild(script11);
+      var script12 = document.createElement("script");
+      script12.src = "assets/js_admin/horizontal-layout.min.js";
+      script12.async = false;
+      document.body.appendChild(script12);
+      var script13 = document.createElement("script");
+      script13.src = "assets/js_admin/script.min.js";
+      script13.async = false;
+      document.body.appendChild(script13);
     } else {
       var script1 = document.createElement("script");
       script1.src = "assets/js_home/jquery.js";
