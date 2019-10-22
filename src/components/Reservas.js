@@ -1,22 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../assets/styles_admin/dataTables.bootstrap4.min.css";
 
 const Reservas = () => {
-  useEffect(() => {
-    var script15 = document.createElement("script");
-    //script15.src = "assets/js_admin/jquery.dataTables.min.js";
-    script15.src = "../../public/assets/js_admin/jquery.dataTables.min.js";
-    script15.async = false;
-    document.body.appendChild(script15);
-    var script14 = document.createElement("script");
-    script14.src = "assets/js_admin/dataTables.bootstrap4.min.js";
-    script14.async = false;
-    document.body.appendChild(script14);
-    var script16 = document.createElement("script");
-    script16.src = "assets/js_admin/data-table-custom.js";
-    script16.async = false;
-    document.body.appendChild(script16);
-  });
   return (
     <React.Fragment>
       <div className="row">
@@ -203,16 +188,6 @@ const Reservas = () => {
                       <td>$217,500</td>
                     </tr>
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </tfoot>
                 </table>
               </div>
             </div>
