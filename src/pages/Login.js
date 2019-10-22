@@ -1,11 +1,5 @@
 import React from "react";
 import "../assets/styles/bootstrap.css";
-import "../assets/styles/bootstrap_theme.css";
-import "../assets/styles/jquery_ui.css";
-import "../assets/styles/nav_footer.css";
-import "../assets/styles/views.css";
-import "../assets/styles/custom.css";
-import "../assets/styles/elements.css";
 import LogoLight from "../assets/images/logo_light.png";
 
 const Login = () => {

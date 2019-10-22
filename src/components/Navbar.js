@@ -38,6 +38,9 @@ const Navbar = () => {
               <li>
                 <Link to="./login">Iniciar sesión</Link>
               </li>
+              <li>
+                <Link to="./admin">Admin</Link>
+              </li>
             </ul>
           </div>
           <div className="module right">
@@ -109,6 +112,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

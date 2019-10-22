@@ -5,15 +5,18 @@ import "../assets/styles/views.css";
 import "../assets/styles/custom.css";
 import "../assets/styles/elements.css";
 import "../assets/styles/fonts.css";
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const HomeLayout = props => {
   return (
     <React.Fragment>
-      <Navbar />
-      {props.children}
-      <Footer />
+      <div className="public-panel">
+        <Navbar />
+        {props.children}
+        <Footer />
+      </div>
     </React.Fragment>
   );
 };
