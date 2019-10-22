@@ -3,12 +3,16 @@ import { Switch, Route } from "react-router-dom";
 import AdminMain from "../pages/AdminMain";
 import AdminLayout from "../components/AdminLayout";
 import Reservas from "../components/Reservas";
+import Sliders from "../components/Sliders";
+import Backgrounds from "../pages/Backgrounds";
 
 const Admin = ({ match }) => (
   <React.Fragment>
     <AdminLayout>
       <Switch>
         <Route exact path="/admin/reservas" component={Reservas} />
+        <Route exact path="/admin/sliders" component={Sliders} />
+        <Route exact path="/admin/backgrounds" component={Backgrounds} />
         <Route exact path="/admin" component={AdminMain} />
       </Switch>
     </AdminLayout>
