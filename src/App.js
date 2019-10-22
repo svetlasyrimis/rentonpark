@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ReactDynamicImport from "react-dynamic-import";
 
-var loader = () => import(`./components/Landing`);
+let loader = () => import(`./components/Landing`);
 const Landing = ReactDynamicImport({ loader });
 
 loader = () => import(`./components/Admin`);
@@ -44,10 +44,22 @@ const App = () => {
       script12.src = "assets/js_admin/horizontal-layout.min.js";
       script12.async = false;
       document.body.appendChild(script12);
+      var script15 = document.createElement("script");
+      script15.src = "assets/js_admin/jquery.dataTables.min.js";
+      script15.async = false;
+      document.body.appendChild(script15);
+      var script14 = document.createElement("script");
+      script14.src = "assets/js_admin/dataTables.bootstrap4.min.js";
+      script14.async = false;
+      document.body.appendChild(script14);
       var script13 = document.createElement("script");
       script13.src = "assets/js_admin/script.min.js";
       script13.async = false;
       document.body.appendChild(script13);
+      var script16 = document.createElement("script");
+      script16.src = "assets/js_admin/data-table-custom.js";
+      script16.async = false;
+      document.body.appendChild(script16);
     } else {
       var script1 = document.createElement("script");
       script1.src = "assets/js_home/jquery.js";

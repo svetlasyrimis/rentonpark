@@ -21,7 +21,36 @@ const AdminLayout = props => {
             <div className="pcoded-main-container">
               <div className="pcoded-wrapper">
                 <SidebarAdmin />
-                {props.children}
+                <div className="pcoded-content">
+                  <div className="page-header">
+                    <div className="page-block">
+                      <div className="row align-items-center">
+                        <div className="col-md-8">
+                          <div className="page-header-title">
+                            <h4 className="m-b-10">Admin Renton</h4>
+                          </div>
+                          <ul className="breadcrumb">
+                            <li className="breadcrumb-item">
+                              <a href="/">
+                                <i className="feather icon-home"></i>
+                              </a>
+                            </li>
+                            <li className="breadcrumb-item">
+                              <a href="/">Volver a página principal</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="pcoded-inner-content">
+                  <div className="main-body">
+                    <div className="page-wrapper">
+                      <div className="page-body">{props.children}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
