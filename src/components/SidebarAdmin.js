@@ -15,7 +15,7 @@ const SidebarAdmin = () => {
             </a>
             <ul className="pcoded-submenu">
               <li className="">
-                <Link to="./admin/reservas" className="waves-effect waves-dark">
+                <Link to="/admin/reservas" className="waves-effect waves-dark">
                   <span className="pcoded-mtext">Ver todas</span>
                 </Link>
               </li>
@@ -30,8 +30,16 @@ const SidebarAdmin = () => {
             </a>
             <ul className="pcoded-submenu">
               <li className="">
-                <Link to="./admin/sliders" className="waves-effect waves-dark">
+                <Link to="/admin/sliders" className="waves-effect waves-dark">
                   <span className="pcoded-mtext">Sliders</span>
+                </Link>
+              </li>
+              <li className="">
+                <Link
+                  to="/admin/backgrounds"
+                  className="waves-effect waves-dark"
+                >
+                  <span className="pcoded-mtext">Backgrounds</span>
                 </Link>
               </li>
             </ul>
