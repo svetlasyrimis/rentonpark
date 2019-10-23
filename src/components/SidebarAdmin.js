@@ -52,6 +52,34 @@ const SidebarAdmin = () => {
                   <span className="pcoded-mtext">Escuelita</span>
                 </Link>
               </li>
+
+              <li
+                className="pcoded-hasmenu is-hover"
+                subitem-icon="style1"
+                dropdown-icon="style1"
+              >
+                <a href="#" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Features</span>
+                </a>
+                <ul className="pcoded-submenu">
+                  <li className="">
+                    <Link
+                      to="/admin/features"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Ver todos</span>
+                    </Link>
+                  </li>
+                  <li className="">
+                    <Link
+                      to="/admin/features/new"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Agregar Nuevo</span>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>
