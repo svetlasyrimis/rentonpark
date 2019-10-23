@@ -6,6 +6,7 @@ import Reservas from "../components/Reservas";
 import Sliders from "../components/Sliders";
 import Backgrounds from "../pages/Backgrounds";
 import Principal from "../pages/Principal";
+import Escuelita from "../pages/Escuelita";
 
 const Admin = ({ match }) => (
   <React.Fragment>
@@ -15,6 +16,7 @@ const Admin = ({ match }) => (
         <Route exact path="/admin/sliders" component={Sliders} />
         <Route exact path="/admin/backgrounds" component={Backgrounds} />
         <Route exact path="/admin/principal" component={Principal} />
+        <Route exact path="/admin/escuelita" component={Escuelita} />
         <Route exact path="/admin" component={AdminMain} />
       </Switch>
     </AdminLayout>
