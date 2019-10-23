@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import AdminMain from "../pages/AdminMain";
 import AdminLayout from "../components/AdminLayout";
 import Reservas from "../components/Reservas";
+import ReservasNew from "../pages/ReservasNew";
 import Sliders from "../components/Sliders";
 import Backgrounds from "../pages/Backgrounds";
 import Principal from "../pages/Principal";
@@ -18,6 +19,7 @@ const Admin = ({ match }) => (
     <AdminLayout>
       <Switch>
         <Route exact path="/admin/reservas" component={Reservas} />
+        <Route exact path="/admin/reservas/nuevo" component={ReservasNew} />
         <Route exact path="/admin/sliders" component={Sliders} />
         <Route exact path="/admin/backgrounds" component={Backgrounds} />
         <Route exact path="/admin/principal" component={Principal} />

@@ -19,6 +19,14 @@ const SidebarAdmin = () => {
                   <span className="pcoded-mtext">Ver todas</span>
                 </Link>
               </li>
+              <li className="">
+                <Link
+                  to="/admin/reservas/nuevo"
+                  className="waves-effect waves-dark"
+                >
+                  <span className="pcoded-mtext">Nueva Reserva</span>
+                </Link>
+              </li>
             </ul>
           </li>
           <li className="pcoded-hasmenu">
