@@ -32,7 +32,7 @@ const AdminLayout = props => {
                           </div>
                           <ul className="breadcrumb">
                             <li className="breadcrumb-item">
-                              <a href="/">
+                              <a href="/admin">
                                 <i className="feather icon-home"></i>
                               </a>
                             </li>
