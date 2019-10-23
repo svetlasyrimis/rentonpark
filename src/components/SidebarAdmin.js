@@ -109,6 +109,21 @@ const SidebarAdmin = () => {
               </li>
             </ul>
           </li>
+          <li className="pcoded-hasmenu">
+            <a href="#" className="waves-effect waves-dark">
+              <span className="pcoded-micon">
+                <i className="feather icon-sidebar"></i>
+              </span>
+              <span className="pcoded-mtext">General</span>
+            </a>
+            <ul className="pcoded-submenu">
+              <li className="">
+                <Link to="/admin/packs" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Asignar Packs</span>
+                </Link>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </nav>

@@ -4,37 +4,40 @@ const SessionNew = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h5>Crear Sesión</h5>
+        <h5>Asignar Packs</h5>
       </div>
       <div className="card-block">
         <form className="form-material">
           <div className="row">
+            <div className="col-lg-5">
+              <div className="form-group form-default">
+                <select
+                  name="select"
+                  className="form-control form-control-default"
+                >
+                  <option value="opt1">Seleccionar Rider</option>
+                  <option value="opt2">Type 2</option>
+                  <option value="opt3">Type 3</option>
+                </select>
+              </div>
+            </div>
+            <div className="col-lg-5">
+              <div className="form-group form-default">
+                <select
+                  name="select"
+                  className="form-control form-control-default"
+                >
+                  <option value="opt1">Seleccionar Producto</option>
+                  <option value="opt2">Type 2</option>
+                  <option value="opt3">Type 3</option>
+                </select>
+              </div>
+            </div>
             <div className="col-lg-2">
               <div className="form-group form-default">
                 <input type="text" className="form-control fill" />
                 <span className="form-bar"></span>
-                <label className="float-label">Sesiones</label>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="form-group form-default">
-                <input type="text" className="form-control fill" />
-                <span className="form-bar"></span>
-                <label className="float-label">Nombre</label>
-              </div>
-            </div>
-            <div className="col-lg-2">
-              <div className="form-group form-default">
-                <input type="text" className="form-control fill" />
-                <span className="form-bar"></span>
-                <label className="float-label">Precio</label>
-              </div>
-            </div>
-            <div className="col-lg-2">
-              <div className="form-group form-default">
-                <input type="text" className="form-control fill" />
-                <span className="form-bar"></span>
-                <label className="float-label">Extra Weekend</label>
+                <label className="float-label">Cantidad</label>
               </div>
             </div>
           </div>
