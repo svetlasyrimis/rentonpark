@@ -60,7 +60,11 @@ const SidebarAdmin = () => {
                   <span className="pcoded-mtext">Escuelita</span>
                 </Link>
               </li>
-
+              <li className="">
+                <Link to="/admin/tarifas" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Tarifas</span>
+                </Link>
+              </li>
               <li
                 className="pcoded-hasmenu is-hover"
                 subitem-icon="style1"
