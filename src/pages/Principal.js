@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const Principal = () => {
@@ -17,7 +19,9 @@ const Principal = () => {
     console.log(e);
   };
 
-  const width_image = { maxWidth: "80%" };
+  const cropper = createRef(null);
+
+  const width_image = { height: 400, width: "100%" };
   return (
     <React.Fragment>
       <div className="row">
@@ -56,7 +60,15 @@ const Principal = () => {
                           name="files"
                           onChange={handleChange}
                         />
-                        <img className="img" style={width_image} src={file} />
+                        <Cropper
+                          ref={cropper}
+                          src={file}
+                          style={width_image}
+                          // Cropper.js options
+                          aspectRatio={16 / 9}
+                          guides={false}
+                          //crop={this._crop.bind(this)}
+                        />
                       </div>
                     </div>
                   </div>
@@ -74,6 +86,17 @@ const Principal = () => {
                     locale: "es"
                   }}
                 />
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-lg-12 text-center">
+                <button
+                  className="btn btn-primary btn-round right"
+                  type="submit"
+                >
+                  Guardar
+                </button>
               </div>
             </div>
           </div>
