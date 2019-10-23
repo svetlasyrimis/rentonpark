@@ -9,8 +9,10 @@ function CardSectionFileEditor({
   file,
   editorState,
   onEditorStateChange,
-  title
+  title,
+  delete_button
 }) {
+  const show_delete_button = delete_button ? {} : { display: "none" };
   return (
     <React.Fragment>
       <div className="row">
@@ -69,6 +71,13 @@ function CardSectionFileEditor({
         <div className="col-lg-12 text-center">
           <button className="btn btn-primary btn-round right" type="submit">
             Guardar
+          </button>
+          <button
+            className="btn btn-danger btn-round right"
+            type="submit"
+            style={show_delete_button}
+          >
+            Eliminar
           </button>
         </div>
       </div>

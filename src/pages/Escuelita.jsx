@@ -38,6 +38,7 @@ const Escuelita = () => {
               file={file}
               editorState={editorState}
               onEditorStateChange={onEditorStateChange}
+              delete_button={false}
             />
           </div>
         </div>
