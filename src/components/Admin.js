@@ -9,6 +9,8 @@ import Principal from "../pages/Principal";
 import Escuelita from "../pages/Escuelita";
 import AdminFeatures from "../pages/AdminFeatures";
 import FeaturesNew from "../pages/FeaturesNew";
+import Sessions from "../pages/Sessions";
+import SessionNew from "../pages/SessionNew";
 
 const Admin = ({ match }) => (
   <React.Fragment>
@@ -20,7 +22,9 @@ const Admin = ({ match }) => (
         <Route exact path="/admin/principal" component={Principal} />
         <Route exact path="/admin/escuelita" component={Escuelita} />
         <Route exact path="/admin/features" component={AdminFeatures} />
-        <Route exact path="/admin/features/new" component={FeaturesNew} />
+        <Route exact path="/admin/features/nuevo" component={FeaturesNew} />
+        <Route exact path="/admin/sesiones" component={Sessions} />
+        <Route exact path="/admin/sesiones/nuevo" component={SessionNew} />
         <Route exact path="/admin" component={AdminMain} />
       </Switch>
     </AdminLayout>
