@@ -42,6 +42,11 @@ const SidebarAdmin = () => {
                   <span className="pcoded-mtext">Backgrounds</span>
                 </Link>
               </li>
+              <li className="">
+                <Link to="/admin/principal" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Principal</span>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
