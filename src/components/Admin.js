@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import AdminMain from "../pages/AdminMain";
 import AdminLayout from "../components/AdminLayout";
-import Reservas from "../components/Reservas";
+import AdminMain from "../pages/AdminMain";
+import Reservas from "../pages/Reservas";
 import ReservasNew from "../pages/ReservasNew";
-import Sliders from "../components/Sliders";
+import Sliders from "../pages/Sliders";
 import Backgrounds from "../pages/Backgrounds";
 import Principal from "../pages/Principal";
 import Escuelita from "../pages/Escuelita";
