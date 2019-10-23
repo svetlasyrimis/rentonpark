@@ -13,6 +13,7 @@ import FeaturesNew from "../pages/FeaturesNew";
 import Sessions from "../pages/Sessions";
 import SessionNew from "../pages/SessionNew";
 import Packs from "../pages/Packs";
+import AdminRiders from "../pages/AdminRiders";
 
 const Admin = ({ match }) => (
   <React.Fragment>
@@ -29,6 +30,7 @@ const Admin = ({ match }) => (
         <Route exact path="/admin/sesiones" component={Sessions} />
         <Route exact path="/admin/sesiones/nuevo" component={SessionNew} />
         <Route exact path="/admin/packs" component={Packs} />
+        <Route exact path="/admin/riders" component={AdminRiders} />
         <Route exact path="/admin" component={AdminMain} />
       </Switch>
     </AdminLayout>

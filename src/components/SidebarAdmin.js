@@ -130,6 +130,11 @@ const SidebarAdmin = () => {
                   <span className="pcoded-mtext">Asignar Packs</span>
                 </Link>
               </li>
+              <li className="">
+                <Link to="/admin/riders" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Riders</span>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
