@@ -4,6 +4,7 @@ import "../assets/styles_admin/bootstrap.css";
 import "../assets/styles_admin/waves.min.css";
 import "../assets/styles_admin/feather.css";
 import "../assets/styles_admin/style.css";
+import "../assets/styles_admin/dataTables.bootstrap4.min.css";
 import NavbarAdmin from "./NavbarAdmin";
 import SidebarAdmin from "./SidebarAdmin";
 
@@ -31,7 +32,7 @@ const AdminLayout = props => {
                           </div>
                           <ul className="breadcrumb">
                             <li className="breadcrumb-item">
-                              <a href="/">
+                              <a href="/admin">
                                 <i className="feather icon-home"></i>
                               </a>
                             </li>

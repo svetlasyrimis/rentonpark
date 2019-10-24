@@ -19,6 +19,14 @@ const SidebarAdmin = () => {
                   <span className="pcoded-mtext">Ver todas</span>
                 </Link>
               </li>
+              <li className="">
+                <Link
+                  to="/admin/reservas/nuevo"
+                  className="waves-effect waves-dark"
+                >
+                  <span className="pcoded-mtext">Nueva Reserva</span>
+                </Link>
+              </li>
             </ul>
           </li>
           <li className="pcoded-hasmenu">
@@ -45,6 +53,90 @@ const SidebarAdmin = () => {
               <li className="">
                 <Link to="/admin/principal" className="waves-effect waves-dark">
                   <span className="pcoded-mtext">Principal</span>
+                </Link>
+              </li>
+              <li className="">
+                <Link to="/admin/escuelita" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Escuelita</span>
+                </Link>
+              </li>
+              <li className="">
+                <Link to="/admin/tarifas" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Tarifas</span>
+                </Link>
+              </li>
+              <li
+                className="pcoded-hasmenu is-hover"
+                subitem-icon="style1"
+                dropdown-icon="style1"
+              >
+                <a href="#" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Features</span>
+                </a>
+                <ul className="pcoded-submenu">
+                  <li className="">
+                    <Link
+                      to="/admin/features"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Ver todos</span>
+                    </Link>
+                  </li>
+                  <li className="">
+                    <Link
+                      to="/admin/features/nuevo"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Agregar Nuevo</span>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li
+                className="pcoded-hasmenu is-hover"
+                subitem-icon="style1"
+                dropdown-icon="style1"
+              >
+                <a href="#" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Sesiones</span>
+                </a>
+                <ul className="pcoded-submenu">
+                  <li className="">
+                    <Link
+                      to="/admin/sesiones"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Ver todos</span>
+                    </Link>
+                  </li>
+                  <li className="">
+                    <Link
+                      to="/admin/sesiones/nuevo"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Agregar Nueva</span>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li className="pcoded-hasmenu">
+            <a href="#" className="waves-effect waves-dark">
+              <span className="pcoded-micon">
+                <i className="feather icon-sidebar"></i>
+              </span>
+              <span className="pcoded-mtext">General</span>
+            </a>
+            <ul className="pcoded-submenu">
+              <li className="">
+                <Link to="/admin/packs" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Asignar Packs</span>
+                </Link>
+              </li>
+              <li className="">
+                <Link to="/admin/riders" className="waves-effect waves-dark">
+                  <span className="pcoded-mtext">Riders</span>
                 </Link>
               </li>
             </ul>

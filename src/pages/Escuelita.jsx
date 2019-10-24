@@ -4,7 +4,7 @@ import { EditorState } from "draft-js";
 import "cropperjs/dist/cropper.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-const Principal = () => {
+const Escuelita = () => {
   const [file, setFile] = useState(null);
   const [editorState, seteditorState] = useState(EditorState.createEmpty());
 
@@ -27,7 +27,7 @@ const Principal = () => {
         <div className="col-lg-12">
           <div className="card">
             <div className="card-header">
-              <h5>Principal</h5>
+              <h5>Escuelita</h5>
             </div>
             <br />
             <CardSectionFileEditor
@@ -47,4 +47,4 @@ const Principal = () => {
   );
 };
 
-export default Principal;
+export default Escuelita;

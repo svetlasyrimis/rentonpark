@@ -1,5 +1,4 @@
 import React from "react";
-import "../assets/styles_admin/dataTables.bootstrap4.min.css";
 
 const Reservas = () => {
   return (
