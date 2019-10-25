@@ -1,14 +1,14 @@
 [
   {
     type: "slider",
-    body: {}
+    image: {}
   },
   {
     type: "slider",
-    body: {}
+    image: {}
   },
   {
     type: "slider",
-    body: {}
+    image: {}
   }
 ];
