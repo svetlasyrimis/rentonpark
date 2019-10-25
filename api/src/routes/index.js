@@ -1,3 +1,18 @@
+const multer = require("fastify-multer");
+const path = require("path");
+
+//Multer
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, "./public/images"),
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const uploadImage = multer({
+  storage
+}).single("image");
+
 // Import our Controllers
 const imageController = require("../controllers/imageController");
 
@@ -22,12 +37,14 @@ const routes = [
   },
   {
     method: "POST",
+    preHandler: uploadImage,
     url: "/api/images",
     handler: imageController.addImage
     // schema: documentation.addImageSchema
   },
   {
     method: "PUT",
+    preHandler: uploadImage,
     url: "/api/images/:id",
     handler: imageController.updateImage
   },

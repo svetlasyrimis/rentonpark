@@ -1,6 +1,10 @@
+const multer = require("fastify-multer");
+
 const fastify = require("fastify")({
   logger: true
 });
+
+fastify.register(multer.contentParser);
 
 const mongoose = require("mongoose");
 

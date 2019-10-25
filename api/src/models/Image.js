@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const imageSchema = new mongoose.Schema({
   type: String,
-  body: {
+  image: {
     type: Map,
     of: String
   }
