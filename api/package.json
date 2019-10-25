@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/nodemon/bin/nodemon.js ./src/index.js"
+    "start": "./node_modules/nodemon/bin/nodemon.js ./src/index.js",
+    "seed-db": "seed -u 'mongodb://127.0.0.1:27017/rentondb' --drop-database ./data/"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,8 @@
     "fastify-swagger": "^2.4.0",
     "mongoose": "^5.7.7",
     "nodemon": "^1.19.4"
+  },
+  "devDependencies": {
+    "mongo-seeding-cli": "^3.4.0-alpha.0"
   }
 }
