@@ -16,6 +16,11 @@ const routes = [
     handler: imageController.getSingleImage
   },
   {
+    method: "GET",
+    url: "/api/images_type/:type",
+    handler: imageController.getImagesByType
+  },
+  {
     method: "POST",
     url: "/api/images",
     handler: imageController.addImage

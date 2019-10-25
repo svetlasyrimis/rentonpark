@@ -13,6 +13,17 @@ exports.getImages = async (req, reply) => {
   }
 };
 
+// Get image by TYPE
+exports.getImagesByType = async (req, reply) => {
+  try {
+    const type = { type: req.params.type };
+    const images = await Image.find(type);
+    return images;
+  } catch (err) {
+    throw boom.boomify(err);
+  }
+};
+
 // Get single image by ID
 exports.getSingleImage = async (req, reply) => {
   try {
