@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bootstrap": "^4.3.1",
     "draft-js": "^0.11.1",
     "flexslider": "^2.7.2",
