@@ -15,11 +15,13 @@ const uploadImage = multer({
 
 // Import our Controllers
 const imageController = require("../controllers/imageController");
+const sectionController = require("../controllers/sectionController");
 
 // Import Swagger documentation
 // const documentation = require('./documentation/imageApi')
 
 const routes = [
+  // Images
   {
     method: "GET",
     url: "/api/images",
@@ -52,6 +54,39 @@ const routes = [
     method: "DELETE",
     url: "/api/images/:id",
     handler: imageController.deleteImage
+  },
+  // Sections
+  {
+    method: "GET",
+    url: "/api/sections",
+    handler: sectionController.getSections
+  },
+  {
+    method: "GET",
+    url: "/api/sections/:id",
+    handler: sectionController.getSingleSection
+  },
+  {
+    method: "GET",
+    url: "/api/sections_type/:type",
+    handler: sectionController.getSectionsByType
+  },
+  {
+    method: "POST",
+    preHandler: uploadImage,
+    url: "/api/sections",
+    handler: sectionController.addSection
+  },
+  {
+    method: "PUT",
+    preHandler: uploadImage,
+    url: "/api/sections/:id",
+    handler: sectionController.updateSection
+  },
+  {
+    method: "DELETE",
+    url: "/api/sections/:id",
+    handler: sectionController.deleteSection
   }
 ];
 
