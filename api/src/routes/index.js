@@ -16,6 +16,7 @@ const uploadImage = multer({
 // Import our Controllers
 const imageController = require("../controllers/imageController");
 const sectionController = require("../controllers/sectionController");
+const sessionController = require("../controllers/sessionController");
 
 // Import Swagger documentation
 // const documentation = require('./documentation/imageApi')
@@ -87,6 +88,32 @@ const routes = [
     method: "DELETE",
     url: "/api/sections/:id",
     handler: sectionController.deleteSection
+  },
+  // Sessions
+  {
+    method: "GET",
+    url: "/api/sessions",
+    handler: sessionController.getSessions
+  },
+  {
+    method: "GET",
+    url: "/api/sessions/:id",
+    handler: sessionController.getSingleSession
+  },
+  {
+    method: "POST",
+    url: "/api/sessions",
+    handler: sessionController.addSession
+  },
+  {
+    method: "PUT",
+    url: "/api/sessions/:id",
+    handler: sessionController.updateSession
+  },
+  {
+    method: "DELETE",
+    url: "/api/sessions/:id",
+    handler: sessionController.deleteSession
   }
 ];
 
