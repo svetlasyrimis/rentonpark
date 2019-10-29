@@ -24,6 +24,7 @@ const sectionController = require("../controllers/sectionController");
 const sessionController = require("../controllers/sessionController");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const tariffController = require("../controllers/tariffController");
 
 // Import Swagger documentation
 // const documentation = require('./documentation/imageApi')
@@ -135,10 +136,37 @@ const routes = [
     schema: validatePostSignup,
     handler: authController.postSignup
   },
+  // Users
   {
     method: "GET",
     url: "/api/users",
     handler: userController.getUsers
+  },
+  // Tariffs
+  {
+    method: "GET",
+    url: "/api/tariffs",
+    handler: tariffController.getTariffs
+  },
+  {
+    method: "GET",
+    url: "/api/tariffs/:id",
+    handler: tariffController.getSingleTariff
+  },
+  {
+    method: "POST",
+    url: "/api/tariffs",
+    handler: tariffController.addTariff
+  },
+  {
+    method: "PUT",
+    url: "/api/tariffs/:id",
+    handler: tariffController.updateTariff
+  },
+  {
+    method: "DELETE",
+    url: "/api/tariffs/:id",
+    handler: tariffController.deleteTariff
   }
 ];
 
