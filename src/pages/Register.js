@@ -1,8 +1,13 @@
 import React from "react";
-
+import useForm from "react-hook-form";
 
 const Register = () => {
   var Recaptcha = require("react-recaptcha");
+
+  const onSubmit = data => {
+    console.log(data);
+  };
+  const { register, handleSubmit, errors } = useForm();
   return (
     <div className="viewRegister background-image-holder image-register fadeIn">
       <section className="image-bg overlay parallax">
@@ -18,114 +23,137 @@ const Register = () => {
                 <div className="boxForm">
                   <form
                     className="form-register"
-                    role="form"
                     method="post"
-                    action="./register/new"
+                    action="http://localhost:3001/auth/signup"
+                    onSubmit={handleSubmit(onSubmit)}
                   >
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group ">
-                          <label htmlFor="txtName"> Nombres </label>
+                          <label> Nombres </label>
                           <input
                             type="text"
                             className="form-control"
-                            name="txtName"
+                            name="name"
                             tabIndex="1"
-                            required=""
+                            ref={register({ required: true })}
                           />
+                          {errors.name && (
+                            <b className="color-red">Campo obligatorio</b>
+                          )}
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="form-group ">
-                          <label htmlFor="txtLast"> Apellido </label>
+                          <label> Apellido </label>
                           <input
                             type="text"
                             className="form-control"
-                            name="txtLast"
+                            name="lastname"
                             tabIndex="2"
-                            required=""
+                            ref={register({ required: true })}
                           />
                         </div>
+                        {errors.lastname && (
+                          <b className="color-red">Campo obligatorio</b>
+                        )}
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-md-4">
                         <div className="form-group ">
-                          <label htmlFor="intGenre"> Sexo </label>
+                          <label> Sexo </label>
                           <select
-                            name="intGenre"
-                            id="intGenre"
+                            name="sex"
                             className="form-control"
                             tabIndex="3"
-                            required=""
+                            ref={register({ required: true })}
                           >
                             <option value="0">Hombre</option>
                             <option value="1">Mujer</option>
                           </select>
+                          {errors.sex && (
+                            <b className="color-red">Campo obligatorio</b>
+                          )}
                         </div>
                       </div>
                       <div className="col-md-3 col-xs-4">
                         <div className="form-group ">
-                          <label htmlFor="txtPrefix"> Celular (Prefijo) </label>
+                          <label> Celular (Prefijo) </label>
                           <input
                             type="text"
                             className="form-control"
-                            name="txtPrefix"
+                            name="phone_prefix"
                             tabIndex="4"
-                            required=""
+                            ref={register({ required: true })}
                           />
                         </div>
+                        {errors.phone_prefix && (
+                          <b className="color-red">Campo obligatorio</b>
+                        )}
                       </div>
                       <div className="col-md-5 col-xs-8">
                         <div className="form-group ">
-                          <label htmlFor="txtPhone"> Celular (Número) </label>
+                          <label> Celular (Número) </label>
                           <input
                             type="text"
                             className="form-control"
-                            name="txtPhone"
+                            name="phone"
                             tabIndex="5"
-                            required=""
+                            ref={register({ required: true })}
                           />
+                          {errors.phone && (
+                            <b className="color-red">Campo obligatorio</b>
+                          )}
                         </div>
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group ">
-                          <label htmlFor="txtMail"> Email </label>
+                          <label> Email </label>
                           <input
                             type="email"
                             className="form-control"
-                            name="txtMail"
+                            name="email"
                             tabIndex="6"
-                            required=""
+                            ref={register({ required: true })}
                           />
+                          {errors.email && (
+                            <b className="color-red">Campo obligatorio</b>
+                          )}
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="form-group ">
-                          <label htmlFor="txtMail"> Usuario </label>
+                          <label> Usuario </label>
                           <input
                             type="text"
                             className="form-control"
-                            name="txtUser"
+                            name="username"
                             tabIndex="7"
-                            required=""
+                            ref={register({ required: true })}
                           />
+                          {errors.username && (
+                            <b className="color-red">Campo obligatorio</b>
+                          )}
                         </div>
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group ">
-                          <label htmlFor="txtMail"> Contraseña </label>
+                          <label> Contraseña </label>
                           <input
                             type="password"
                             className="form-control"
-                            name="txtPass"
+                            name="password"
                             tabIndex="8"
-                            required=""
+                            ref={register({ required: true })}
                           />
+                          {errors.password && (
+                            <b className="color-red">Campo obligatorio</b>
+                          )}
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -134,10 +162,13 @@ const Register = () => {
                           <input
                             type="password"
                             className="form-control"
-                            name="txtPass2"
+                            name="password_confirmation"
                             tabIndex="9"
-                            required=""
+                            ref={register({ required: true })}
                           />
+                          {errors.password_confirmation && (
+                            <b className="color-red">Campo obligatorio</b>
+                          )}
                         </div>
                       </div>
                     </div>
