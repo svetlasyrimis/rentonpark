@@ -25,6 +25,7 @@ const sessionController = require("../controllers/sessionController");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const tariffController = require("../controllers/tariffController");
+const reservationController = require("../controllers/reservationController");
 
 // Import Swagger documentation
 // const documentation = require('./documentation/imageApi')
@@ -167,6 +168,32 @@ const routes = [
     method: "DELETE",
     url: "/api/tariffs/:id",
     handler: tariffController.deleteTariff
+  },
+  // Reservations
+  {
+    method: "GET",
+    url: "/api/reservations",
+    handler: reservationController.getReservations
+  },
+  {
+    method: "GET",
+    url: "/api/reservations/:id",
+    handler: reservationController.getSingleReservation
+  },
+  {
+    method: "POST",
+    url: "/api/reservations",
+    handler: reservationController.addReservation
+  },
+  {
+    method: "PUT",
+    url: "/api/reservations/:id",
+    handler: reservationController.updateReservation
+  },
+  {
+    method: "DELETE",
+    url: "/api/reservations/:id",
+    handler: reservationController.deleteReservation
   }
 ];
 
