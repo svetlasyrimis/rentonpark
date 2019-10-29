@@ -22,7 +22,7 @@ const uploadImage = multer({
 const imageController = require("../controllers/imageController");
 const sectionController = require("../controllers/sectionController");
 const sessionController = require("../controllers/sessionController");
-//const userController = require("../controllers/userController");
+const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 
 // Import Swagger documentation
@@ -134,6 +134,11 @@ const routes = [
     url: "/auth/signup",
     schema: validatePostSignup,
     handler: authController.postSignup
+  },
+  {
+    method: "GET",
+    url: "/api/users",
+    handler: userController.getUsers
   }
 ];
 
