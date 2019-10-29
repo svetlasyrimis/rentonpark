@@ -1,18 +1,32 @@
 const multer = require("fastify-multer");
-
-const fastify = require("fastify")({
-  logger: true
-});
-
-fastify.register(multer.contentParser);
-
+const Fastify = require("fastify");
+const uuidv4 = require("uuid/v4");
+const jwt = require("fastify-jwt");
 const mongoose = require("mongoose");
-
 // Import Routes
 const routes = require("./routes");
-
 // Import Swagger Options
 const swagger = require("./config/swagger");
+
+// create request ids
+const createRequestId = () => uuidv4();
+
+// create the server
+const fastify = Fastify({
+  ignoreTrailingSlash: true,
+  logger: {
+    genReqId: createRequestId,
+    level: "info"
+  }
+});
+
+// Register JWT
+fastify.register(jwt, {
+  secret: "e3955806-033a-4be4-a091-bc914276328a"
+});
+
+// Register Multer
+fastify.register(multer.contentParser);
 
 // Register Swagger
 fastify.register(require("fastify-swagger"), swagger.options);

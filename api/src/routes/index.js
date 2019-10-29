@@ -1,7 +1,12 @@
 const multer = require("fastify-multer");
 const path = require("path");
+// Validations
+const {
+  validatePostLogin,
+  validatePostSignup
+} = require("../validations/auth");
 
-//Multer
+// Multer
 const storage = multer.diskStorage({
   destination: path.join(__dirname, "../public/images"),
   filename: (req, file, cb) => {
@@ -17,6 +22,8 @@ const uploadImage = multer({
 const imageController = require("../controllers/imageController");
 const sectionController = require("../controllers/sectionController");
 const sessionController = require("../controllers/sessionController");
+//const userController = require("../controllers/userController");
+const authController = require("../controllers/authController");
 
 // Import Swagger documentation
 // const documentation = require('./documentation/imageApi')
@@ -114,6 +121,19 @@ const routes = [
     method: "DELETE",
     url: "/api/sessions/:id",
     handler: sessionController.deleteSession
+  },
+  //Auth
+  {
+    method: "POST",
+    url: "/auth/login",
+    schema: validatePostLogin,
+    handler: authController.postLogin
+  },
+  {
+    method: "POST",
+    url: "/auth/signup",
+    schema: validatePostSignup,
+    handler: authController.postSignup
   }
 ];
 
