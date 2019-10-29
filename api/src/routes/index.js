@@ -26,6 +26,7 @@ const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const tariffController = require("../controllers/tariffController");
 const reservationController = require("../controllers/reservationController");
+const messageController = require("../controllers/messageController");
 
 // Import Swagger documentation
 // const documentation = require('./documentation/imageApi')
@@ -194,6 +195,32 @@ const routes = [
     method: "DELETE",
     url: "/api/reservations/:id",
     handler: reservationController.deleteReservation
+  },
+  // Messages
+  {
+    method: "GET",
+    url: "/api/messages",
+    handler: messageController.getMessages
+  },
+  {
+    method: "GET",
+    url: "/api/messages/:id",
+    handler: messageController.getSingleMessage
+  },
+  {
+    method: "POST",
+    url: "/api/messages",
+    handler: messageController.addMessage
+  },
+  {
+    method: "PUT",
+    url: "/api/messages/:id",
+    handler: messageController.updateMessage
+  },
+  {
+    method: "DELETE",
+    url: "/api/messages/:id",
+    handler: messageController.deleteMessage
   }
 ];
 
