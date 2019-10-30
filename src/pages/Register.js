@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useForm from "react-hook-form";
 import axios from "axios";
 
-const Register = props => {
+const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isCaptcha, setIsCaptcha] = useState("");
@@ -20,7 +20,7 @@ const Register = props => {
       await axios
         .post("http://localhost:3001/auth/signup", data)
         .then(response => {
-          props.history.push("/");
+          document.getElementById("link_home").click();
         })
         .catch(error => {
           setIsError(error.response.data.message);
