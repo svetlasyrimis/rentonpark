@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import useForm from "react-hook-form";
 import axios from "axios";
 
-const Register = () => {
+const Register = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isCaptcha, setIsCaptcha] = useState("");
-  const [isSignup, setIsSignup] = useState(false);
 
   var Recaptcha = require("react-recaptcha");
 
   var verifyCallback = function(response) {
-    console.log(response);
     setIsCaptcha(response);
   };
 
@@ -23,7 +20,7 @@ const Register = () => {
       await axios
         .post("http://localhost:3001/auth/signup", data)
         .then(response => {
-          setIsSignup(true);
+          props.history.push("/");
         })
         .catch(error => {
           setIsError(error.response.data.message);
@@ -36,10 +33,6 @@ const Register = () => {
     setIsLoading(false);
   };
   const { register, handleSubmit, errors } = useForm();
-
-  if (isSignup) {
-    return <Redirect to={{ pathname: "/" }} />;
-  }
 
   return (
     <div className="viewRegister background-image-holder image-register fadeIn">
