@@ -42,7 +42,6 @@ mongoose
 
 // Loop over each route
 routes.forEach((route, index) => {
-  console.log(route);
   fastify.route(route);
 });
 
