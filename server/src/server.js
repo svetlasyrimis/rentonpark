@@ -4,7 +4,7 @@ const uuidv4 = require("uuid/v4");
 const jwt = require("fastify-jwt");
 const mongoose = require("mongoose");
 // Import Routes
-const routes = require("./routes");
+const routes = require("./routes/");
 // Import Swagger Options
 const swagger = require("./config/swagger");
 
@@ -39,6 +39,7 @@ mongoose
 
 // Loop over each route
 routes.forEach((route, index) => {
+  console.log(route);
   fastify.route(route);
 });
 

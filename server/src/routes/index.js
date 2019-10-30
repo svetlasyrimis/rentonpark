@@ -22,8 +22,11 @@ const uploadImage = multer({
 const imageController = require("../controllers/imageController");
 const sectionController = require("../controllers/sectionController");
 const sessionController = require("../controllers/sessionController");
-//const userController = require("../controllers/userController");
+const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const tariffController = require("../controllers/tariffController");
+const reservationController = require("../controllers/reservationController");
+const messageController = require("../controllers/messageController");
 
 // Import Swagger documentation
 // const documentation = require('./documentation/imageApi')
@@ -134,6 +137,90 @@ const routes = [
     url: "/auth/signup",
     schema: validatePostSignup,
     handler: authController.postSignup
+  },
+  // Users
+  {
+    method: "GET",
+    url: "/api/users",
+    handler: userController.getUsers
+  },
+  // Tariffs
+  {
+    method: "GET",
+    url: "/api/tariffs",
+    handler: tariffController.getTariffs
+  },
+  {
+    method: "GET",
+    url: "/api/tariffs/:id",
+    handler: tariffController.getSingleTariff
+  },
+  {
+    method: "POST",
+    url: "/api/tariffs",
+    handler: tariffController.addTariff
+  },
+  {
+    method: "PUT",
+    url: "/api/tariffs/:id",
+    handler: tariffController.updateTariff
+  },
+  {
+    method: "DELETE",
+    url: "/api/tariffs/:id",
+    handler: tariffController.deleteTariff
+  },
+  // Reservations
+  {
+    method: "GET",
+    url: "/api/reservations",
+    handler: reservationController.getReservations
+  },
+  {
+    method: "GET",
+    url: "/api/reservations/:id",
+    handler: reservationController.getSingleReservation
+  },
+  {
+    method: "POST",
+    url: "/api/reservations",
+    handler: reservationController.addReservation
+  },
+  {
+    method: "PUT",
+    url: "/api/reservations/:id",
+    handler: reservationController.updateReservation
+  },
+  {
+    method: "DELETE",
+    url: "/api/reservations/:id",
+    handler: reservationController.deleteReservation
+  },
+  // Messages
+  {
+    method: "GET",
+    url: "/api/messages",
+    handler: messageController.getMessages
+  },
+  {
+    method: "GET",
+    url: "/api/messages/:id",
+    handler: messageController.getSingleMessage
+  },
+  {
+    method: "POST",
+    url: "/api/messages",
+    handler: messageController.addMessage
+  },
+  {
+    method: "PUT",
+    url: "/api/messages/:id",
+    handler: messageController.updateMessage
+  },
+  {
+    method: "DELETE",
+    url: "/api/messages/:id",
+    handler: messageController.deleteMessage
   }
 ];
 
