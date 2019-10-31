@@ -7,7 +7,9 @@ const User = require("../models/User");
 // Get all reservations
 exports.getReservations = async (req, reply) => {
   try {
-    const reservations = await Reservation.find();
+    const reservations = await Reservation.find()
+      .populate("user")
+      .populate("session");
     return reservations;
   } catch (err) {
     throw boom.boomify(err);
