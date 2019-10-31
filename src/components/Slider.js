@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../assets/images/renton_light.png";
 
-function Slider({ index, data }) {
+function Slider({ index, data, title }) {
   if (index == 0) {
     var main_class = "carousel-item active";
   } else {
@@ -23,6 +23,7 @@ function Slider({ index, data }) {
               src={Logo}
               draggable="false"
             ></img>
+            <h1 className="fontTide">{title}</h1>
           </div>
         </div>
       </div>

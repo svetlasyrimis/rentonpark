@@ -105,7 +105,7 @@ const Home = () => {
         </div>
       </section>
       {isDataSections.map((section, index) => (
-        <Section data={section} key={index} />
+        <Section data={section} key={index} title="" />
       ))}
     </div>
   );
