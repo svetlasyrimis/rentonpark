@@ -12,6 +12,7 @@ exports.postSignup = async (req, res) => {
   const {
     email,
     password,
+    name,
     lastname,
     sex,
     phone_prefix,
@@ -34,6 +35,7 @@ exports.postSignup = async (req, res) => {
     const user = new User({
       email,
       password,
+      name,
       lastname,
       sex,
       phone_prefix,
