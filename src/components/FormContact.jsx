@@ -36,7 +36,7 @@ function Contact({ type }) {
     setIsLoading(true);
     data.type = type;
     let days = [data.day_one, data.day_two, data.day_three, data.day_four];
-    days = days.filter(d => d != false);
+    days = days.filter(d => d !== false);
     data.days = days;
     if (isCaptcha && days.length > 0) {
       await axios
@@ -51,7 +51,7 @@ function Contact({ type }) {
           setIsError(error.response.data.message);
           setIsLoading(false);
         });
-    } else if (days.length == 0) {
+    } else if (days.length === 0) {
       setIsError("Debe seleccionar por lo menos un día");
     } else {
       setIsError("Por favor verifica el captcha.");

@@ -34,7 +34,7 @@ const Sliders = () => {
           </div>
           <div className="row">
             <div className="col-lg-12 text-center">
-              <img className="img" style={width_image} src={file} />
+              <img className="img" style={width_image} src={file} alt="" />
             </div>
           </div>
         </div>

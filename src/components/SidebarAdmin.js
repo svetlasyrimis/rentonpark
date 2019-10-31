@@ -7,7 +7,7 @@ const SidebarAdmin = () => {
       <div className="pcoded-inner-navbar">
         <ul className="pcoded-item">
           <li className="pcoded-hasmenu">
-            <a href="#" className="waves-effect waves-dark">
+            <a href="#reservas" className="waves-effect waves-dark">
               <span className="pcoded-micon">
                 <i className="feather icon-sidebar"></i>
               </span>
@@ -30,7 +30,7 @@ const SidebarAdmin = () => {
             </ul>
           </li>
           <li className="pcoded-hasmenu">
-            <a href="#" className="waves-effect waves-dark">
+            <a href="#configuracion" className="waves-effect waves-dark">
               <span className="pcoded-micon">
                 <i className="feather icon-sidebar"></i>
               </span>
@@ -70,7 +70,7 @@ const SidebarAdmin = () => {
                 subitem-icon="style1"
                 dropdown-icon="style1"
               >
-                <a href="#" className="waves-effect waves-dark">
+                <a href="#features" className="waves-effect waves-dark">
                   <span className="pcoded-mtext">Features</span>
                 </a>
                 <ul className="pcoded-submenu">
@@ -97,7 +97,7 @@ const SidebarAdmin = () => {
                 subitem-icon="style1"
                 dropdown-icon="style1"
               >
-                <a href="#" className="waves-effect waves-dark">
+                <a href="#sesiones" className="waves-effect waves-dark">
                   <span className="pcoded-mtext">Sesiones</span>
                 </a>
                 <ul className="pcoded-submenu">
@@ -122,7 +122,7 @@ const SidebarAdmin = () => {
             </ul>
           </li>
           <li className="pcoded-hasmenu">
-            <a href="#" className="waves-effect waves-dark">
+            <a href="#general" className="waves-effect waves-dark">
               <span className="pcoded-micon">
                 <i className="feather icon-sidebar"></i>
               </span>

@@ -63,7 +63,6 @@ const Contact = () => {
                 <div className="boxForm">
                   <form
                     className="form-school"
-                    role="form"
                     method="post"
                     action="./school/send"
                   >
@@ -212,6 +211,6 @@ const Contact = () => {
       </section>
     </div>
   );
-}
+};
 
 export default Contact;

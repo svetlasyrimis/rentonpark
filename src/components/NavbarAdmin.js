@@ -10,14 +10,14 @@ const NavbarAdmin = () => {
           <a
             className="mobile-menu waves-effect waves-light"
             id="mobile-collapse"
-            href="#!"
+            href="/"
           >
             <i className="feather icon-toggle-right"></i>
           </a>
           <a href="/">
             <img className="img-fluid" src={Logo} alt="Theme-Logo" />
           </a>
-          <a className="mobile-options waves-effect waves-light">
+          <a href="#main" className="mobile-options waves-effect waves-light">
             <i className="feather icon-more-horizontal"></i>
           </a>
         </div>
@@ -29,7 +29,7 @@ const NavbarAdmin = () => {
                   <img
                     src={Profile}
                     className="img-radius"
-                    alt="User-Profile-Image"
+                    alt="User-Profile"
                   />
                   <span>John Doe</span>
                   <i className="feather icon-chevron-down"></i>

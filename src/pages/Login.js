@@ -17,7 +17,6 @@ const Login = () => {
                 <div className="boxForm">
                   <form
                     className="form-login"
-                    role="form"
                     method="post"
                     action="./login/in"
                   >
