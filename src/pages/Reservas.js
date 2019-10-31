@@ -1,25 +1,46 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
+import { ljust } from "../Helpers";
+
+const useSearchReservations = reservations => {
+  const [query, setQuery] = useState("");
+  const [filteredReservation, setFilteredReservation] = useState(reservations);
+
+  React.useMemo(() => {
+    const result = reservations.filter(reservation => {
+      return `${reservation.user.name} ${reservation.user.lastname}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+
+    setFilteredReservation(result);
+  }, [reservations, query]);
+
+  return { query, setQuery, filteredReservation };
+};
 
 const Reservas = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [isData, setIsData] = useState(undefined);
+  const [isData, setIsData] = useState([]);
+  const { query, setQuery, filteredReservation } = useSearchReservations(
+    isData
+  );
 
   const format_date = date => {
     let new_date = new Date(date);
-    let minutes = new_date.getMinutes();
-    let hour = new_date.getHours();
-    return hour + ":" + minutes;
+    let minutes = new_date.getMinutes().toString();
+    let hour = new_date.getHours().toString();
+    return ljust(hour, 2, "0") + ":" + ljust(minutes, 2, "0");
   };
 
   const only_date = date => {
     let new_date = new Date(date);
-    let day = new_date.getDate();
-    let month = new_date.getMonth() + 1;
+    let day = new_date.getDate().toString();
+    let month = (new_date.getMonth() + 1).toString();
     let year = new_date.getFullYear();
-    return day + "-" + month + "-" + year;
+    return ljust(day, 2, "0") + "-" + ljust(month, 2, "0") + "-" + year;
   };
 
   const fetchData = async () => {
@@ -27,7 +48,6 @@ const Reservas = () => {
     await axios
       .get("http://localhost:3001/api/reservations")
       .then(res => {
-        console.log(res.data);
         setIsData(res.data);
       })
       .catch(error => {
@@ -64,8 +84,12 @@ const Reservas = () => {
                       <label>
                         Buscar:
                         <input
-                          type="search"
+                          type="text"
                           className="form-control input-sm"
+                          value={query}
+                          onChange={e => {
+                            setQuery(e.target.value);
+                          }}
                           placeholder=""
                           aria-controls="order-table"
                         />
@@ -88,7 +112,7 @@ const Reservas = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {isData.map((reservation, index) => {
+                    {filteredReservation.map((reservation, index) => {
                       return (
                         <tr key={index}>
                           <td>
