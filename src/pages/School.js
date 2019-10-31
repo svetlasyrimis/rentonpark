@@ -63,7 +63,12 @@ const School = () => {
         >
           <div className="carousel-inner">
             {isDataBackground.map((background, index) => (
-              <Slider index={index} data={background} key={index} />
+              <Slider
+                index={index}
+                data={background}
+                key={index}
+                title="Escuelita"
+              />
             ))}
           </div>
         </div>
