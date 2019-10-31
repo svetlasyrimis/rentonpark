@@ -1,8 +1,57 @@
-import React from "react";
-import Background from "../assets/images/background_school.jpeg";
-import Logo from "../assets/images/renton_light.png";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Loader from "../components/Loader";
+import Slider from "../components/Slider";
+import Section from "../components/Section";
 
 const Features = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [isDataBackground, setIsDataBackground] = useState(undefined);
+  const [isDataSections, setIsDataSections] = useState(undefined);
+  const [isLoadingSection, setIsLoadingSection] = useState(true);
+
+  const fetchDataBackground = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/images_type/features")
+      .then(res => {
+        setIsDataBackground(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+    setIsLoading(false);
+  };
+
+  const fetchDataSections = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/sections_type/features")
+      .then(res => {
+        setIsDataSections(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoadingSection(false);
+      });
+    setIsLoadingSection(false);
+  };
+
+  useEffect(() => {
+    fetchDataBackground();
+    fetchDataSections();
+  }, []);
+
+  if (isLoading || isLoadingSection) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <h1>Error....</h1>;
+  }
+
   return (
     <div className="main-container viewSchool">
       <section className="cover parallax">
@@ -12,26 +61,9 @@ const Features = () => {
           data-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                className="d-block w-100"
-                src={Background}
-                alt="First slide"
-              ></img>
-              <div className="centered">
-                <div className="row">
-                  <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
-                    <img
-                      alt="RentonPark"
-                      className="imageLogo mb8"
-                      src={Logo}
-                      draggable="false"
-                    ></img>
-                    <h1 className="fontTide">Features</h1>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {isDataBackground.map((background, index) => (
+              <Slider index={index} data={background} key={index} />
+            ))}
           </div>
         </div>
       </section>
@@ -48,32 +80,11 @@ const Features = () => {
           </div>
         </div>
       </section>
-      <section className="image-square">
-        <div className="col-md-6 image">
-          <div className="background-image-holder fadeIn">
-            <img
-              alt="image"
-              className="background-image"
-              src="./image/view/MU000_100069"
-            ></img>
-          </div>
-        </div>
-        <div className="col-md-6 content right">
-          <h3 className="fontLemonMilk">SMALL KICKER </h3>
-          <hr />
-          <p className="mb0"></p>
-          <p>
-            Este es nuestro kicker más chico y es ideal para principiantes que
-            se animen a sentir las primeras sensaciones de pasar una rampa
-            andando o de saltar. También es muy entretenido para los más
-            experimentados para transfear a donde sea que este puesto en nuestro
-            parque !
-          </p>{" "}
-          <p></p>
-        </div>
-      </section>
+      {isDataSections.map((section, index) => (
+        <Section data={section} key={index} title="" />
+      ))}
     </div>
   );
-}
+};
 
 export default Features;
