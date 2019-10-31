@@ -4,14 +4,14 @@ const validatePostLogin = {
   body: {
     type: "object",
     properties: {
-      email: { type: "string", format: "email" },
+      username: { type: "string" },
       password: {
         type: "string",
         format: "regex",
         pattern: userPasswordRegex
       }
     },
-    required: ["email", "password"]
+    required: ["username", "password"]
   }
 };
 
