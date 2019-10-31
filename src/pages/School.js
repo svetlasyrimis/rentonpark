@@ -4,7 +4,6 @@ import Loader from "../components/Loader";
 import Slider from "../components/Slider";
 import Section from "../components/Section";
 import FormContact from "../components/FormContact";
-import Background2 from "../assets/images/background_school2.jpg";
 
 const School = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,10 +11,6 @@ const School = () => {
   const [isDataBackground, setIsDataBackground] = useState(undefined);
   const [isDataSections, setIsDataSections] = useState(undefined);
   const [isLoadingSection, setIsLoadingSection] = useState(true);
-
-  const ImgStyle = {
-    height: "150%"
-  };
 
   const fetchDataBackground = async () => {
     setIsError(false);
@@ -89,17 +84,8 @@ const School = () => {
       {isDataSections.map((section, index) => (
         <Section data={section} key={index} title="" />
       ))}
-      <section className="image-bg overlay parallax">
-        <div className="background-image-holder fadeIn">
-          <img
-            alt="Background"
-            className="background-image"
-            style={ImgStyle}
-            src={Background2}
-          />
-        </div>
-        <FormContact type={"escuelita"} />
-      </section>
+
+      <FormContact type={"escuelita"} />
     </div>
   );
 };
