@@ -1,8 +1,39 @@
-import React from "react";
-import Background from "../assets/images/background_school.jpeg";
-import Logo from "../assets/images/renton_light.png";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Loader from "../components/Loader";
+import Slider from "../components/Slider";
 
 const Bar = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [isDataBackground, setIsDataBackground] = useState(undefined);
+
+  const fetchDataBackground = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/images_type/bar")
+      .then(res => {
+        setIsDataBackground(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchDataBackground();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <h1>Error....</h1>;
+  }
+
   return (
     <div className="main-container viewSchool">
       <section className="cover parallax">
@@ -12,31 +43,19 @@ const Bar = () => {
           data-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                className="d-block w-100"
-                src={Background}
-                alt="First slide"
-              ></img>
-              <div className="centered">
-                <div className="row">
-                  <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
-                    <img
-                      alt="RentonPark"
-                      className="imageLogo mb8"
-                      src={Logo}
-                      draggable="false"
-                    ></img>
-                    <h1 className="fontTide">Pez Volador</h1>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {isDataBackground.map((background, index) => (
+              <Slider
+                index={index}
+                data={background}
+                key={index}
+                title="Pez Volador"
+              />
+            ))}
           </div>
         </div>
       </section>
     </div>
   );
-}
+};
 
 export default Bar;
