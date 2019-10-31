@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "../components/Slider";
+import Loader from "../components/Loader";
 import "bootstrap/js/src/carousel";
 import axios from "axios";
 
@@ -26,15 +27,7 @@ const Home = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="row">
-        <div className="col-lg-12 text-center">
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
-      </div>
-    );
+    return <Loader />;
   }
 
   if (isError) {
