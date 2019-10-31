@@ -18,6 +18,7 @@
 !/storage/.keep
 /server/node_modules
 /server/src/public
+public/images/
 
 /node_modules
 /yarn-error.log

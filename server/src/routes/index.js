@@ -5,10 +5,10 @@ const {
   validatePostLogin,
   validatePostSignup
 } = require("../validations/auth");
-
 // Multer
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, "../public/images"),
+  //destination: path.join(__dirname, "../public/images"),
+  destination: "../public/images",
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   }
