@@ -44,7 +44,10 @@ const AdminMain = () => {
                   {message.name} {message.lastname}
                 </h4>
                 <p className="text-muted m-b-5">{message.phone}</p>
-                <p className="text-muted">{message.email}</p>
+                <p className="text-muted m-b-5">{message.email}</p>
+                <p className="text-muted">
+                  {message.type && "Vista: " + message.type.toUpperCase()}
+                </p>
                 <p className="text-muted text-center">Días de interés</p>
                 <div className="row">
                   {message.days.map((day, index) => {
