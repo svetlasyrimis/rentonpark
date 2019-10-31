@@ -1,23 +1,44 @@
+const boom = require("boom");
 const User = require("../models/User");
 const { SignUpResponse } = require("../models/Auth");
 const {
   INVALID_PASSWORD,
   USER_DOESNT_EXISTS,
-  USER_EXISTS
+  USER_EXISTS,
+  INVALID_PASSWORD_CONFIRMATION
 } = require("../models/Errors");
 
 exports.postSignup = async (req, res) => {
-  const { email, password } = req.body;
+  const {
+    email,
+    password,
+    lastname,
+    sex,
+    phone_prefix,
+    phone,
+    username
+  } = req.body;
+  const confirm_password = req.body.password_confirmation;
   try {
-    const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) {
+    const existingEmail = await User.findOne({ email: req.body.email });
+    const existingUser = await User.findOne({ username: req.body.username });
+    if (existingEmail || existingUser) {
       res.code(409);
       res.send(new Error(USER_EXISTS));
+      return;
+    } else if (!(confirm_password === password)) {
+      res.code(409);
+      res.send(new Error(INVALID_PASSWORD_CONFIRMATION));
       return;
     }
     const user = new User({
       email,
-      password
+      password,
+      lastname,
+      sex,
+      phone_prefix,
+      phone,
+      username
     });
     const newUser = await user.save();
     const { id, email: userEmail } = newUser;

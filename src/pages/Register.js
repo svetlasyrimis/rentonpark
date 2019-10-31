@@ -1,13 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import useForm from "react-hook-form";
+import axios from "axios";
 
 const Register = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isCaptcha, setIsCaptcha] = useState("");
+
   var Recaptcha = require("react-recaptcha");
 
-  const onSubmit = data => {
-    console.log(data);
+  var verifyCallback = function(response) {
+    setIsCaptcha(response);
+  };
+
+  const onSubmit = async data => {
+    setIsError(false);
+    setIsLoading(true);
+    if (isCaptcha) {
+      await axios
+        .post("http://localhost:3001/auth/signup", data)
+        .then(response => {
+          document.getElementById("link_home").click();
+        })
+        .catch(error => {
+          setIsError(error.response.data.message);
+          setIsLoading(false);
+        });
+    } else {
+      setIsError("Por favor verifica el captcha.");
+    }
+
+    setIsLoading(false);
   };
   const { register, handleSubmit, errors } = useForm();
+
   return (
     <div className="viewRegister background-image-holder image-register fadeIn">
       <section className="image-bg overlay parallax">
@@ -19,12 +45,10 @@ const Register = () => {
                   <i className="ti-package icon"></i>
                   <h5 className="uppercase">Nuevo Rider</h5>
                 </div>
-                <div className="boxMessage"></div>
+                <div className="boxMessage">{isError && isError}</div>
                 <div className="boxForm">
                   <form
                     className="form-register"
-                    method="post"
-                    action="http://localhost:3001/auth/signup"
                     onSubmit={handleSubmit(onSubmit)}
                   >
                     <div className="row">
@@ -69,8 +93,8 @@ const Register = () => {
                             tabIndex="3"
                             ref={register({ required: true })}
                           >
-                            <option value="0">Hombre</option>
-                            <option value="1">Mujer</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
                           </select>
                           {errors.sex && (
                             <b className="color-red">Campo obligatorio</b>
@@ -178,10 +202,13 @@ const Register = () => {
                           sitekey="6LdRBQgUAAAAAI_YwLr-ESi-Lm3AdXKLuX7RE2Bl"
                           render="explicit"
                           hl={"es"}
+                          verifyCallback={verifyCallback}
                         />
                       </div>
                       <div className="col-xs-6">
-                        <button type="submit">Registrarme</button>
+                        <button type="submit" disabled={isLoading}>
+                          Registrarme
+                        </button>
                       </div>
                     </div>
                   </form>

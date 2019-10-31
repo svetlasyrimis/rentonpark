@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes/");
 // Import Swagger Options
 const swagger = require("./config/swagger");
+const cors = require("cors");
 
 // create request ids
 const createRequestId = () => uuidv4();
@@ -19,6 +20,8 @@ const fastify = Fastify({
     level: "info"
   }
 });
+
+fastify.use(cors());
 
 // Register JWT
 fastify.register(jwt, {
@@ -39,7 +42,6 @@ mongoose
 
 // Loop over each route
 routes.forEach((route, index) => {
-  console.log(route);
   fastify.route(route);
 });
 

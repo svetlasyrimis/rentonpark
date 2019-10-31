@@ -12,7 +12,9 @@ const Navbar = () => {
           <div className="module center">
             <ul className="menu">
               <li>
-                <Link to="./">Inicio</Link>
+                <Link to="./" id="link_home">
+                  Inicio
+                </Link>
               </li>
               <li>
                 <Link to="./riders">Cablepark</Link>
