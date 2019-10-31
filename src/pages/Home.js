@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "../components/Slider";
+import Section from "../components/Section";
 import Loader from "../components/Loader";
 import "bootstrap/js/src/carousel";
 import axios from "axios";
@@ -8,8 +9,10 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isDataSliders, setIsDataSliders] = useState(undefined);
+  const [isDataSections, setIsDataSections] = useState(undefined);
+  const [isLoadingSection, setIsLoadingSection] = useState(true);
 
-  const fetchData = async () => {
+  const fetchDataSliders = async () => {
     setIsError(false);
     await axios
       .get("http://localhost:3001/api/images_type/slider")
@@ -22,11 +25,27 @@ const Home = () => {
       });
     setIsLoading(false);
   };
+
+  const fetchDataSections = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/sections_type/principal")
+      .then(res => {
+        setIsDataSections(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoadingSection(false);
+      });
+    setIsLoadingSection(false);
+  };
+
   useEffect(() => {
-    fetchData();
+    fetchDataSliders();
+    fetchDataSections();
   }, []);
 
-  if (isLoading) {
+  if (isLoading || isLoadingSection) {
     return <Loader />;
   }
 
@@ -85,31 +104,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="image-square">
-        <div className="col-md-6 image">
-          <div className="background-image-holder fadeIn">
-            <img
-              alt="Background"
-              className="background-image"
-              src="./image/view/PR000_10001_C"
-            ></img>
-          </div>
-        </div>
-        <div className="col-md-6 content right">
-          <h3 className="fontLemonMilk">RENTON WAKEBOARDING COMPLEX </h3>
-          <hr />
-          <p className="mb0"></p>
-          <p>EL PARAÍSO EN LA COSTANERA</p>
-          <p>
-            RWC es un verdadero skatepark en el agua, apto para todos los
-            niveles, que se puede disfrutar todos los días del año. Acercate y
-            enterate de todo lo que tenemos para vos, cabañas, servicio de
-            gastronomía, miniramp, camping, escuelita de wakeboard y muchas
-            cosas más !!
-          </p>{" "}
-          <p></p>
-        </div>
-      </section>
+      {isDataSections.map((section, index) => (
+        <Section data={section} key={index} />
+      ))}
     </div>
   );
 };
