@@ -581,6 +581,9 @@ ul.lead li {
 .color-red {
   color: #e31d3b !important;
 }
+.color-success {
+  color: #1de358 !important;
+}
 .color-white {
   color: #fff;
 }

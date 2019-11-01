@@ -12,6 +12,7 @@ exports.postSignup = async (req, res) => {
   const {
     email,
     password,
+    name,
     lastname,
     sex,
     phone_prefix,
@@ -34,6 +35,7 @@ exports.postSignup = async (req, res) => {
     const user = new User({
       email,
       password,
+      name,
       lastname,
       sex,
       phone_prefix,
@@ -50,9 +52,11 @@ exports.postSignup = async (req, res) => {
 };
 
 exports.postLogin = async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const user = await User.findOne({ email: email.toLowerCase() }).exec();
+    const user = await User.findOne({
+      username: username.toLowerCase()
+    }).exec();
     if (!user) {
       res.send(new Error(USER_DOESNT_EXISTS));
     }
@@ -60,7 +64,7 @@ exports.postLogin = async (req, res) => {
     if (isMatch) {
       const { id } = user;
       const token = await res.jwtSign({ id }, { expiresIn: "180" });
-      return res.send(new SignUpResponse({ email, token, id }));
+      return res.send(new SignUpResponse({ username, token, id }));
     }
     return res.send(new Error(INVALID_PASSWORD));
   } catch (err) {

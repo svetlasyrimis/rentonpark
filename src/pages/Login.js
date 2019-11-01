@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import useForm from "react-hook-form";
+import axios from "axios";
 import "../assets/styles/bootstrap.css";
 import LogoLight from "../assets/images/logo_light.png";
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = async data => {
+    setIsError(false);
+    setIsLoading(true);
+
+    await axios
+      .post("http://localhost:3001/auth/login", data)
+      .then(response => {
+        document.getElementById("link_home").click();
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+
+    setIsLoading(false);
+  };
   return (
     <div className="viewLogin background-image-holder image-login fadeIn">
       <section className="image-bg overlay parallax">
@@ -14,20 +36,37 @@ const Login = () => {
                   <i className="ti-package icon"></i>
                   <h5 className="uppercase">Iniciar Sesión</h5>
                 </div>
+                <div className="boxMessage text-center color-red">
+                  {isError && isError}
+                </div>
                 <div className="boxForm">
                   <form
                     className="form-login"
-                    role="form"
-                    method="post"
-                    action="./login/in"
+                    onSubmit={handleSubmit(onSubmit)}
                   >
                     <div className="form-group">
                       <label> Usuario </label>
-                      <input type="text" name="txtUser" tabIndex="1" />
+                      <input
+                        type="text"
+                        name="username"
+                        tabIndex="1"
+                        ref={register({ required: true })}
+                      />
+                      {errors.username && (
+                        <b className="color-red">Campo obligatorio</b>
+                      )}
                     </div>
                     <div className="form-group">
                       <label> Contraseña </label>
-                      <input type="password" name="txtPass" tabIndex="2" />
+                      <input
+                        type="password"
+                        name="password"
+                        tabIndex="2"
+                        ref={register({ required: true })}
+                      />
+                      {errors.password && (
+                        <b className="color-red">Campo obligatorio</b>
+                      )}
                     </div>
                     <div className="row">
                       <div className="col-xs-6">
@@ -38,7 +77,9 @@ const Login = () => {
                         />
                       </div>
                       <div className="col-xs-6">
-                        <button type="submit">Ingresar</button>
+                        <button type="submit" disabled={isLoading}>
+                          Ingresar
+                        </button>
                       </div>
                     </div>
                     <hr />

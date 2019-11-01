@@ -46,8 +46,8 @@ function Riders() {
                       <h4>Reglamento</h4>
                       <span className="textReglament">
                         <p>
-                          Elige él o los turnos que quieras reservar (mantener
-                          presionado el turno para reservar si estás con el cel)
+                          Elige él o los turnos que quieras reservar mantener
+                          presionado el turno para reservar si estás con el cel
                           y hace click en Confirmar Reserva. Una nueva ventana
                           aparecerá con la lista de turnos que reservaste.
                           Checkeá que este todo bien, dale click en Reservar y
@@ -63,24 +63,24 @@ function Riders() {
                           poder volver a realizar reservas.&nbsp;
                         </p>
                         <p>
-                          <u>PRECIOS PACKS Y ABONOS</u> (podés consultar toda la
+                          <u>PRECIOS PACKS Y ABONOS</u> podés consultar toda la
                           info con el driver de turno y adquirir lo que
-                          necesites en la caja)
+                          necesites en la caja
                         </p>
                         <p>
                           - <b>TURNO 20min: </b>$500.- LUN A VIE / $700.- FINDES
                           Y FERIADOS
                         </p>
                         <p>
-                          -&nbsp;<b>PACK 5 SESIONES:</b> $2.000.- (son
+                          -&nbsp;<b>PACK 5 SESIONES:</b> $2.000.- son
                           individuales y se pueden utilizar cualquier día de la
-                          semana)
+                          semana
                         </p>
                         <p>
-                          - <b>ABONO TEMPORADA VERANO:</b> $15.000.- (podés
+                          - <b>ABONO TEMPORADA VERANO:</b> $15.000.- podés
                           reservar 1 turno por día de lunes a viernes / válido
                           del 1ro de Noviembre al 30 de Abril / se puede
-                          adquirir hasta fin de Diciembre)
+                          adquirir hasta fin de Diciembre
                         </p>
                         <p>
                           - <b>ALQUILER DE EQUIPO:</b> Tabla $200.- / Chaleco
@@ -200,20 +200,10 @@ function Riders() {
                 <h4 className="text-right">
                   Total: $ <span id="sTotal"></span>
                 </h4>
-                <button
-                  type="button"
-                  className="btn"
-                  role="button"
-                  data-dismiss="modal"
-                >
+                <button type="button" className="btn" data-dismiss="modal">
                   <i className="fa fa-close fa-fw"></i> Cerrar
                 </button>
-                <button
-                  type="button"
-                  className="btn"
-                  role="button"
-                  id="btnConfirm"
-                >
+                <button type="button" className="btn" id="btnConfirm">
                   <i className="fa fa-check fa-fw"></i> Reservar
                 </button>
               </div>

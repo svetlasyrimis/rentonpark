@@ -1,11 +1,58 @@
-import React from "react";
-import Slider1 from "../assets/images/slider1.jpeg";
-import Slider2 from "../assets/images/slider2.jpeg";
-import Slider3 from "../assets/images/slider3.jpeg";
-import Logo from "../assets/images/renton_light.png";
+import React, { useEffect, useState } from "react";
+import Slider from "../components/Slider";
+import Section from "../components/Section";
+import Loader from "../components/Loader";
 import "bootstrap/js/src/carousel";
+import axios from "axios";
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [isDataSliders, setIsDataSliders] = useState(undefined);
+  const [isDataSections, setIsDataSections] = useState(undefined);
+  const [isLoadingSection, setIsLoadingSection] = useState(true);
+
+  const fetchDataSliders = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/images_type/slider")
+      .then(res => {
+        setIsDataSliders(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+    setIsLoading(false);
+  };
+
+  const fetchDataSections = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/sections_type/principal")
+      .then(res => {
+        setIsDataSections(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoadingSection(false);
+      });
+    setIsLoadingSection(false);
+  };
+
+  useEffect(() => {
+    fetchDataSliders();
+    fetchDataSections();
+  }, []);
+
+  if (isLoading || isLoadingSection) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <h1>Error....</h1>;
+  }
+
   return (
     <div className="main-container viewMain">
       <section className="cover parallax">
@@ -15,63 +62,9 @@ const Home = () => {
           data-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                className="d-block w-100"
-                src={Slider1}
-                alt="First slide"
-              ></img>
-              <div className="centered">
-                <div className="row">
-                  <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
-                    <img
-                      alt="RentonPark"
-                      className="imageLogo mb8"
-                      src={Logo}
-                      draggable="false"
-                    ></img>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                className="d-block w-100"
-                src={Slider2}
-                alt="Second slide"
-              ></img>
-              <div className="centered">
-                <div className="row">
-                  <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
-                    <img
-                      alt="RentonPark"
-                      className="imageLogo mb8"
-                      src={Logo}
-                      draggable="false"
-                    ></img>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                className="d-block w-100"
-                src={Slider3}
-                alt="Second slide"
-              ></img>
-              <div className="centered">
-                <div className="row">
-                  <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
-                    <img
-                      alt="RentonPark"
-                      className="imageLogo mb8"
-                      src={Logo}
-                      draggable="false"
-                    ></img>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {isDataSliders.map((slider, index) => (
+              <Slider index={index} data={slider} key={index} />
+            ))}
           </div>
           <a
             className="carousel-control-prev"
@@ -111,31 +104,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="image-square">
-        <div className="col-md-6 image">
-          <div className="background-image-holder fadeIn">
-            <img
-              alt="Background"
-              className="background-image"
-              src="./image/view/PR000_10001_C"
-            ></img>
-          </div>
-        </div>
-        <div className="col-md-6 content right">
-          <h3 className="fontLemonMilk">RENTON WAKEBOARDING COMPLEX </h3>
-          <hr />
-          <p className="mb0"></p>
-          <p>EL PARAÍSO EN LA COSTANERA</p>
-          <p>
-            RWC es un verdadero skatepark en el agua, apto para todos los
-            niveles, que se puede disfrutar todos los días del año. Acercate y
-            enterate de todo lo que tenemos para vos, cabañas, servicio de
-            gastronomía, miniramp, camping, escuelita de wakeboard y muchas
-            cosas más !!
-          </p>{" "}
-          <p></p>
-        </div>
-      </section>
+      {isDataSections.map((section, index) => (
+        <Section data={section} key={index} title="" />
+      ))}
     </div>
   );
 };
