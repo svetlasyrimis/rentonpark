@@ -111,6 +111,11 @@ const routes = [
     handler: sessionController.getSingleSession
   },
   {
+    method: "GET",
+    url: "/api/main_session",
+    handler: sessionController.getMainSession
+  },
+  {
     method: "POST",
     url: "/api/sessions",
     handler: sessionController.addSession

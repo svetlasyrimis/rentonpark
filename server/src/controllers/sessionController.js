@@ -24,6 +24,16 @@ exports.getSingleSession = async (req, reply) => {
   }
 };
 
+// Get main session
+exports.getMainSession = async (req, reply) => {
+  try {
+    const sessions = await Session.find({ main: true });
+    return sessions[0];
+  } catch (err) {
+    throw boom.boomify(err);
+  }
+};
+
 // Add a new session
 exports.addSession = async (req, reply) => {
   try {
