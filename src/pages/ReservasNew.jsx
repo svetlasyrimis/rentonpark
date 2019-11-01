@@ -1,149 +1,75 @@
-import React, { useState } from "react";
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Loader from "../components/Loader";
+import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import FormReservation from "../components/FormReservation";
+import FormConfigurationCablePark from "../components/FormConfigurationCablePark";
+import FormReglamentoCablePark from "../components/FormReglamentoCablePark";
 
 const ReservasNew = () => {
-  const [editorState, seteditorState] = useState(EditorState.createEmpty());
   const [editorState1, seteditorState1] = useState(EditorState.createEmpty());
+  const [isInitLoading, setIsInitLoading] = useState(true);
+  const [isInitError, setInitError] = useState(false);
+  const [isDataSessions, setIsDataSessions] = useState(undefined);
+  const [isMainSession, setIsMainSession] = useState("");
 
-  const onEditorStateChange = e => {
-    seteditorState(e);
-    console.log("change");
-    console.log(e);
+  const fetchData = async () => {
+    setInitError(false);
+    await axios
+      .get("http://localhost:3001/api/sessions")
+      .then(res => {
+        setIsDataSessions(res.data);
+      })
+      .catch(error => {
+        isInitError(error.response.data.message);
+        isInitLoading(false);
+      });
+
+    await axios
+      .get("http://localhost:3001/api/sections_type/reglamento_cablepark")
+      .then(res => {
+        seteditorState1(res.data[0].body);
+      })
+      .catch(error => {
+        isInitError(error.response.data.message);
+        isInitLoading(false);
+      });
+
+    await axios
+      .get("http://localhost:3001/api/main_session")
+      .then(res => {
+        setIsMainSession(res.data._id);
+      })
+      .catch(error => {
+        isInitError(error.response.data.message);
+        isInitLoading(false);
+      });
+    setIsInitLoading(false);
   };
 
-  const onEditorStateChange1 = e => {
-    seteditorState1(e);
-    console.log("change");
-    console.log(e);
-  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isInitLoading) {
+    return <Loader />;
+  }
+
+  if (isInitError) {
+    return <h1>Error....</h1>;
+  }
 
   return (
     <React.Fragment>
-      <div className="card">
-        <div className="card-header">
-          <h5>Nueva Reserva</h5>
-        </div>
-        <div className="card-block">
-          <form className="form-material">
-            <div className="row">
-              <div className="col-lg-3">
-                <div className="form-group form-default">
-                  <input className="form-control fill" type="datetime-local" />
-                  <span className="form-bar"></span>
-                  <label className="float-label">Fecha/Hora Comienzo</label>
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div className="form-group form-default">
-                  <input className="form-control fill" type="datetime-local" />
-                  <span className="form-bar"></span>
-                  <label className="float-label">Fecha/Hora Fin</label>
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div className="form-group form-default">
-                  <input type="text" className="form-control fill" />
-                  <span className="form-bar"></span>
-                  <label className="float-label">Nombre</label>
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div className="form-group form-default">
-                  <input type="text" className="form-control fill" />
-                  <span className="form-bar"></span>
-                  <label className="float-label">Título</label>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <Editor
-                  editorState={editorState}
-                  toolbarClassName="toolbarClassName"
-                  wrapperClassName="wrapperClassName"
-                  editorClassName="editorClassName"
-                  onEditorStateChange={onEditorStateChange}
-                  localization={{
-                    locale: "es"
-                  }}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-12 text-center">
-                <button
-                  className="btn btn-success btn-round right"
-                  type="submit"
-                >
-                  Guardar
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
+      <FormReservation sessions={isDataSessions} main_session={isMainSession} />
       <br />
-      <div className="row">
-        <div className="offset-4 col-lg-4">
-          <div className="card">
-            <div className="card-header">
-              <h5>Configuración CablePark</h5>
-            </div>
-            <div className="card-block">
-              <form className="form-material">
-                <div className="row">
-                  <div className="col-lg-12">
-                    <div className="form-group form-default">
-                      <select
-                        name="select"
-                        className="form-control form-control-default"
-                      >
-                        <option value="opt1">Seleccionar Producto</option>
-                        <option value="opt2">Type 2</option>
-                        <option value="opt3">Type 3</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-lg-12 text-center">
-                    <button
-                      className="btn btn-success btn-round right"
-                      type="submit"
-                    >
-                      Guardar
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FormConfigurationCablePark
+        sessions={isDataSessions}
+        main_session={isMainSession}
+      />
       <br />
-
-      <div className="card">
-        <div className="card-header">
-          <h5>Descripción</h5>
-        </div>
-        <div className="card-block">
-          <div className="row">
-            <div className="col-lg-12">
-              <Editor
-                editorState={editorState1}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                onEditorStateChange={onEditorStateChange1}
-                localization={{
-                  locale: "es"
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <FormReglamentoCablePark body={editorState1} />
     </React.Fragment>
   );
 };
