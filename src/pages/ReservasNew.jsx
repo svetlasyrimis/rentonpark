@@ -13,6 +13,7 @@ const ReservasNew = () => {
   const [isInitError, setInitError] = useState(false);
   const [isDataSessions, setIsDataSessions] = useState(undefined);
   const [isMainSession, setIsMainSession] = useState("");
+  const [isReglamento, setIsReglamento] = useState("");
 
   const fetchData = async () => {
     setInitError(false);
@@ -29,7 +30,9 @@ const ReservasNew = () => {
     await axios
       .get("http://localhost:3001/api/sections_type/reglamento_cablepark")
       .then(res => {
-        seteditorState1(res.data[0].body);
+        setIsReglamento(res.data[0]._id);
+        let content = convertFromRaw(res.data[0].description);
+        seteditorState1(content);
       })
       .catch(error => {
         isInitError(error.response.data.message);
@@ -69,7 +72,7 @@ const ReservasNew = () => {
         main_session={isMainSession}
       />
       <br />
-      <FormReglamentoCablePark body={editorState1} />
+      <FormReglamentoCablePark body={editorState1} reglamento={isReglamento} />
     </React.Fragment>
   );
 };
