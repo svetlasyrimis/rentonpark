@@ -3,7 +3,7 @@ import useForm from "react-hook-form";
 import axios from "axios";
 import SelectSession from "../components/SelectSession";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function FormReservation({ sessions, main_session }) {
