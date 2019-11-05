@@ -5,6 +5,10 @@ const imageSchema = new mongoose.Schema({
   image: {
     type: Map,
     of: String
+  },
+  crop: {
+    type: Map,
+    of: mongoose.Schema.Types.Mixed
   }
 });
 

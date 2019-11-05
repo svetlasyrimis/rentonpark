@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import useForm from "react-hook-form";
 import axios from "axios";
-import "cropperjs/dist/cropper.css";
-import Cropper from "react-cropper";
+import ReactCrop from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
 
 function FormSlider({ width_image }) {
   const { register, handleSubmit, errors } = useForm();
@@ -11,12 +11,15 @@ function FormSlider({ width_image }) {
   const [isSuccess, setIsSuccess] = useState("");
   const [file, setFile] = useState(null);
   const [previewfile, setpreviewfile] = useState(null);
-  const cropper = useRef(null);
+  const [isCrop, setCrop] = useState({
+    unit: "%",
+    width: 90,
+    aspect: 16 / 9
+  });
 
-  const _crop = useCallback(() => {
-    // console.log("Click happened");
-    // console.log(cropper);
-  }, []);
+  const onCropChange = (crop, percentCrop) => {
+    setCrop(crop);
+  };
 
   const handleChange = event => {
     setFile(URL.createObjectURL(event.target.files[0]));
@@ -29,6 +32,7 @@ function FormSlider({ width_image }) {
     let formData = new FormData();
     formData.append("image", previewfile);
     formData.set("type", "slider");
+    formData.set("crop", JSON.stringify(isCrop));
     await axios
       .post("http://localhost:3001/api/images", formData)
       .then(response => {
@@ -68,14 +72,14 @@ function FormSlider({ width_image }) {
         <div className="col-lg-12 text-center">
           <div className="row">
             <div className="offset-2 col-lg-10 text-center">
-              <Cropper
-                ref={cropper}
-                src={file}
-                style={width_image}
-                aspectRatio={16 / 9}
-                guides={false}
-                crop={_crop(this)}
-              />
+              {file && (
+                <ReactCrop
+                  src={file}
+                  crop={isCrop}
+                  ruleOfThirds
+                  onChange={onCropChange}
+                />
+              )}
             </div>
           </div>
         </div>
