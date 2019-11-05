@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const sectionSchema = new mongoose.Schema({
   title: String,
   type: String,
-  body: {
+  description: {
     type: Map,
-    of: String
+    of: mongoose.Schema.Types.Mixed
   },
   image: {
     type: Map,

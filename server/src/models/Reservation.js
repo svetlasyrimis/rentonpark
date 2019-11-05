@@ -8,11 +8,7 @@ const reservationSchema = new mongoose.Schema({
   finish: Date,
   description: {
     type: Map,
-    of: String
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    of: mongoose.Schema.Types.Mixed
   },
   session: {
     type: mongoose.Schema.Types.ObjectId,

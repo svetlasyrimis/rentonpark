@@ -1,11 +1,12 @@
 import React from "react";
 
-function SelectSession({ data, main_session }) {
+function SelectSession({ data, main_session, register }) {
   return (
     <select
-      name="select"
+      name="session"
       className="form-control form-control-default"
       defaultValue={main_session}
+      ref={register}
     >
       {data.map((session, index) => {
         return (

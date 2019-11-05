@@ -9,9 +9,7 @@ const useSearchReservations = reservations => {
 
   React.useMemo(() => {
     const result = reservations.filter(reservation => {
-      return `${reservation.user.name} ${reservation.user.lastname}`
-        .toLowerCase()
-        .includes(query.toLowerCase());
+      return `${reservation.name}`.toLowerCase().includes(query.toLowerCase());
     });
 
     setFilteredReservation(result);
@@ -115,9 +113,7 @@ const Reservas = () => {
                     {filteredReservation.map((reservation, index) => {
                       return (
                         <tr key={index}>
-                          <td>
-                            {reservation.user.name} {reservation.user.lastname}
-                          </td>
+                          <td>{reservation.name}</td>
                           <td>{reservation.session.name}</td>
                           <td>{reservation.total}</td>
                           <td>{only_date(reservation.start)}</td>

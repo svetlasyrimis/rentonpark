@@ -41,7 +41,7 @@ exports.addSection = async (req, reply) => {
     const body_req = req.body;
     const data = {
       title: body_req.title,
-      body: body_req.body.body,
+      description: body_req.description,
       type: body_req.type,
       image: req.file
     };
@@ -59,7 +59,7 @@ exports.updateSection = async (req, reply) => {
     const body_req = req.body;
     const section = {
       title: body_req.title,
-      body: body_req.body.body,
+      description: body_req.description,
       type: body_req.type,
       image: req.file
     };

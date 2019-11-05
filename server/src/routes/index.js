@@ -121,6 +121,11 @@ const routes = [
     handler: sessionController.addSession
   },
   {
+    method: "POST",
+    url: "/api/update_main_session/:id",
+    handler: sessionController.updateMainSession
+  },
+  {
     method: "PUT",
     url: "/api/sessions/:id",
     handler: sessionController.updateSession

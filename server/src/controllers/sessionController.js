@@ -34,6 +34,24 @@ exports.getMainSession = async (req, reply) => {
   }
 };
 
+// Update main session
+exports.updateMainSession = async (req, reply) => {
+  try {
+    await Session.updateMany({}, { main: false });
+    const id = req.params.id;
+    const update = await Session.findByIdAndUpdate(
+      id,
+      { main: true },
+      {
+        new: true
+      }
+    );
+    return update;
+  } catch (err) {
+    throw boom.boomify(err);
+  }
+};
+
 // Add a new session
 exports.addSession = async (req, reply) => {
   try {
