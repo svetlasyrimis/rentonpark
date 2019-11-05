@@ -23,7 +23,14 @@ function DisplayCropImage({ image, width_image, index }) {
   return (
     <React.Fragment>
       <div className="col-lg-6">
-        {image.crop && <img style={width_image} alt="" id={"image_" + index} />}
+        {image.crop && (
+          <img
+            className="mt-5"
+            style={width_image}
+            alt=""
+            id={"image_" + index}
+          />
+        )}
       </div>
     </React.Fragment>
   );
