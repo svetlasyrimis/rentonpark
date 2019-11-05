@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import FormSlider from "../components/FormSlider";
+import DisplayCropImage from "../components/DisplayCropImage";
+import "react-image-crop/dist/ReactCrop.css";
 
 const Sliders = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,16 +47,14 @@ const Sliders = () => {
           <FormSlider width_image={width_image} />
         </div>
         <div className="row">
-          {isImages.map((image, index) => {
-            return (
-              <div className="col-lg-6" key={index}>
-                <img
-                  style={width_image}
-                  src={"/images/" + image.image.originalname}
-                ></img>
-              </div>
-            );
-          })}
+          {isImages.map((image, index) => (
+            <DisplayCropImage
+              image={image}
+              key={index}
+              width_image={width_image}
+              index={index}
+            />
+          ))}
         </div>
       </div>
     </React.Fragment>
