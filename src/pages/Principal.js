@@ -1,26 +1,40 @@
-import React, { useState, createRef } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Loader from "../components/Loader";
 import CardSectionFileEditor from "../components/CardSectionFileEditor";
-import { EditorState } from "draft-js";
-import "cropperjs/dist/cropper.css";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const Principal = () => {
-  const [file, setFile] = useState(null);
-  const [editorState, seteditorState] = useState(EditorState.createEmpty());
+  const [isInitLoading, setIsInitLoading] = useState(true);
+  const [isInitError, setInitError] = useState(false);
+  const [section, setIsSection] = useState(undefined);
 
-  const handleChange = event => {
-    setFile(URL.createObjectURL(event.target.files[0]));
+  const fetchData = async () => {
+    setInitError(false);
+    await axios
+      .get("http://localhost:3001/api/sections_type/principal")
+      .then(res => {
+        setIsSection(res.data[0]);
+      })
+      .catch(error => {
+        isInitError(error.response.data.message);
+        isInitLoading(false);
+      });
+    setIsInitLoading(false);
   };
 
-  const onEditorStateChange = e => {
-    seteditorState(e);
-    console.log("change");
-    console.log(e);
-  };
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const cropper = createRef(null);
+  if (isInitLoading) {
+    return <Loader />;
+  }
 
-  const width_image = { height: 400, width: "100%" };
+  if (isInitError) {
+    return <h1>Error....</h1>;
+  }
+  // const width_image = { height: 400, width: "100%" };
   return (
     <React.Fragment>
       <div className="row">
@@ -32,13 +46,9 @@ const Principal = () => {
             <br />
             <CardSectionFileEditor
               title={"Título Sección 1"}
-              handleChange={handleChange}
-              width_image={width_image}
-              cropper={cropper}
-              file={file}
-              editorState={editorState}
-              onEditorStateChange={onEditorStateChange}
               delete_button={false}
+              type={"principal"}
+              section={section}
             />
           </div>
         </div>
