@@ -42,19 +42,7 @@ const Sliders = () => {
           <h5>Sliders</h5>
         </div>
         <div className="card-block">
-          <FormSlider width_image={width_image} />
-        </div>
-        <div className="row">
-          {isImages.map((image, index) => {
-            return (
-              <div className="col-lg-6" key={index}>
-                <img
-                  style={width_image}
-                  src={"/images/" + image.image.originalname}
-                ></img>
-              </div>
-            );
-          })}
+          <FormSlider width_image={width_image} images={isImages} />
         </div>
       </div>
     </React.Fragment>

@@ -38,7 +38,8 @@ exports.getSingleImage = async (req, reply) => {
 // Add a new image
 exports.addImage = async (req, reply) => {
   try {
-    const data = { type: req.body.type, image: req.file };
+    const crop = JSON.parse(req.body.crop);
+    const data = { type: req.body.type, image: req.file, crop: crop };
     const image = new Image(data);
     return image.save();
   } catch (err) {
@@ -50,7 +51,8 @@ exports.addImage = async (req, reply) => {
 exports.updateImage = async (req, reply) => {
   try {
     const id = req.params.id;
-    const image = { type: req.body.type, image: req.file };
+    const crop = JSON.parse(req.body.crop);
+    const image = { type: req.body.type, image: req.file, crop: crop };
     const { ...updateData } = image;
     const update = await Image.findByIdAndUpdate(id, updateData, { new: true });
     return update;
