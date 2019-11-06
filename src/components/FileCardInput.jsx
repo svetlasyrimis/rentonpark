@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ReactCrop from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
 import Loader from "../components/Loader";
 
 function FileCardInput({ name, width_image, type }) {
+  const initial_crop = { unit: "%", width: 90, aspect: 16 / 9 };
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [image, setImage] = useState({});
+  const [crop, setCrop] = useState(initial_crop);
+
+  const onCropChange = (crop, percentCrop) => {
+    setCrop(crop);
+  };
 
   const handleChange = event => {
     setFile(URL.createObjectURL(event.target.files[0]));
@@ -18,7 +25,14 @@ function FileCardInput({ name, width_image, type }) {
       await axios
         .get("http://localhost:3001/api/images_type/" + type)
         .then(res => {
-          setImage(res.data[0]);
+          let image_data = res.data[0];
+          if (image_data) {
+            let src = "/images/" + image_data.image.originalname;
+            setFile(src);
+            if (image_data.crop) {
+              setCrop(image_data.crop);
+            }
+          }
         })
         .catch(error => {
           setIsError(error.response.data.message);
@@ -67,12 +81,14 @@ function FileCardInput({ name, width_image, type }) {
       <br />
       <div className="row">
         <div className="col-lg-12 text-center">
-          <img
-            className="img"
-            style={width_image}
-            src={file}
-            alt="renton_logo"
-          />
+          {file && (
+            <ReactCrop
+              src={file}
+              crop={crop}
+              ruleOfThirds
+              onChange={onCropChange}
+            />
+          )}
         </div>
       </div>
     </div>
