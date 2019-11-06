@@ -12,23 +12,24 @@ function FileCardInput({ name, width_image, type }) {
     setFile(URL.createObjectURL(event.target.files[0]));
   };
 
-  const fetchData = async () => {
-    setIsError(false);
-    await axios
-      .get("http://localhost:3001/api/images_type/" + type)
-      .then(res => {
-        setImage(res.data[0]);
-      })
-      .catch(error => {
-        setIsError(error.response.data.message);
-        setIsLoading(false);
-      });
-
-    setIsLoading(false);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      setIsError(false);
+      await axios
+        .get("http://localhost:3001/api/images_type/" + type)
+        .then(res => {
+          setImage(res.data[0]);
+        })
+        .catch(error => {
+          setIsError(error.response.data.message);
+          setIsLoading(false);
+        });
+
+      setIsLoading(false);
+    };
+
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
