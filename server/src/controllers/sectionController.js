@@ -56,13 +56,12 @@ exports.addSection = async (req, reply) => {
 exports.updateSection = async (req, reply) => {
   try {
     const id = req.params.id;
-    const body_req = req.body;
-    const section = {
-      title: body_req.title,
-      description: body_req.description,
-      type: body_req.type,
-      image: req.file
-    };
+    req.body.crop = JSON.parse(req.body.crop);
+    req.body.description = JSON.parse(req.body.description);
+    if (req.file) {
+      req.body.image = req.file;
+    }
+    const section = req.body;
     const { ...updateData } = section;
     const update = await Section.findByIdAndUpdate(id, updateData, {
       new: true
