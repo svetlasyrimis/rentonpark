@@ -51,10 +51,15 @@ exports.addImage = async (req, reply) => {
 exports.updateImage = async (req, reply) => {
   try {
     const id = req.params.id;
-    const crop = JSON.parse(req.body.crop);
-    const image = { type: req.body.type, image: req.file, crop: crop };
+    req.body.crop = JSON.parse(req.body.crop);
+    if (req.file) {
+      req.body.image = req.file;
+    }
+    const image = req.body;
     const { ...updateData } = image;
-    const update = await Image.findByIdAndUpdate(id, updateData, { new: true });
+    const update = await Image.findByIdAndUpdate(id, updateData, {
+      new: true
+    });
     return update;
   } catch (err) {
     throw boom.boomify(err);
