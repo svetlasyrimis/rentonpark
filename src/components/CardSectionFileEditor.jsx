@@ -1,29 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import {
-  EditorState,
-  convertToRaw,
-  convertFromRaw,
-  ContentState
-} from "draft-js";
-import { stateToHTML } from "draft-js-export-html";
-import htmlToDraft from "html-to-draftjs";
+import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import useForm from "react-hook-form";
 import axios from "axios";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
+import { ContentToHtml } from "../Helpers";
 
 function CardSectionFileEditor({ section, title, delete_button, type }) {
   const show_delete_button = delete_button ? {} : { display: "none" };
   if (section.description) {
-    let description = convertFromRaw(section.description);
-    const html = stateToHTML(description);
-    const contentBlock = htmlToDraft(html);
-    const contentState = ContentState.createFromBlockArray(
-      contentBlock.contentBlocks
-    );
-    var content = EditorState.createWithContent(contentState);
+    var content = ContentToHtml(section.description);
   } else {
     var content = EditorState.createEmpty();
   }
