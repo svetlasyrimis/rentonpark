@@ -2,18 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import useForm from "react-hook-form";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw, ContentState } from "draft-js";
-import { stateToHTML } from "draft-js-export-html";
-import htmlToDraft from "html-to-draftjs";
+import { convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { ContentToHtml } from "../Helpers";
 
 function FormReservation({ body, reglamento }) {
-  const html = stateToHTML(body);
-  const contentBlock = htmlToDraft(html);
-  const contentState = ContentState.createFromBlockArray(
-    contentBlock.contentBlocks
-  );
-  const content = EditorState.createWithContent(contentState);
+  const content = ContentToHtml(body);
   const { handleSubmit } = useForm();
   const [editorState, seteditorState] = useState(content);
   const [isLoading, setIsLoading] = useState(false);

@@ -31,7 +31,7 @@ const ReservasNew = () => {
       .get("http://localhost:3001/api/sections_type/reglamento_cablepark")
       .then(res => {
         setIsReglamento(res.data[0]._id);
-        let content = convertFromRaw(res.data[0].description);
+        let content = res.data[0].description;
         seteditorState1(content);
       })
       .catch(error => {
