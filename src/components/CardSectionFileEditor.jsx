@@ -10,7 +10,7 @@ import { ContentToHtml } from "../Helpers";
 
 function CardSectionFileEditor({ section, title, delete_button, type }) {
   const show_delete_button = delete_button ? {} : { display: "none" };
-  if (section) {
+  if (section && section.description) {
     var content = ContentToHtml(section.description);
   } else {
     var content = EditorState.createEmpty();
@@ -62,7 +62,7 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
   };
 
   useEffect(() => {
-    if (section) {
+    if (section && section.image) {
       let src = "/images/" + section.image.originalname;
       setFile(src);
       if (section.crop) {
@@ -86,8 +86,6 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
                     <div className="col-lg-12 text-center">
                       <h5 className="text-success">{isSuccess}</h5>
                     </div>
-                    <br />
-                    <br />
                     <br />
                   </div>
 
