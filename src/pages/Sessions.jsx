@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import CardSession from "../components/CardSession";
+import axios from "axios";
+import Loader from "../components/Loader";
 
 const Sessions = () => {
+  const [isInitLoading, setIsInitLoading] = useState(true);
+  const [isInitError, setInitError] = useState(false);
+  const [sessions, setIsSessions] = useState([]);
+
+  const fetchData = async () => {
+    setInitError(false);
+    await axios
+      .get("http://localhost:3001/api/sessions")
+      .then(res => {
+        setIsSessions(res.data);
+      })
+      .catch(error => {
+        isInitError(error.response.data.message);
+        isInitLoading(false);
+      });
+    setIsInitLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (isInitLoading) {
+    return <Loader />;
+  }
+
+  if (isInitError) {
+    return <h1>Error....</h1>;
+  }
+
   return (
-    <div class="col-md-6 col-lg-4">
-      <div class="card">
-        <div class="card-block text-center">
-          <i class="feather icon-file-text text-c-green d-block f-40"></i>
-          <h4 class="m-t-20">
-            <span class="text-c-green">$ 500</span> Sesión 20 minutos
-          </h4>
-          <p>Sesiones: 1</p>
-          <p class="m-b-20">Extra Weekend: $ 200</p>
-          <button class="btn btn-success btn-sm btn-round">Editar</button>
-        </div>
-      </div>
+    <div className="row">
+      {sessions.map(session => (
+        <CardSession session={session} key={session._id} />
+      ))}
     </div>
   );
 };
