@@ -10,7 +10,7 @@ import { ContentToHtml } from "../Helpers";
 
 function CardSectionFileEditor({ section, title, delete_button, type }) {
   const show_delete_button = delete_button ? {} : { display: "none" };
-  if (section.description) {
+  if (section) {
     var content = ContentToHtml(section.description);
   } else {
     var content = EditorState.createEmpty();
