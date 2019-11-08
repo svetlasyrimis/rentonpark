@@ -45,6 +45,7 @@ const AdminFeatures = () => {
             <br />
             {sections.map(section => (
               <CardSectionFileEditor
+                key={section._id}
                 title={section.title}
                 delete_button={false}
                 type={"features"}

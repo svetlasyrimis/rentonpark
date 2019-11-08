@@ -10,10 +10,9 @@ import { ContentToHtml } from "../Helpers";
 
 function CardSectionFileEditor({ section, title, delete_button, type }) {
   const show_delete_button = delete_button ? {} : { display: "none" };
+  var content = EditorState.createEmpty();
   if (section && section.description) {
-    var content = ContentToHtml(section.description);
-  } else {
-    var content = EditorState.createEmpty();
+    content = ContentToHtml(section.description);
   }
   const { register, handleSubmit, errors } = useForm();
   const [file, setFile] = useState(null);
@@ -69,6 +68,7 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
         setCrop(section.crop);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isError) {
