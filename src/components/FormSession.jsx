@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import useForm from "react-hook-form";
 import axios from "axios";
 
-function FormSession() {
+function FormSession(session = undefined) {
+  const data_session = session.session;
   const { register, handleSubmit, errors } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState("");
+  const url = "http://localhost:3001/api/sessions/";
 
   const resetForm = () => {
     let form = document.getElementById("form-session");
@@ -16,12 +18,10 @@ function FormSession() {
     form[3].value = "";
   };
 
-  const onSubmit = async data => {
-    setIsError(false);
-    setIsLoading(true);
+  const CreateSession = async data => {
     data.main = false;
     await axios
-      .post("http://localhost:3001/api/sessions", data)
+      .post(url, data)
       .then(response => {
         setIsSuccess("Session creada correctamente.");
         resetForm();
@@ -30,6 +30,28 @@ function FormSession() {
         setIsError(error.response.data.message);
         setIsLoading(false);
       });
+  };
+
+  const UpdateSession = async data => {
+    await axios
+      .put(url + data_session._id, data)
+      .then(response => {
+        setIsSuccess("Session actualizada correctamente.");
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+  };
+
+  const onSubmit = data => {
+    setIsError(false);
+    setIsLoading(true);
+    if (data_session) {
+      UpdateSession(data);
+    } else {
+      CreateSession(data);
+    }
     setIsLoading(false);
   };
 
@@ -54,6 +76,7 @@ function FormSession() {
             <div className="form-group form-default">
               <input
                 name="number"
+                defaultValue={data_session && data_session.number}
                 type="text"
                 className="form-control fill"
                 ref={register({ required: true })}
@@ -69,6 +92,7 @@ function FormSession() {
             <div className="form-group form-default">
               <input
                 type="text"
+                defaultValue={data_session && data_session.name}
                 className="form-control fill"
                 name="name"
                 ref={register({ required: true })}
@@ -85,6 +109,7 @@ function FormSession() {
               <input
                 name="price"
                 type="text"
+                defaultValue={data_session && data_session.price}
                 className="form-control fill"
                 ref={register({ required: true })}
               />
@@ -100,6 +125,7 @@ function FormSession() {
               <input
                 name="extra_weekend"
                 type="text"
+                defaultValue={data_session && data_session.extra_weekend}
                 className="form-control fill"
                 ref={register({ required: true })}
               />

@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function CardSession({ session }) {
+  const link_edit = "/admin/sesiones/" + session._id;
   return (
     <div className="col-md-6 col-lg-4">
       <div className="card">
@@ -12,7 +14,10 @@ function CardSession({ session }) {
           </h4>
           <p>Sesiones: {session.number}</p>
           <p className="m-b-20">Extra Weekend: $ {session.extra_weekend}</p>
-          <button className="btn btn-success btn-sm btn-round">Editar</button>
+
+          <Link to={link_edit} className="btn btn-success btn-sm btn-round">
+            Editar
+          </Link>
         </div>
       </div>
     </div>
