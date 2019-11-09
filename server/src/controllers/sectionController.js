@@ -38,14 +38,12 @@ exports.getSingleSection = async (req, reply) => {
 // Add a new section
 exports.addSection = async (req, reply) => {
   try {
-    const body_req = req.body;
-    const data = {
-      title: body_req.title,
-      description: body_req.description,
-      type: body_req.type,
-      image: req.file
-    };
-    const section = new Section(data);
+    req.body.crop = JSON.parse(req.body.crop);
+    req.body.description = JSON.parse(req.body.description);
+    if (req.file) {
+      req.body.image = req.file;
+    }
+    const section = new Section(req.body);
     return section.save();
   } catch (err) {
     throw boom.boomify(err);

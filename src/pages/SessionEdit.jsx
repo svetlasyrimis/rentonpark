@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import CardSession from "../components/CardSession";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import FormSession from "../components/FormSession";
 import Loader from "../components/Loader";
 
-const Sessions = () => {
+const SessionEdit = props => {
+  const session_id = props.match.params.id;
   const [isInitLoading, setIsInitLoading] = useState(true);
   const [isInitError, setInitError] = useState(false);
-  const [sessions, setIsSessions] = useState([]);
+  const [session, setIsSession] = useState(undefined);
 
   const fetchData = async () => {
     setInitError(false);
     await axios
-      .get("http://localhost:3001/api/sessions")
+      .get("http://localhost:3001/api/sessions/" + session_id)
       .then(res => {
-        setIsSessions(res.data);
+        setIsSession(res.data);
       })
       .catch(error => {
         isInitError(error.response.data.message);
@@ -34,14 +35,14 @@ const Sessions = () => {
   if (isInitError) {
     return <h1>Error....</h1>;
   }
-
   return (
-    <div className="row">
-      {sessions.map(session => (
-        <CardSession session={session} key={session._id} />
-      ))}
+    <div className="card">
+      <div className="card-header">
+        <h5>Editar Sesión</h5>
+      </div>
+      <FormSession session={session} />
     </div>
   );
 };
 
-export default Sessions;
+export default SessionEdit;

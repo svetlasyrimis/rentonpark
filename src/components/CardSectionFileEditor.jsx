@@ -8,12 +8,17 @@ import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { ContentToHtml } from "../Helpers";
 
-function CardSectionFileEditor({ section, title, delete_button, type }) {
+function CardSectionFileEditor({
+  new_section = false,
+  section,
+  title,
+  delete_button,
+  type
+}) {
   const show_delete_button = delete_button ? {} : { display: "none" };
-  if (section) {
-    var content = ContentToHtml(section.description);
-  } else {
-    var content = EditorState.createEmpty();
+  var content = EditorState.createEmpty();
+  if (section && section.description) {
+    content = ContentToHtml(section.description);
   }
   const { register, handleSubmit, errors } = useForm();
   const [file, setFile] = useState(null);
@@ -23,6 +28,7 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState("");
   const [isCrop, setCrop] = useState({ unit: "%", width: 90, aspect: 16 / 9 });
+  const url = "http://localhost:3001/api/sections/";
 
   const handleChange = event => {
     setFile(URL.createObjectURL(event.target.files[0]));
@@ -37,7 +43,41 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
     setCrop(crop);
   };
 
-  const onSubmit = async data => {
+  const resetForm = () => {
+    let form = document.getElementById("form-section");
+    form[0].value = "";
+    form[1].value = "";
+    setFile(null);
+    setImage(null);
+    seteditorState(EditorState.createEmpty());
+  };
+
+  const UpdateSection = async formData => {
+    await axios
+      .put(url + section._id, formData)
+      .then(response => {
+        setIsSuccess("Sección actualizada correctamente.");
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+  };
+
+  const CreateSection = async formData => {
+    await axios
+      .post(url, formData)
+      .then(response => {
+        setIsSuccess("Sección creada correctamente.");
+        resetForm();
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+  };
+
+  const onSubmit = data => {
     setIsError(false);
     setIsLoading(true);
     let description = convertToRaw(editorState.getCurrentContent());
@@ -49,26 +89,23 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
       formData.append("image", image);
     }
     formData.set("crop", JSON.stringify(isCrop));
-    await axios
-      .put("http://localhost:3001/api/sections/" + section._id, formData)
-      .then(response => {
-        setIsSuccess("Sección actualizada correctamente.");
-      })
-      .catch(error => {
-        setIsError(error.response.data.message);
-        setIsLoading(false);
-      });
+    if (new_section) {
+      CreateSection(formData);
+    } else {
+      UpdateSection(formData);
+    }
     setIsLoading(false);
   };
 
   useEffect(() => {
-    if (section) {
+    if (section && section.image) {
       let src = "/images/" + section.image.originalname;
       setFile(src);
       if (section.crop) {
         setCrop(section.crop);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isError) {
@@ -76,7 +113,11 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
   }
   return (
     <React.Fragment>
-      <form className="form-material" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="form-material"
+        onSubmit={handleSubmit(onSubmit)}
+        id="form-section"
+      >
         <div className="row">
           <div className="col-lg-6">
             <div className="row">
@@ -86,8 +127,6 @@ function CardSectionFileEditor({ section, title, delete_button, type }) {
                     <div className="col-lg-12 text-center">
                       <h5 className="text-success">{isSuccess}</h5>
                     </div>
-                    <br />
-                    <br />
                     <br />
                   </div>
 
