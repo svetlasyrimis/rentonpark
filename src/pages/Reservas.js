@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
-import { ljust } from "../Helpers";
+import { ljust, onlyDate } from "../Helpers";
 
 const useSearchReservations = reservations => {
   const [query, setQuery] = useState("");
@@ -31,14 +31,6 @@ const Reservas = () => {
     let minutes = new_date.getMinutes().toString();
     let hour = new_date.getHours().toString();
     return ljust(hour, 2, "0") + ":" + ljust(minutes, 2, "0");
-  };
-
-  const only_date = date => {
-    let new_date = new Date(date);
-    let day = new_date.getDate().toString();
-    let month = (new_date.getMonth() + 1).toString();
-    let year = new_date.getFullYear();
-    return ljust(day, 2, "0") + "-" + ljust(month, 2, "0") + "-" + year;
   };
 
   const fetchData = async () => {
@@ -116,7 +108,7 @@ const Reservas = () => {
                           <td>{reservation.name}</td>
                           <td>{reservation.session.name}</td>
                           <td>{reservation.total}</td>
-                          <td>{only_date(reservation.start)}</td>
+                          <td>{onlyDate(reservation.start)}</td>
                           <td>{format_date(reservation.start)}</td>
                           <td>{format_date(reservation.finish)}</td>
                         </tr>
