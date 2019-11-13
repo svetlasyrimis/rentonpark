@@ -1,6 +1,57 @@
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import axios from "axios";
+import Loader from "../components/Loader";
+import { onlyDate } from "../Helpers";
+
+const useSearchRiders = riders => {
+  const [query, setQuery] = useState("");
+  const [filteredRider, setFilteredRider] = useState(riders);
+
+  useMemo(() => {
+    const result = riders.filter(rider => {
+      return `${rider.name} ${rider.lastname}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+
+    setFilteredRider(result);
+  }, [riders, query]);
+
+  return { query, setQuery, filteredRider };
+};
 
 const AdminRiders = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [isData, setIsData] = useState([]);
+  const { query, setQuery, filteredRider } = useSearchRiders(isData);
+
+  const fetchData = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/users")
+      .then(res => {
+        setIsData(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <h1>Error....</h1>;
+  }
+
   return (
     <React.Fragment>
       <div className="row">
@@ -19,6 +70,10 @@ const AdminRiders = () => {
                         <input
                           type="search"
                           className="form-control input-sm"
+                          value={query}
+                          onChange={e => {
+                            setQuery(e.target.value);
+                          }}
                           placeholder=""
                           aria-controls="order-table"
                         />
@@ -40,7 +95,22 @@ const AdminRiders = () => {
                       <th>Fecha Creación</th>
                     </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+                    {filteredRider.map((rider, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>
+                            {rider.name} {rider.lastname}
+                          </td>
+                          <td>{rider.email}</td>
+                          <td>{rider.username}</td>
+                          <td>{rider.phone_prefix}</td>
+                          <td>{rider.phone}</td>
+                          <td>{onlyDate(rider.createdAt)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
                 </table>
               </div>
             </div>
