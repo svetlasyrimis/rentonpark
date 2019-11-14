@@ -20,3 +20,11 @@ export const ContentToHtml = content => {
   let content_html = EditorState.createWithContent(contentState);
   return content_html;
 };
+
+export const onlyDate = date => {
+  let new_date = new Date(date);
+  let day = new_date.getDate().toString();
+  let month = (new_date.getMonth() + 1).toString();
+  let year = new_date.getFullYear();
+  return ljust(day, 2, "0") + "-" + ljust(month, 2, "0") + "-" + year;
+};
