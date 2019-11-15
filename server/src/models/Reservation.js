@@ -6,6 +6,7 @@ const reservationSchema = new mongoose.Schema({
   total: Number,
   start: Date,
   finish: Date,
+  state: Number,
   description: {
     type: Map,
     of: mongoose.Schema.Types.Mixed
