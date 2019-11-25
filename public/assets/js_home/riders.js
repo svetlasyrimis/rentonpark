@@ -102,45 +102,30 @@ jQuery(document).ready(function(){
 	vDateNow = null,
 	tSources = {
 		events: function(start, end, timezone, callback) {
+			$.get('http://localhost:3001/api/bookings_cablepark', { vDate: vDateNow.format("Y-M-D") }, function(oData){
+          var oData = { tCustom: null, tSessions: null, tSpecial: null };
+          var oResult = [];
 
-			var tFormData	= new FormData();
-			tFormData.append('vDate', vDateNow.format('Y-M-D'));
-			tFormData.append('vUser', $('#vUser').val());
-
-			// $.ajax('./get/json/booking/all', {
-			// 	dataType: "JSON",
-			// 	method: "POST",
-			// 	processData: false,
-			// 	contentType: false,
-			// 	data: tFormData,
-			// 	success: function(oData) {
-					var oData = { tCustom: null, tSessions: null, tSpecial: null };
-					var oResult = [];
-
-					/* Custom */
-					if(oData.tCustom !== null){
-						$(oData.tCustom).each(function() {
+          /* Custom */
+          if (oData.tCustom !== null) {
+            $(oData.tCustom).each(function() {
               oResult.push(this);
             });
-					}
-					/* Sessions */
-					if(oData.tSessions !== null){
-						$(oData.tSessions).each(function() {
+          }
+          /* Sessions */
+          if (oData.tSessions !== null) {
+            $(oData.tSessions).each(function() {
               oResult.push(this);
             });
-					}
-					/* Special */
-					if(oData.tSpecial !== null){
-						$(oData.tSpecial).each(function() {
+          }
+          /* Special */
+          if (oData.tSpecial !== null) {
+            $(oData.tSpecial).each(function() {
               oResult.push(this);
             });
-					}
-					callback(oResult);
-				// },
-				// error: function(oData){
-				// 	console.log(oData);
-				// }
-			//});
+          }
+          callback(oResult);
+      });
 		}
 	},
 	oSources = [tSources],

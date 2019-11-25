@@ -206,6 +206,11 @@ const routes = [
     url: "/api/reservations/:id",
     handler: reservationController.deleteReservation
   },
+  {
+    method: "GET",
+    url: "/api/bookings_cablepark",
+    handler: reservationController.reservationCablepark
+  },
   // Messages
   {
     method: "GET",

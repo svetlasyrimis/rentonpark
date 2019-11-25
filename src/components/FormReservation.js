@@ -30,6 +30,7 @@ function FormReservation({ sessions, main_session }) {
     setIsError(false);
     setIsLoading(true);
     data.description = convertToRaw(editorState.getCurrentContent());
+    data.state = 1;
     await axios
       .post("http://localhost:3001/api/reservations", data)
       .then(response => {
