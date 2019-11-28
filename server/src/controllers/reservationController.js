@@ -5,6 +5,39 @@ const moment = require("moment");
 const Reservation = require("../models/Reservation");
 const User = require("../models/User");
 
+const ljust = (word, length, char) => {
+  var fill = [];
+  while (fill.length + word.length < length) {
+    fill[fill.length] = char;
+  }
+  return fill.join("") + word;
+};
+
+const formatDate = date => {
+  var monthNames = [
+    ".ENE",
+    ".FEB",
+    ".MAR",
+    ".ABR",
+    ".MAY",
+    ".JUN",
+    ".JUL",
+    ".AGO",
+    ".SET",
+    ".OCT",
+    ".NOV",
+    ".DIC"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var hour = date.getHours() + 5;
+  var minutes = date.getMinutes().toString();
+  return (
+    day + monthNames[monthIndex] + "-" + hour + ":" + ljust(minutes, 2, "0")
+  );
+};
+
 // Get all reservations
 exports.getReservations = async (req, reply) => {
   try {
@@ -29,9 +62,8 @@ exports.getSingleReservation = async (req, reply) => {
 // Add a new reservation
 exports.addReservation = async (req, reply) => {
   try {
-    req.body.start = moment(req.body.start);
-    req.body.finish = moment(req.body.finish);
-    console.log(req.body);
+    req.body.start = moment(req.body.start).subtract(5, "hours");
+    req.body.finish = moment(req.body.finish).subtract(5, "hours");
     const reservation = new Reservation(req.body);
     return reservation.save();
   } catch (err) {
@@ -74,9 +106,14 @@ exports.reservationCablepark = async (req, reply) => {
     }).populate("session");
     var final_reservations = [];
     reservations.forEach(e => {
+      if (e.state == 0) {
+        var color = "#769e9d";
+      } else {
+        var color = "#b36500";
+      }
       reservation = {
         id: e._id,
-        color: "#b36500",
+        color: color,
         textColor: "#fafafa",
         overlap: false,
         start: e.start,
@@ -90,6 +127,53 @@ exports.reservationCablepark = async (req, reply) => {
         vPrice: e.session.price,
         vExtraW: e.session.extra_weekend,
         vHash: "vGet"
+      };
+      final_reservations.push(reservation);
+    });
+    const response = {
+      tCustom: null,
+      tSessions: final_reservations,
+      tSpecial: null
+    };
+    return response;
+    // return {};
+  } catch (err) {
+    throw boom.boomify(err);
+  }
+};
+
+//Get reservations by user
+exports.reservationByUser = async (req, reply) => {
+  try {
+    const user_id = req.params.user_id;
+    const reservations = await Reservation.find({
+      user: user_id
+    }).populate("session");
+    var final_reservations = [];
+    reservations.forEach(e => {
+      if (e.state == 0) {
+        var color = "#769e9d";
+      } else {
+        var color = "#b36500";
+      }
+      reservation = {
+        id: e._id,
+        color: color,
+        textColor: "#fafafa",
+        overlap: false,
+        start: e.start,
+        end: e.finish,
+        title: e.session.name + " - " + e.name,
+        vID: e._id,
+        vState: e.state,
+        vUser: "",
+        vProf: 2,
+        vType: "1",
+        vPrice: e.session.price,
+        vExtraW: e.session.extra_weekend,
+        vHash: "vGet",
+        vProduct: e.session.name,
+        vTime: formatDate(e.start)
       };
       final_reservations.push(reservation);
     });

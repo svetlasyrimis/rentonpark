@@ -103,7 +103,7 @@ jQuery(document).ready(function(){
 	tSources = {
 		events: function(start, end, timezone, callback) {
 			$.get('http://localhost:3001/api/bookings_cablepark', { vDate: vDateNow.format("Y-M-D") }, function(oData){
-          var oData = { tCustom: null, tSessions: null, tSpecial: null };
+					console.log(oData)
           var oResult = [];
 
           /* Custom */
@@ -293,32 +293,54 @@ jQuery(document).ready(function(){
 	_fGetLapse = function(pParam1, pParam2){
 
 		var oContainer = pParam1;
-		var tFormData = new FormData();
-		tFormData.append('vStart', 	pParam2.vStart);
-		tFormData.append('vEnd', 		pParam2.vEnd);
-		tFormData.append('vType', 		$('#vType').val());
-		tFormData.append('vUser', 		$('#vUser').val());
-		tFormData.append('vProduct', $('#vProduct').val());
 
 		_fLoaderShow();
-		$.ajax('./service/impact/bookingSession/imAdd', {
-			processData: false,
-			contentType: false,
-			dataType: "JSON",
-			data: tFormData,
-			method: "POST",
-			success: function(oData){
+
+		var data = {
+      start: pParam2.vStart,
+      finish: pParam2.vEnd,
+      name: $("#vUser").val(),
+      state: 0,
+			session: $("#vProduct").val(),
+			user: $('#idUser').val()
+    };
+
+		$.ajax("http://localhost:3001/api/reservations", {
+      processData: false,
+      contentType: false,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      dataType: "JSON",
+      data: JSON.stringify(data),
+      method: "POST",
+      success: function(oData) {
 				console.log(oData);
-				if(typeof oData.sSession !== 'undefined'){
-					_fAddSession(oContainer, oData.sSession);
-				}
-				_fLoaderHide();
-			},
-			error: function(oData){
-				console.log(oData);
-				_fLoaderHide();
-			}
-		});
+				let data = {
+          color: "#769e9d",
+          end: oData.finish,
+          id: oData._id,
+          overlap: false,
+          start: oData.start,
+          textColor: "#fafafa",
+          title: "Sesión 20 minutos - " + oData.name,
+          vExtraW: 200,
+          vHash: "vSet",
+          vID: 6062,
+          vPrice: 500,
+          vState: "0",
+          vType: "1",
+          vUser: oData.name
+        };
+				_fAddSession(oContainer, data);
+        _fLoaderHide();
+      },
+      error: function(oData) {
+        console.log(oData);
+        _fLoaderHide();
+      }
+    });
 
 	},
 
@@ -346,12 +368,10 @@ jQuery(document).ready(function(){
 			method: "POST",
 			success: function(oData){
 				console.log(oData);
-				if(typeof oData.sSession !== 'undefined'){
-					_fAddSession(oContainer, oData.sSession);
-					if(oData.vState === 'OK'){
-						$(oElement).remove();
-					}
-				}
+				if (typeof oData.tSession !== "undefined") {
+          _fAddSession(oContainer, oData.tSession);
+          $(oElement).remove();
+        }
 				_fLoaderHide();
 			},
 			error: function(oData){
@@ -516,51 +536,72 @@ jQuery(document).ready(function(){
 	_fModalReserves = function(pParam1, pParam2, pParam3){
 
 		var oConfirm	= pParam1;
-		var tFormData	= new FormData();
-		tFormData.append('vUser', $('#vUser').val());
+		// var tFormData	= new FormData();
+		// tFormData.append('vUser', $('#vUser').val());
+
+		var user_id =  $("#idUser").val()
 
 		$(oConfirm).find('#dList').html('<div class="dSession dHeader"><div class="dTime"><h5>Horario</h5></div><div class="dProduct"><h5>Sesion</h5></div><div class="dPrice"><h5>Precio</h5></div><div class="dAction"><h5>Acción</h5></div></div>');
 
-		$.ajax('./get/json/booking/user', {
-			dataType: "JSON",
-			method: "POST",
-			processData: false,
-			contentType: false,
-			data: tFormData,
-			success: function(oData) {
+		$.ajax("http://localhost:3001/api/reservations_by_user/" + user_id, {
+      processData: false,
+      contentType: false,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      dataType: "JSON",
+      method: "GET",
+      success: function(oData) {
+        var vTotal = 0;
+        /* Sessions */
+        if (oData.tSessions !== null) {
+          $(oData.tSessions).each(function() {
+            var tContent = this;
+            var oSession = $(
+              '<div id="dSessionItem" class="dSession" data-id="' +
+                this.vID +
+                '"></div>'
+            );
+            oSession.append(
+              '<div class="dTime"><h5>' + this.vTime + "</h5></div>"
+            );
+            oSession.append(
+              '<div class="dProduct"><h5>' + this.vProduct + "</h5></div>"
+            );
+            oSession.append(
+              '<div class="dPrice"><h5>' + this.vPrice + "</h5></div>"
+            );
+            var oActions = $('<div class="dAction"></div>');
+            var oDelete = $(
+              '<h5 data-id="' +
+                this.vID +
+                '"><i class="fa fa-close fa-fw"></i> Quitar</h5>'
+            );
+            oDelete.on("click", function() {
+              _fDeleteSession(this.dataset.id, tContent);
+              oSession.hide();
+            });
+            oActions.append(oDelete);
+            oSession.append(oActions);
 
-				var vTotal=0;
-				/* Sessions */
-				if(oData.tSessions !== null){
-					$(oData.tSessions).each(function() {
-						var tContent	= this;
-						var oSession	=	$('<div id="dSessionItem" class="dSession" data-id="'+this.vID+'"></div>');
-						oSession.append('<div class="dTime"><h5>'+this.vTime+'</h5></div>');
-						oSession.append('<div class="dProduct"><h5>'+this.vProduct+'</h5></div>');
-						oSession.append('<div class="dPrice"><h5>'+this.vPrice+'</h5></div>');
-						var oActions = $('<div class="dAction"></div>');
-						var oDelete = $('<h5 data-id="'+this.vID+'"><i class="fa fa-close fa-fw"></i> Quitar</h5>');
-						oDelete.on('click', function(){
-							_fDeleteSession(this.dataset.id, tContent);
-							oSession.hide();
-						});
-						oActions.append(oDelete);
-						oSession.append(oActions);
+            if (typeof this.vPrice !== "undefined" || this.vPrice !== null) {
+              vTotal = vTotal + this.vPrice;
+            }
 
-						if(typeof this.vPrice !== 'undefined' || this.vPrice !== null){
-							vTotal = vTotal + this.vPrice;
-						}
-
-						$(oConfirm).find('#dList').append(oSession);
-					});
-				}
-				$(oConfirm).find('#sTotal').html(vTotal);
-
-			},
-			error: function(oData){
-				console.log(oData);
-			}
-		});
+            $(oConfirm)
+              .find("#dList")
+              .append(oSession);
+          });
+        }
+        $(oConfirm)
+          .find("#sTotal")
+          .html(vTotal);
+      },
+      error: function(oData) {
+        console.log(oData);
+      }
+    });
 	};
 
 	/* jQuery Declare */

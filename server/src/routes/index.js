@@ -211,6 +211,11 @@ const routes = [
     url: "/api/bookings_cablepark",
     handler: reservationController.reservationCablepark
   },
+  {
+    method: "GET",
+    url: "/api/reservations_by_user/:user_id",
+    handler: reservationController.reservationByUser
+  },
   // Messages
   {
     method: "GET",
