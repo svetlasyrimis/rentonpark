@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Background from "../assets/images/background_riders.jpeg";
 import "../assets/styles/riders.css";
 import "../assets/styles/calendar.css";
@@ -6,6 +7,29 @@ import "../assets/styles/fPlugins/plugTables/tables.css";
 import "../assets/styles/cropper.css";
 
 function Riders() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [main_session, setMainSession] = useState("");
+
+  const fetchData = async () => {
+    setIsError(false);
+    await axios
+      .get("http://localhost:3001/api/main_session")
+      .then(res => {
+        setMainSession(res.data._id);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <React.Fragment>
       <div className="main-container viewRiders">
@@ -119,15 +143,21 @@ function Riders() {
                 <input type="hidden" id="vType" name="vType" value="1"></input>
                 <input
                   type="hidden"
+                  id="idUser"
+                  name="idUser"
+                  value="5ddc7884d0f7a2594ce11a39"
+                ></input>
+                <input
+                  type="hidden"
                   id="vUser"
                   name="vUser"
-                  value="1778"
+                  value="User Test"
                 ></input>
                 <input
                   type="hidden"
                   id="vProduct"
                   name="vProduct"
-                  value="1000"
+                  value={main_session}
                 ></input>
                 <div className="boxControl">
                   <h3>Seleccionar turnos</h3>

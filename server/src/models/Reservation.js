@@ -14,6 +14,10 @@ const reservationSchema = new mongoose.Schema({
   session: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Session"
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   }
 });
 
