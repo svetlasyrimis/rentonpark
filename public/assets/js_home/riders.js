@@ -504,26 +504,22 @@ jQuery(document).ready(function(){
 	_fConfirmReserves = function(pParam1, pParam2, pParam3){
 
 		var oConfirm	= pParam1;
-		var tFormData	= new FormData();
-		tFormData.append('vUser', $('#vUser').val());
+		var user_id = $("#idUser").val();
 
-		$.ajax('./service/impact/confirmSessions/imAdd', {
-			dataType: "JSON",
-			method: "POST",
-			processData: false,
-			contentType: false,
-			data: tFormData,
-			success: function(oData) {
-				if(oData.vState === 'OK'){
-					$('#dConfirm').modal('hide');
-					$('#dCalendar')._mRiders('autoRefresh');
-					$('#dSuccess').modal('show');
-				}
-			},
-			error: function(oData){
-				console.log(oData);
-			}
-		});
+		$.ajax("http://localhost:3001/api/confirm_reservations/" + user_id, {
+      dataType: "JSON",
+      method: "POST",
+      processData: false,
+      contentType: false,
+      success: function(oData) {
+				$("#dConfirm").modal("hide");
+				$("#dCalendar")._mRiders("autoRefresh");
+				$("#dSuccess").modal("show");
+      },
+      error: function(oData) {
+        console.log(oData);
+      }
+    });
 
 	},
 
