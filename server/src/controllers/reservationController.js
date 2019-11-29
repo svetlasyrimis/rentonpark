@@ -147,7 +147,8 @@ exports.reservationByUser = async (req, reply) => {
   try {
     const user_id = req.params.user_id;
     const reservations = await Reservation.find({
-      user: user_id
+      user: user_id,
+      state: 0
     }).populate("session");
     var final_reservations = [];
     reservations.forEach(e => {
