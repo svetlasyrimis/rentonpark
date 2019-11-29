@@ -216,6 +216,11 @@ const routes = [
     url: "/api/reservations_by_user/:user_id",
     handler: reservationController.reservationByUser
   },
+  {
+    method: "POST",
+    url: "/api/confirm_reservations/:user_id",
+    handler: reservationController.confirmReservations
+  },
   // Messages
   {
     method: "GET",

@@ -393,34 +393,29 @@ jQuery(document).ready(function(){
 		var oContainer 	= pParam1;
 		var oEvent			= 'vSession'+pParam2;
 		var oParams			= pParam3;
-		var tFormData 	= new FormData();
-		tFormData.append('idPrincipal', pParam2);
-		//if(typeof oParams.vCoupon !== 'undefined'){
-			//tFormData.append('vCoupon', oParams.vCoupon);
-		//}
+		var reservation_id = pParam2;
 
 		_fLoaderShow();
-		$.ajax('./service/impact/bookingDelete/imDelete', {
-			processData: false,
-			contentType: false,
-			dataType: "JSON",
-			data: tFormData,
-			method: "POST",
-			success: function(oData){
-				if(oData.vState === 'OK'){
-					_fRemoveSession(oContainer, oEvent, oParams);
-				}
-				_fLoaderHide();
-			},
-			error: function(oData){
-				_fLoaderHide();
+		$.ajax("http://localhost:3001/api/reservations/" + reservation_id, {
+      processData: false,
+      contentType: false,
+      dataType: "JSON",
+      method: "DELETE",
+			success: function (oData) {
 				console.log(oData);
-			}
-		});
+				_fRemoveSession(oContainer, oEvent, oParams);
+				$("#dCalendar")._mRiders("autoRefresh");
+        _fLoaderHide();
+      },
+      error: function(oData) {
+        _fLoaderHide();
+        console.log(oData);
+      }
+    });
 	},
 
 	/* Remove Session */
-	_fRemoveSession = function(pParam1, pParam2, pParam3){
+		_fRemoveSession = function (pParam1, pParam2, pParam3) {
 		$(pParam1).fullCalendar('removeEvents', pParam2);
 		if(typeof pParam3 !== 'undefined'){
 			if(typeof pParam3.vPrice !== 'undefined'){
@@ -509,26 +504,22 @@ jQuery(document).ready(function(){
 	_fConfirmReserves = function(pParam1, pParam2, pParam3){
 
 		var oConfirm	= pParam1;
-		var tFormData	= new FormData();
-		tFormData.append('vUser', $('#vUser').val());
+		var user_id = $("#idUser").val();
 
-		$.ajax('./service/impact/confirmSessions/imAdd', {
-			dataType: "JSON",
-			method: "POST",
-			processData: false,
-			contentType: false,
-			data: tFormData,
-			success: function(oData) {
-				if(oData.vState === 'OK'){
-					$('#dConfirm').modal('hide');
-					$('#dCalendar')._mRiders('autoRefresh');
-					$('#dSuccess').modal('show');
-				}
-			},
-			error: function(oData){
-				console.log(oData);
-			}
-		});
+		$.ajax("http://localhost:3001/api/confirm_reservations/" + user_id, {
+      dataType: "JSON",
+      method: "POST",
+      processData: false,
+      contentType: false,
+      success: function(oData) {
+				$("#dConfirm").modal("hide");
+				$("#dCalendar")._mRiders("autoRefresh");
+				$("#dSuccess").modal("show");
+      },
+      error: function(oData) {
+        console.log(oData);
+      }
+    });
 
 	},
 

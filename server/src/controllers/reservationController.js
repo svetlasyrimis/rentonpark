@@ -147,7 +147,8 @@ exports.reservationByUser = async (req, reply) => {
   try {
     const user_id = req.params.user_id;
     const reservations = await Reservation.find({
-      user: user_id
+      user: user_id,
+      state: 0
     }).populate("session");
     var final_reservations = [];
     reservations.forEach(e => {
@@ -184,6 +185,25 @@ exports.reservationByUser = async (req, reply) => {
     };
     return response;
     // return {};
+  } catch (err) {
+    throw boom.boomify(err);
+  }
+};
+
+// Confirm Reservations by user
+exports.confirmReservations = async (req, reply) => {
+  try {
+    const user_id = req.params.user_id;
+    const update = await Reservation.updateMany(
+      {
+        user: user_id,
+        state: 0
+      },
+      {
+        state: 1
+      }
+    );
+    return update;
   } catch (err) {
     throw boom.boomify(err);
   }

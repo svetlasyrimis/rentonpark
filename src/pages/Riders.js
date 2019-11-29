@@ -145,7 +145,7 @@ function Riders() {
                   type="hidden"
                   id="idUser"
                   name="idUser"
-                  value="5ddc7884d0f7a2594ce11a39"
+                  value="5de09f73f06429601d97236e"
                 ></input>
                 <input
                   type="hidden"
@@ -248,7 +248,7 @@ function Riders() {
           className="modal fade dSuccess error-dialog in"
         >
           <div className="modal-dialog modal-md">
-            <div className="modal-content">
+            <div className="modal-content background-modal">
               <div className="modal-header dialog-header-error ng-scope">
                 <h4 className="modal-title">Confirmado!</h4>
               </div>
