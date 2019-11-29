@@ -16,6 +16,8 @@ const Login = () => {
     await axios
       .post("http://localhost:3001/auth/login", data)
       .then(response => {
+        let token = response.data.token;
+        window.sessionStorage.setItem("token", token);
         document.getElementById("link_home").click();
       })
       .catch(error => {
