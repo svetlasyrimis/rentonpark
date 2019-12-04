@@ -11,7 +11,7 @@ const Bar = () => {
   const fetchDataBackground = async () => {
     setIsError(false);
     await axios
-      .get("http://localhost:3001/api/images_type/bar")
+      .get("http://localhost:3001/api/images_type/pez_volador")
       .then(res => {
         setIsDataBackground(res.data);
       })
