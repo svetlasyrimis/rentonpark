@@ -2,6 +2,10 @@ import { stateToHTML } from "draft-js-export-html";
 import { EditorState, convertFromRaw, ContentState } from "draft-js";
 import htmlToDraft from "html-to-draftjs";
 
+export const convertFromJSONToHTML = text => {
+  return stateToHTML(convertFromRaw(text));
+};
+
 export const ljust = (word, length, char) => {
   var fill = [];
   while (fill.length + word.length < length) {

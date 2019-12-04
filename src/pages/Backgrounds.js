@@ -18,6 +18,11 @@ const Backgrounds = () => {
               type={"cablepark"}
             />
             <FIleCardInput
+              name={"Features"}
+              width_image={width_image}
+              type={"features"}
+            />
+            <FIleCardInput
               name={"Escuelita"}
               width_image={width_image}
               type={"escuelita"}

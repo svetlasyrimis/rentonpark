@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../assets/images/renton_light.png";
+import ImageCrop from "../components/ImageCrop";
 
 function Slider({ index, data, title }) {
   let main_class = "";
@@ -10,11 +11,12 @@ function Slider({ index, data, title }) {
   }
   return (
     <div className={main_class}>
-      <img
-        className="d-block w-100"
-        src={"images/" + data.image.originalname}
-        alt="slider_rentonpark"
-      ></img>
+      <ImageCrop
+        className={"d-block w-100"}
+        image_id={"slider_" + index}
+        alt={"slider_rentonpark"}
+        image={data}
+      />
       <div className="centered">
         <div className="row">
           <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">

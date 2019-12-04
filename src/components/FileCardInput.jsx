@@ -60,9 +60,11 @@ function FileCardInput({ name, width_image, type }) {
         .then(res => {
           let image_data = res.data[0];
           if (image_data) {
-            let src = "/images/" + image_data.image.originalname;
-            setFile(src);
             setImageId(image_data._id);
+            if (image_data.image) {
+              let src = "/images/" + image_data.image.originalname;
+              setFile(src);
+            }
             if (image_data.crop) {
               setCrop(image_data.crop);
             }
