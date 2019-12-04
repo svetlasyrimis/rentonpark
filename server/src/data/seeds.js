@@ -3,6 +3,10 @@
   {
     title: "Reglamento",
     type: "reglamento_cablepark"
+  },
+  {
+    title: "RENTON WAKEBOARDING COMPLEX",
+    type: "principal"
   }
 ][
   // Sessions
