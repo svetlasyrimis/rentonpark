@@ -1,9 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import imgProfile from "../assets/images/imgProfile.png";
 
+let token = window.sessionStorage.getItem("token");
+var isAuth = false;
+if (token) {
+  isAuth = true;
+}
 const Navbar = () => {
   return (
     <div className="nav-container">
+      {isAuth && (
+        <div className="boxUser hidden-xs">
+          <span className="name">Julio Aguado</span>
+          <span className="image">
+            <img src={imgProfile} className="img-circle" />
+          </span>
+        </div>
+      )}
       <nav className="absolute renton">
         <div className="nav-bar">
           <div className="module left">
@@ -37,12 +51,22 @@ const Navbar = () => {
               <li>
                 <Link to="./contact">Contacto</Link>
               </li>
-              <li>
-                <Link to="./login">Iniciar sesión</Link>
-              </li>
-              <li>
-                <Link to="./admin">Admin</Link>
-              </li>
+              {isAuth ? (
+                <li>
+                  <a href="#" id="sign_up">
+                    Cerrar Sesión
+                  </a>
+                </li>
+              ) : (
+                <React.Fragment>
+                  <li>
+                    <Link to="./login">Iniciar sesión</Link>
+                  </li>
+                  <li>
+                    <Link to="./admin">Admin</Link>
+                  </li>
+                </React.Fragment>
+              )}
             </ul>
           </div>
           <div className="module right">
@@ -96,9 +120,20 @@ const Navbar = () => {
           <li>
             <Link to="./contact">Contacto</Link>
           </li>
-          <li>
-            <Link to="./login">Iniciar sesión</Link>
-          </li>
+          {isAuth ? (
+            <a href="#" id="sign_up">
+              Cerrar Sesión
+            </a>
+          ) : (
+            <React.Fragment>
+              <li>
+                <Link to="./login">Iniciar sesión</Link>
+              </li>
+              <li>
+                <Link to="./admin">Admin</Link>
+              </li>
+            </React.Fragment>
+          )}
         </ul>
         <hr />
         <div className="row">
