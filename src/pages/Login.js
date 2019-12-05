@@ -17,7 +17,9 @@ const Login = () => {
       .post("http://localhost:3001/auth/login", data)
       .then(response => {
         let token = response.data.token;
+        let role = response.data.role;
         window.sessionStorage.setItem("token", token);
+        window.sessionStorage.setItem("role", role);
         document.getElementById("link_home").click();
       })
       .catch(error => {

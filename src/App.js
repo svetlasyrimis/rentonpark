@@ -8,6 +8,14 @@ const Landing = ReactDynamicImport({ loader });
 loader = () => import(`./components/Admin`);
 const Admin = ReactDynamicImport({ loader });
 
+let token = window.sessionStorage.getItem("token");
+let role = window.sessionStorage.getItem("role");
+var isAuth = false;
+if (token) {
+  isAuth = true;
+}
+var isAdmin = isAuth && role == "admin";
+
 const App = () => {
   const AddScript = source => {
     let script = document.createElement("script");
@@ -49,7 +57,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/admin" component={Admin} />
+        {isAdmin && <Route path="/admin" component={Admin} />}
         <Route path="/" component={Landing} />
       </Switch>
     </BrowserRouter>
