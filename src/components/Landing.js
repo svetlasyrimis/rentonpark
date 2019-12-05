@@ -12,6 +12,11 @@ import Camp from "../pages/Camp";
 import Contact from "../pages/Contact";
 import Riders from "../pages/Riders";
 
+let token = window.sessionStorage.getItem("token");
+var isAuth = false;
+if (token) {
+  isAuth = true;
+}
 const Landing = ({ match }) => (
   <React.Fragment>
     <Switch>
@@ -26,7 +31,9 @@ const Landing = ({ match }) => (
           <Route exact path={`${match.path}complex`} component={Complex} />
           <Route exact path={`${match.path}camp`} component={Camp} />
           <Route exact path={`${match.path}contact`} component={Contact} />
-          <Route exact path={`${match.path}riders`} component={Riders} />
+          {isAuth && (
+            <Route exact path={`${match.path}riders`} component={Riders} />
+          )}
         </Switch>
       </HomeLayout>
     </Switch>

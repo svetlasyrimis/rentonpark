@@ -23,6 +23,10 @@ var mr_firstSectionHeight,
 $(document).ready(function () {
 	"use strict";
 
+	$('#sign_up').on('click', function(){
+		window.sessionStorage.clear();
+		document.getElementById("link_home").click();
+	})
 
 	$('#mobileOpen').on('click', function(){
 

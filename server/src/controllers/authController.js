@@ -43,9 +43,11 @@ exports.postSignup = async (req, res) => {
       username
     });
     const newUser = await user.save();
-    const { id, email: userEmail } = newUser;
+    const { id, email: userEmail, role: userRole } = newUser;
     const token = await res.jwtSign({ id }, { expiresIn: "180" });
-    res.send(new SignUpResponse({ email: userEmail, token, id }));
+    res.send(
+      new SignUpResponse({ email: userEmail, token, id, role: userRole })
+    );
   } catch (error) {
     res.send(error);
   }
@@ -62,9 +64,9 @@ exports.postLogin = async (req, res) => {
     }
     const isMatch = await user.comparePassword(password);
     if (isMatch) {
-      const { id } = user;
+      const { id, role } = user;
       const token = await res.jwtSign({ id }, { expiresIn: "180" });
-      return res.send(new SignUpResponse({ username, token, id }));
+      return res.send(new SignUpResponse({ username, token, id, role }));
     }
     return res.send(new Error(INVALID_PASSWORD));
   } catch (err) {
