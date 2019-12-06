@@ -18,8 +18,12 @@ const Login = () => {
       .then(response => {
         let token = response.data.token;
         let role = response.data.role;
+        let id = response.data.id;
+        let full_name = response.data.full_name;
         window.sessionStorage.setItem("token", token);
         window.sessionStorage.setItem("role", role);
+        window.sessionStorage.setItem("id", id);
+        window.sessionStorage.setItem("full_name", full_name);
         document.getElementById("link_home").click();
       })
       .catch(error => {

@@ -8,6 +8,9 @@ import "../assets/styles/calendar.css";
 import "../assets/styles/fPlugins/plugTables/tables.css";
 import "../assets/styles/cropper.css";
 
+const full_name = window.sessionStorage.getItem("full_name");
+const user_id = window.sessionStorage.getItem("id");
+
 function Riders() {
   const [isInitLoading, setIsInitLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -133,13 +136,13 @@ function Riders() {
                   type="hidden"
                   id="idUser"
                   name="idUser"
-                  value="5de09f73f06429601d97236e"
+                  value={user_id}
                 ></input>
                 <input
                   type="hidden"
                   id="vUser"
                   name="vUser"
-                  value="User Test"
+                  value={full_name}
                 ></input>
                 <input
                   type="hidden"
