@@ -27,7 +27,8 @@ function FormReservation({ body, reglamento }) {
   const onSubmit = async data => {
     setIsError(false);
     setIsLoading(true);
-    data.description = convertToRaw(editorState.getCurrentContent());
+    let description = convertToRaw(editorState.getCurrentContent());
+    data.description = JSON.stringify(description);
     data.type = "reglamento_cablepark";
     let url = "http://localhost:3001/api/sections/" + reglamento;
     await axios
@@ -43,7 +44,7 @@ function FormReservation({ body, reglamento }) {
   };
 
   if (isError) {
-    return <h1>Error....</h1>;
+    return <h1>{isError}</h1>;
   }
   return (
     <div className="card">

@@ -54,8 +54,12 @@ exports.addSection = async (req, reply) => {
 exports.updateSection = async (req, reply) => {
   try {
     const id = req.params.id;
-    req.body.crop = JSON.parse(req.body.crop);
-    req.body.description = JSON.parse(req.body.description);
+    if (req.body.crop) {
+      req.body.crop = JSON.parse(req.body.crop);
+    }
+    if (req.body.description) {
+      req.body.description = JSON.parse(req.body.description);
+    }
     if (req.file) {
       req.body.image = req.file;
     }

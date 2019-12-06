@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Background from "../assets/images/background_riders.jpeg";
+import Slider from "../components/Slider";
+import Loader from "../components/Loader";
+import { convertFromJSONToHTML } from "../Helpers";
 import "../assets/styles/riders.css";
 import "../assets/styles/calendar.css";
 import "../assets/styles/fPlugins/plugTables/tables.css";
 import "../assets/styles/cropper.css";
 
 function Riders() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isInitLoading, setIsInitLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [isDataBackground, setIsDataBackground] = useState(undefined);
+  const [isReglamento, setIsReglamento] = useState("");
   const [main_session, setMainSession] = useState("");
 
   const fetchData = async () => {
@@ -20,9 +24,30 @@ function Riders() {
       })
       .catch(error => {
         setIsError(error.response.data.message);
-        setIsLoading(false);
+        setIsInitLoading(false);
       });
-    setIsLoading(false);
+
+    await axios
+      .get("http://localhost:3001/api/images_type/cablepark")
+      .then(res => {
+        setIsDataBackground(res.data);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsInitLoading(false);
+      });
+
+    await axios
+      .get("http://localhost:3001/api/sections_type/reglamento_cablepark")
+      .then(res => {
+        setIsReglamento(res.data[0]);
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsInitLoading(false);
+      });
+
+    setIsInitLoading(false);
   };
 
   useEffect(() => {
@@ -30,17 +55,22 @@ function Riders() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (isInitLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <h1>Error....</h1>;
+  }
+
   return (
     <React.Fragment>
       <div className="main-container viewRiders">
         <section className="image-bg overlay parallax">
           <div className="background-image-holder fadeIn">
-            <img
-              alt="renton"
-              className="background-image"
-              src={Background}
-              draggable="false"
-            />
+            {isDataBackground.map((background, index) => (
+              <Slider index={index} data={background} key={index} title="" />
+            ))}
           </div>
           <div className="container">
             <div className="row">
@@ -69,57 +99,15 @@ function Riders() {
                     <div className="col-xs-12">
                       <h4>Reglamento</h4>
                       <span className="textReglament">
-                        <p>
-                          Elige él o los turnos que quieras reservar mantener
-                          presionado el turno para reservar si estás con el cel
-                          y hace click en Confirmar Reserva. Una nueva ventana
-                          aparecerá con la lista de turnos que reservaste.
-                          Checkeá que este todo bien, dale click en Reservar y
-                          listo ! Ya estas listo para venir a andar !
-                        </p>
-                        <p>
-                          Si no vas a utilizar tu turno es obligatorio
-                          cancelarlo al menos dos horas antes del mismo
-                          ingresando nuevamente al calendario. En el caso de no
-                          tener conexión a internet avisar telefónicamente al
-                          3413671999. De no cancelar el turno el cable
-                          inhabilitará al rider por tiempo indeterminado para
-                          poder volver a realizar reservas.&nbsp;
-                        </p>
-                        <p>
-                          <u>PRECIOS PACKS Y ABONOS</u> podés consultar toda la
-                          info con el driver de turno y adquirir lo que
-                          necesites en la caja
-                        </p>
-                        <p>
-                          - <b>TURNO 20min: </b>$500.- LUN A VIE / $700.- FINDES
-                          Y FERIADOS
-                        </p>
-                        <p>
-                          -&nbsp;<b>PACK 5 SESIONES:</b> $2.000.- son
-                          individuales y se pueden utilizar cualquier día de la
-                          semana
-                        </p>
-                        <p>
-                          - <b>ABONO TEMPORADA VERANO:</b> $15.000.- podés
-                          reservar 1 turno por día de lunes a viernes / válido
-                          del 1ro de Noviembre al 30 de Abril / se puede
-                          adquirir hasta fin de Diciembre
-                        </p>
-                        <p>
-                          - <b>ALQUILER DE EQUIPO:</b> Tabla $200.- / Chaleco
-                          $100.- / Casco $100.-
-                        </p>
-                        <p>
-                          -
-                          <b>
-                            INFO CLASES INDIVIDUALES O GRUPALES EN LA PESTAÑA
-                            "ESCUELITA"&nbsp;
-                          </b>
-                        </p>
-                        <p>
-                          <br />
-                        </p>
+                        {isReglamento.description && (
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: convertFromJSONToHTML(
+                                isReglamento.description
+                              )
+                            }}
+                          />
+                        )}
                       </span>
                     </div>
                   </div>
