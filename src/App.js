@@ -14,7 +14,7 @@ var isAuth = false;
 if (token) {
   isAuth = true;
 }
-var isAdmin = isAuth && role == "admin";
+var isAdmin = isAuth && role === "admin";
 
 const App = () => {
   const AddScript = source => {

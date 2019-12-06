@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import imgProfile from "../assets/images/imgProfile.png";
 
 let token = window.sessionStorage.getItem("token");
+let role = window.sessionStorage.getItem("role");
 var isAuth = false;
 if (token) {
   isAuth = true;
 }
+var isAdmin = isAuth && role === "admin";
 const Navbar = () => {
   return (
     <div className="nav-container">
@@ -14,7 +16,7 @@ const Navbar = () => {
         <div className="boxUser hidden-xs">
           <span className="name">Julio Aguado</span>
           <span className="image">
-            <img src={imgProfile} className="img-circle" />
+            <img src={imgProfile} className="img-circle" alt="renton_profile" />
           </span>
         </div>
       )}
@@ -53,19 +55,19 @@ const Navbar = () => {
               </li>
               {isAuth ? (
                 <li>
-                  <a href="#" id="sign_up">
+                  <a href="/#" id="sign_up">
                     Cerrar Sesión
                   </a>
                 </li>
               ) : (
-                <React.Fragment>
-                  <li>
-                    <Link to="./login">Iniciar sesión</Link>
-                  </li>
-                  <li>
-                    <Link to="./admin">Admin</Link>
-                  </li>
-                </React.Fragment>
+                <li>
+                  <Link to="./login">Iniciar sesión</Link>
+                </li>
+              )}
+              {isAdmin && (
+                <li>
+                  <Link to="./admin">Admin</Link>
+                </li>
               )}
             </ul>
           </div>
@@ -121,18 +123,20 @@ const Navbar = () => {
             <Link to="./contact">Contacto</Link>
           </li>
           {isAuth ? (
-            <a href="#" id="sign_up">
-              Cerrar Sesión
-            </a>
+            <li>
+              <a href="/#" id="sign_up">
+                Cerrar Sesión
+              </a>
+            </li>
           ) : (
-            <React.Fragment>
-              <li>
-                <Link to="./login">Iniciar sesión</Link>
-              </li>
-              <li>
-                <Link to="./admin">Admin</Link>
-              </li>
-            </React.Fragment>
+            <li>
+              <Link to="./login">Iniciar sesión</Link>
+            </li>
+          )}
+          {isAdmin && (
+            <li>
+              <Link to="./admin">Admin</Link>
+            </li>
           )}
         </ul>
         <hr />
