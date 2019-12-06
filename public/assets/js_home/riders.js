@@ -13,83 +13,90 @@
 var tFormData;
 
 jQuery(document).ready(function(){
+	setTimeout(function() {
+		("use strict");
 
-	'use strict';
+		if ($("#dCalendar").length) {
+			$("#dCalendar")._mRiders();
+		}
 
-	if($('#dCalendar').length){
-		$('#dCalendar')._mRiders();
-	}
-
-	if($('#fPrev').length){
-		$('#fPrev').on('click', function (pEvent) {
-			$('#dCalendar')._mRiders('changeDate', '-1');
-			pEvent.preventDefault();
-		});
-	}
-
-	if($('#fNext').length){
-		$('#fNext').on('click', function (pEvent) {
-			$('#dCalendar')._mRiders('changeDate', '+1');
-			pEvent.preventDefault();
-		});
-	}
-
-	if($('#dProduct.turn').length){
-		$('#dProduct.turn').each(function() {
-      $(this).on('click', function(){
-				var vID = this.dataset.id;
-				$('#dCalendar')._mRiders('changeProduct', vID, this);
+		if ($("#fPrev").length) {
+			$("#fPrev").on("click", function(pEvent) {
+				$("#dCalendar")._mRiders("changeDate", "-1");
+				pEvent.preventDefault();
 			});
-    });
-	}
+		}
 
-	if($('#dConfirm').length){
-		$('#dConfirm').on('show.bs.modal', function () {
-			$(this)._mContent('getReserves', '', '');
-		});
-	}
+		if ($("#fNext").length) {
+			$("#fNext").on("click", function(pEvent) {
+				$("#dCalendar")._mRiders("changeDate", "+1");
+				pEvent.preventDefault();
+			});
+		}
 
-	if($('#btnConfirm').length){
-		$('#btnConfirm').on('click', function () {
-			$(this)._mContent('confirmReserves', '', '');
-		});
-	}
-
-	if($("#tblBooking").length){
-		$("#tblBooking").DataTable({
-			"bFilter": false,
-			"bInfo": false,
-			"bLengthChange": false,
-			"oLanguage": {
-				"sEmptyTable": "No hay sesiones para mostrar."
-			}
-		});
-	}
-
-	if($("span #btnCancel").length){
-		$("span #btnCancel").on('click', function(){
-
-		});
-
-	}
-
-	if($('div .dPackItem').length){
-		$('div .dPackItem').each(function(index, element) {
-			$(this).data('duration', '00:20');
-      $(this).draggable({
-				revert: true
+		if ($("#dProduct.turn").length) {
+			$("#dProduct.turn").each(function() {
+				$(this).on("click", function() {
+					var vID = this.dataset.id;
+					$("#dCalendar")._mRiders(
+						"changeProduct",
+						vID,
+						this
+					);
 				});
-    });
-	}
+			});
+		}
 
-	/* Auto Refresh */
-	setInterval(function(){
-		$('#dCalendar')._mRiders('autoRefresh');
-	},  15 * 1000);
+		if ($("#dConfirm").length) {
+			$("#dConfirm").on("show.bs.modal", function() {
+				$(this)._mContent("getReserves", "", "");
+			});
+		}
 
-	/* Image Profile */
-	_fBuildImageCrop('dImgProfileS', 'dImgProfileE', 'fileImport', {aspectRatio: 1}, 'dPictureProfile');
+		if ($("#btnConfirm").length) {
+			$("#btnConfirm").on("click", function() {
+				$(this)._mContent("confirmReserves", "", "");
+			});
+		}
 
+		if ($("#tblBooking").length) {
+			$("#tblBooking").DataTable({
+				bFilter: false,
+				bInfo: false,
+				bLengthChange: false,
+				oLanguage: {
+					sEmptyTable: "No hay sesiones para mostrar."
+				}
+			});
+		}
+
+		if ($("span #btnCancel").length) {
+			$("span #btnCancel").on("click", function() {});
+		}
+
+		if ($("div .dPackItem").length) {
+			$("div .dPackItem").each(function(index, element) {
+				$(this).data("duration", "00:20");
+				$(this).draggable({
+					revert: true
+				});
+			});
+		}
+
+		/* Auto Refresh */
+		setInterval(function() {
+			$("#dCalendar")._mRiders("autoRefresh");
+		}, 15 * 1000);
+
+		/* Image Profile */
+		_fBuildImageCrop(
+			"dImgProfileS",
+			"dImgProfileE",
+			"fileImport",
+			{ aspectRatio: 1 },
+			"dPictureProfile"
+		);
+	}, 1500);
 });
 
 (function($){
