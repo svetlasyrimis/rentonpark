@@ -7,10 +7,11 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { ContentToHtml } from "../Helpers";
 
 function FormReservation({ body, reglamento }) {
+  var content;
   if (body) {
-    var content = ContentToHtml(body);
+    content = ContentToHtml(body);
   } else {
-    var content = EditorState.createEmpty();
+    content = EditorState.createEmpty();
   }
   const { handleSubmit } = useForm();
   const [editorState, seteditorState] = useState(content);

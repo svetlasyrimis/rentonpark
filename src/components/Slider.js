@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Logo from "../assets/images/renton_light.png";
 import ImageCrop from "../components/ImageCrop";
 
