@@ -16,6 +16,7 @@ import SessionEdit from "../pages/SessionEdit";
 import Packs from "../pages/Packs";
 import AdminRiders from "../pages/AdminRiders";
 import Tarifas from "../pages/Tarifas";
+import ReservasEdit from "../pages/ReservasEdit";
 
 const Admin = () => (
   <React.Fragment>
@@ -23,6 +24,7 @@ const Admin = () => (
       <Switch>
         <Route exact path="/admin/reservas" component={Reservas} />
         <Route exact path="/admin/reservas/nuevo" component={ReservasNew} />
+        <Route exact path="/admin/reservas/:id" component={ReservasEdit} />
         <Route exact path="/admin/sliders" component={Sliders} />
         <Route exact path="/admin/backgrounds" component={Backgrounds} />
         <Route exact path="/admin/principal" component={Principal} />
