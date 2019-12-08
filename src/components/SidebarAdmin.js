@@ -15,7 +15,11 @@ const SidebarAdmin = () => {
             </a>
             <ul className="pcoded-submenu">
               <li className="">
-                <Link to="/admin/reservas" className="waves-effect waves-dark">
+                <Link
+                  to="/admin/reservas"
+                  className="waves-effect waves-dark"
+                  id="all_reservations"
+                >
                   <span className="pcoded-mtext">Ver todas</span>
                 </Link>
               </li>

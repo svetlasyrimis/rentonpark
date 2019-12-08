@@ -7,6 +7,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import { ContentToHtml } from "../Helpers";
 import moment from "moment";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import ModalDeleteReservation from "../components/ModalDeleteReservation";
 
 function FormReservation({ sessions, main_session, reservation = undefined }) {
   var content;
@@ -21,6 +22,7 @@ function FormReservation({ sessions, main_session, reservation = undefined }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState("");
+  const [modalIsOpen, setIsModalOpen] = useState(false);
   const url = "http://localhost:3001/api/reservations/";
 
   const onEditorStateChange = e => {
@@ -76,6 +78,31 @@ function FormReservation({ sessions, main_session, reservation = undefined }) {
     setIsLoading(false);
   };
 
+  const onCloseModal = e => {
+    setIsModalOpen(false);
+  };
+
+  const onOpenModal = e => {
+    setIsModalOpen(true);
+  };
+
+  const onDeleteReservation = async e => {
+    setIsError(false);
+    setIsLoading(true);
+
+    await axios
+      .delete(url + reservation._id)
+      .then(response => {
+        document.getElementById("all_reservations").click();
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+
+    setIsLoading(false);
+  };
+
   if (isError) {
     return <h1>Error....</h1>;
   }
@@ -85,6 +112,18 @@ function FormReservation({ sessions, main_session, reservation = undefined }) {
         <h5>{title}</h5>
       </div>
       <div className="card-block">
+        {reservation && (
+          <div className="text-center">
+            <button onClick={onOpenModal} className="btn btn-danger btn-round">
+              Eliminar Reserva
+            </button>
+            <ModalDeleteReservation
+              isOpen={modalIsOpen}
+              onClose={onCloseModal}
+              onDeleteReservation={onDeleteReservation}
+            />
+          </div>
+        )}
         <form
           className="form-material"
           id="form-reservation"

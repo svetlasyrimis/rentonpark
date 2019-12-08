@@ -100,7 +100,7 @@ const Reservas = () => {
                       <th>Fecha</th>
                       <th>Hora Inicio</th>
                       <th>Hora Fin</th>
-                      <th colSpan="2"></th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -117,9 +117,6 @@ const Reservas = () => {
                             <Link to={"/admin/reservas/" + reservation._id}>
                               <i className="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i>
                             </Link>
-                          </td>
-                          <td>
-                            <i className="feather icon-trash-2 f-w-600 f-16 text-c-red"></i>
                           </td>
                         </tr>
                       );
