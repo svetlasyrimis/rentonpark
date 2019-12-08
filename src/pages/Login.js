@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useForm from "react-hook-form";
 import axios from "axios";
 import "../assets/styles/bootstrap.css";
+import Loader from "../components/Loader";
 import LogoLight from "../assets/images/logo_light.png";
 
 const Login = () => {
+  var Clipper = require("image-clipper");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { register, handleSubmit, errors } = useForm();
+  const [image, setImage] = useState(undefined);
+  const [cropImage, setCropImage] = useState(undefined);
 
   const onSubmit = async data => {
     setIsError(false);
@@ -33,8 +37,52 @@ const Login = () => {
 
     setIsLoading(false);
   };
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    await axios
+      .get("http://localhost:3001/api/images_type/login")
+      .then(res => {
+        let image = res.data[0];
+        if (image) {
+          let crop_image = image.crop;
+          let x = crop_image.x;
+          let y = crop_image.y;
+          let width = crop_image.width;
+          let height = crop_image.height;
+          let src_image = "/images/" + image.image.originalname;
+          Clipper(src_image, function() {
+            this.crop(x, y, width, height).toDataURL(function(dataUrl) {
+              setCropImage(dataUrl);
+            });
+          });
+        }
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <h1>Error....</h1>;
+  }
+
+  var image_base64 = { background: `url(${cropImage})` };
   return (
-    <div className="viewLogin background-image-holder image-login fadeIn">
+    <div
+      className="viewLogin background-image-holder image-login fadeIn"
+      style={image_base64}
+    >
       <section className="image-bg overlay parallax">
         <div className="container">
           <div className="row">
