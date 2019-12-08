@@ -10,7 +10,6 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { register, handleSubmit, errors } = useForm();
-  const [image, setImage] = useState(undefined);
   const [cropImage, setCropImage] = useState(undefined);
 
   const onSubmit = async data => {
