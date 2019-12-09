@@ -6,14 +6,14 @@ import CardSectionFileEditor from "../components/CardSectionFileEditor";
 const Escuelita = () => {
   const [isInitLoading, setIsInitLoading] = useState(true);
   const [isInitError, setInitError] = useState(false);
-  const [section, setIsSection] = useState(undefined);
+  const [sections, setIsSection] = useState(undefined);
 
   const fetchData = async () => {
     setInitError(false);
     await axios
       .get("http://localhost:3001/api/sections_type/escuelita")
       .then(res => {
-        setIsSection(res.data[0]);
+        setIsSection(res.data);
       })
       .catch(error => {
         isInitError(error.response.data.message);
@@ -43,12 +43,15 @@ const Escuelita = () => {
               <h5>Escuelita</h5>
             </div>
             <br />
-            <CardSectionFileEditor
-              title={"Título Sección 1"}
-              delete_button={false}
-              type={"escuelita"}
-              section={section}
-            />
+            {sections.map(section => (
+              <CardSectionFileEditor
+                key={section._id}
+                title={section.title}
+                delete_button={false}
+                type={"escuelita"}
+                section={section}
+              />
+            ))}
           </div>
         </div>
       </div>
