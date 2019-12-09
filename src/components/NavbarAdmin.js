@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../assets/images/logo_light.png";
 import Profile from "../assets/images/default-profile.jpg";
 
+let full_name = window.sessionStorage.getItem("full_name");
 const NavbarAdmin = () => {
   return (
     <nav className="navbar header-navbar pcoded-header">
@@ -31,7 +32,7 @@ const NavbarAdmin = () => {
                     className="img-radius"
                     alt="User-Profile"
                   />
-                  <span>John Doe</span>
+                  <span>{full_name}</span>
                   <i className="feather icon-chevron-down"></i>
                 </div>
                 <ul
@@ -40,7 +41,7 @@ const NavbarAdmin = () => {
                   data-dropdown-out="fadeOut"
                 >
                   <li>
-                    <a href="/">
+                    <a href="/#" id="sign_up">
                       <i className="feather icon-log-out"></i> Cerrar Sesión
                     </a>
                   </li>

@@ -36,6 +36,7 @@ const App = () => {
       AddScript("assets/js_admin/pcoded.min.js");
       AddScript("assets/js_admin/horizontal-layout.min.js");
       AddScript("assets/js_admin/script.min.js");
+      AddScript("assets/js_admin/general.js");
     } else {
       AddScript("assets/js_home/jquery.js");
       AddScript("assets/js_home/jquery_migrate.js");

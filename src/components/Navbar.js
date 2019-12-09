@@ -4,6 +4,7 @@ import imgProfile from "../assets/images/imgProfile.png";
 
 let token = window.sessionStorage.getItem("token");
 let role = window.sessionStorage.getItem("role");
+let full_name = window.sessionStorage.getItem("full_name");
 var isAuth = false;
 if (token) {
   isAuth = true;
@@ -14,7 +15,7 @@ const Navbar = () => {
     <div className="nav-container">
       {isAuth && (
         <div className="boxUser hidden-xs">
-          <span className="name">Julio Aguado</span>
+          <span className="name">{full_name}</span>
           <span className="image">
             <img src={imgProfile} className="img-circle" alt="renton_profile" />
           </span>
