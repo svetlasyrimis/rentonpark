@@ -4,14 +4,26 @@ import axios from "axios";
 import SelectSession from "../components/SelectSession";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
+import { ContentToHtml } from "../Helpers";
+import moment from "moment";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import ModalDeleteReservation from "../components/ModalDeleteReservation";
 
-function FormReservation({ sessions, main_session }) {
-  const [editorState, seteditorState] = useState(EditorState.createEmpty());
+function FormReservation({ sessions, main_session, reservation = undefined }) {
+  var content;
+  if (reservation && reservation.description) {
+    content = ContentToHtml(reservation.description);
+  } else {
+    content = EditorState.createEmpty();
+  }
+  const title = reservation ? "Editar reserva" : "Nueva reserva";
+  const [editorState, seteditorState] = useState(content);
   const { register, handleSubmit, errors } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState("");
+  const [modalIsOpen, setIsModalOpen] = useState(false);
+  const url = "http://localhost:3001/api/reservations/";
 
   const onEditorStateChange = e => {
     seteditorState(e);
@@ -26,13 +38,9 @@ function FormReservation({ sessions, main_session }) {
     seteditorState(EditorState.createEmpty());
   };
 
-  const onSubmit = async data => {
-    setIsError(false);
-    setIsLoading(true);
-    data.description = convertToRaw(editorState.getCurrentContent());
-    data.state = 1;
+  const CreateReservation = async data => {
     await axios
-      .post("http://localhost:3001/api/reservations", data)
+      .post(url, data)
       .then(response => {
         setIsSuccess("Reserva creada correctamente.");
         resetForm();
@@ -41,6 +49,57 @@ function FormReservation({ sessions, main_session }) {
         setIsError(error.response.data.message);
         setIsLoading(false);
       });
+  };
+
+  const UpdateReservation = async data => {
+    await axios
+      .put(url + reservation._id, data)
+      .then(response => {
+        setIsSuccess("Reserva actualizada correctamente.");
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+  };
+
+  const onSubmit = async data => {
+    setIsError(false);
+    setIsLoading(true);
+    data.description = convertToRaw(editorState.getCurrentContent());
+    data.state = 1;
+
+    if (reservation) {
+      UpdateReservation(data);
+    } else {
+      CreateReservation(data);
+    }
+
+    setIsLoading(false);
+  };
+
+  const onCloseModal = e => {
+    setIsModalOpen(false);
+  };
+
+  const onOpenModal = e => {
+    setIsModalOpen(true);
+  };
+
+  const onDeleteReservation = async e => {
+    setIsError(false);
+    setIsLoading(true);
+
+    await axios
+      .delete(url + reservation._id)
+      .then(response => {
+        document.getElementById("all_reservations").click();
+      })
+      .catch(error => {
+        setIsError(error.response.data.message);
+        setIsLoading(false);
+      });
+
     setIsLoading(false);
   };
 
@@ -50,9 +109,21 @@ function FormReservation({ sessions, main_session }) {
   return (
     <div className="card">
       <div className="card-header">
-        <h5>Nueva Reserva</h5>
+        <h5>{title}</h5>
       </div>
       <div className="card-block">
+        {reservation && (
+          <div className="text-center">
+            <button onClick={onOpenModal} className="btn btn-danger btn-round">
+              Eliminar Reserva
+            </button>
+            <ModalDeleteReservation
+              isOpen={modalIsOpen}
+              onClose={onCloseModal}
+              onDeleteReservation={onDeleteReservation}
+            />
+          </div>
+        )}
         <form
           className="form-material"
           id="form-reservation"
@@ -71,6 +142,12 @@ function FormReservation({ sessions, main_session }) {
               <div className="form-group form-default">
                 <input
                   name="start"
+                  defaultValue={
+                    reservation &&
+                    moment(reservation.start)
+                      .format()
+                      .replace(":00-05:00", "")
+                  }
                   className="form-control fill"
                   type="datetime-local"
                   ref={register({ required: true })}
@@ -86,6 +163,12 @@ function FormReservation({ sessions, main_session }) {
               <div className="form-group form-default">
                 <input
                   name="finish"
+                  defaultValue={
+                    reservation &&
+                    moment(reservation.finish)
+                      .format()
+                      .replace(":00-05:00", "")
+                  }
                   className="form-control fill"
                   type="datetime-local"
                   ref={register({ required: true })}
@@ -101,6 +184,7 @@ function FormReservation({ sessions, main_session }) {
               <div className="form-group form-default">
                 <input
                   name="name"
+                  defaultValue={reservation && reservation.name}
                   type="text"
                   className="form-control fill"
                   ref={register({ required: true })}
@@ -116,6 +200,7 @@ function FormReservation({ sessions, main_session }) {
               <div className="form-group form-default">
                 <input
                   name="title"
+                  defaultValue={reservation && reservation.title}
                   type="text"
                   className="form-control fill"
                   ref={register}
@@ -131,7 +216,9 @@ function FormReservation({ sessions, main_session }) {
               <div className="form-group form-default">
                 <SelectSession
                   data={sessions}
-                  main_session={main_session}
+                  main_session={
+                    reservation ? reservation.session : main_session
+                  }
                   register={register}
                 />
               </div>

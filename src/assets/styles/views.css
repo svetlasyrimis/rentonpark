@@ -528,7 +528,6 @@
   text-transform: inherit;
 }
 .image-login {
-  background: url("../images/background_login.jpeg") !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -540,7 +539,6 @@
   margin-left: -10px;
 }
 .image-register {
-  background: url("../images/background_register.jpeg") !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
