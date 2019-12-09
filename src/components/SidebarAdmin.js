@@ -54,10 +54,32 @@ const SidebarAdmin = () => {
                   <span className="pcoded-mtext">Backgrounds</span>
                 </Link>
               </li>
-              <li className="">
-                <Link to="/admin/principal" className="waves-effect waves-dark">
+              <li
+                className="pcoded-hasmenu is-hover"
+                subitem-icon="style1"
+                dropdown-icon="style1"
+              >
+                <a href="#principal" className="waves-effect waves-dark">
                   <span className="pcoded-mtext">Principal</span>
-                </Link>
+                </a>
+                <ul className="pcoded-submenu">
+                  <li className="">
+                    <Link
+                      to="/admin/principal"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Ver todos</span>
+                    </Link>
+                  </li>
+                  <li className="">
+                    <Link
+                      to="/admin/principal/nuevo"
+                      className="waves-effect waves-dark"
+                    >
+                      <span className="pcoded-mtext">Agregar Nuevo</span>
+                    </Link>
+                  </li>
+                </ul>
               </li>
               <li className="">
                 <Link to="/admin/escuelita" className="waves-effect waves-dark">

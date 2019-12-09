@@ -17,6 +17,7 @@ import Packs from "../pages/Packs";
 import AdminRiders from "../pages/AdminRiders";
 import Tarifas from "../pages/Tarifas";
 import ReservasEdit from "../pages/ReservasEdit";
+import PrincipalNew from "../pages/PrincipalNew";
 
 const Admin = () => (
   <React.Fragment>
@@ -28,6 +29,7 @@ const Admin = () => (
         <Route exact path="/admin/sliders" component={Sliders} />
         <Route exact path="/admin/backgrounds" component={Backgrounds} />
         <Route exact path="/admin/principal" component={Principal} />
+        <Route exact path="/admin/principal/nuevo" component={PrincipalNew} />
         <Route exact path="/admin/escuelita" component={Escuelita} />
         <Route exact path="/admin/features" component={AdminFeatures} />
         <Route exact path="/admin/features/nuevo" component={FeaturesNew} />
